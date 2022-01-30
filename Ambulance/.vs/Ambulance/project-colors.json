@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "1ffb62ee-c5d2-48d0-894f-410ba71db40f": {
+      "ProjectGuid": "1ffb62ee-c5d2-48d0-894f-410ba71db40f",
+      "DisplayName": "Ambulance",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

@@ -1,0 +1,24 @@
+﻿<Window x:Class="Ambulance.DispatcherRegistrationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ambulance"
+        mc:Ignorable="d"
+        Title="Ввод диспетчера" Width="410" Height="285" ResizeMode="NoResize" WindowStyle="ThreeDBorderWindow" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBox x:Name="textDispatcherNumber" FontSize="15" Height="30" BorderBrush="Black" Margin="205,0,10,0" VerticalAlignment="Center" Grid.Row="1" LostFocus="DispatcherNumber_LostFocus"/>
+        <TextBox x:Name="textDispatcherFIO" FontSize="15" FontFamily="Arial" VerticalContentAlignment="Center" CharacterCasing="Upper" Margin="205,0,10,0" Grid.Row="2" BorderBrush="Black" VerticalAlignment="Center" Height="30"/>
+        <Label Content="Ввод нового диспетчера" FontSize="15" FontFamily="Arial" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Margin="82,10,82,4"/>
+        <Label Content="Номер диспетчера" FontSize="15" FontFamily="Arial" HorizontalAlignment="Left" Margin="28,0,0,0" VerticalAlignment="Center" Height="29" Grid.Row="1"/>
+        <Label Content="Фамилия" FontSize="15" FontFamily="Arial" HorizontalAlignment="Left" Margin="67,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="-0.097,0.04" Height="30" Grid.Row="2"/>
+        <Button Content="Принять" Height="30" Margin="65,20,225,0" Grid.Row="3" VerticalAlignment="Top" Click="Button_Click"/>
+        <Button Content="Отмена" Height="30" Margin="225,20,65,0" IsCancel="True" Grid.Row="3" VerticalAlignment="Top"/>
+    </Grid>
+</Window>

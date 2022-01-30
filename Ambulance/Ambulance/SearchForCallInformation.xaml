@@ -1,0 +1,65 @@
+﻿<Window x:Class="Ambulance.SearchInformationAboutCall"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ambulance"
+        mc:Ignorable="d"
+        Title="Поиск вызова" Background="LightGray" MinHeight="700" MinWidth="1200" WindowState="Maximized">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="0.8*"/>
+        </Grid.RowDefinitions>
+        <Border Margin="10,10,10,0" BorderThickness="1" BorderBrush="Black">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                    <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBox x:Name="textCallnumber" FontSize="18" FontFamily="Arial" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="10,32,0,0" Width="100" Height="24" VerticalAlignment="Top"/>
+                <TextBox x:Name="textFIO" FontSize="18" FontFamily="Arial" FontWeight="SemiBold" VerticalContentAlignment="Center" CharacterCasing="Upper" Margin="115,32,10,0" Height="24" VerticalAlignment="Top"/>
+                <ComboBox x:Name="comboDiagnosis" FontSize="20" FontFamily="Convers" FontWeight="SemiBold" VerticalContentAlignment="Center" Typography.Capitals="AllSmallCaps" Grid.Column="1" Margin="10,32,10,0" IsEditable="True" Height="28" VerticalAlignment="Top"/>
+                <ComboBox x:Name="comboStreet" FontSize="20" FontFamily="Convers" FontWeight="SemiBold" VerticalContentAlignment="Center" Typography.Capitals="AllSmallCaps" Margin="10,32,10,0" Grid.Row="1" IsEditable="True" Height="28" VerticalAlignment="Top"/>
+                <ComboBox x:Name="comboResult" FontSize="20" FontFamily="Convers" FontWeight="SemiBold" VerticalContentAlignment="Center" Typography.Capitals="AllSmallCaps" Grid.Column="1" Margin="10,32,10,0" Grid.Row="1" IsEditable="True" Height="28" VerticalAlignment="Top"/>
+                <DatePicker x:Name="dateFrom" Grid.Column="2" Margin="75,36,37,0" Height="24" VerticalAlignment="Top"/>
+                <DatePicker x:Name="dateTo" Grid.Column="2" Grid.Row="1" Margin="75,35,37,0" Height="25" VerticalAlignment="Top"/>
+                <Label Content="Дата" FontSize="16" Grid.Column="2" HorizontalAlignment="Center" Margin="0,5,0,0" VerticalAlignment="Top"/>
+                <Label Content="C" FontSize="16" Grid.Column="2" HorizontalAlignment="Left" Margin="50,32,0,0" VerticalAlignment="Top"/>
+                <Label Content="По" FontSize="16" Grid.Column="2" HorizontalAlignment="Left" Margin="40,32,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+                <CheckBox x:Name="isAllTime" Content="За весь промежуток времени" FontSize="15" FontWeight="SemiBold" FontFamily="Arial" Foreground="Purple" Grid.Column="2" Grid.Row="2" Click="IsAllTime_Click" Margin="10,23,10,10"/>
+                <TextBox x:Name="textHouseNumber" FontSize="15" FontFamily="Arial" FontWeight="SemiBold" VerticalContentAlignment="Center" CharacterCasing="Upper" Margin="10,31,0,0" Grid.Row="2" Height="26" MaxWidth="120" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120"/>
+                <TextBox x:Name="textFlatNumber" FontSize="15" FontFamily="Arial" FontWeight="SemiBold" VerticalContentAlignment="Center" CharacterCasing="Upper" Margin="142,31,0,0" Grid.Row="2" VerticalAlignment="Top" Height="26" MaxWidth="120" HorizontalAlignment="Left" Width="120"/>
+                <Label Content="№ Вызова" HorizontalAlignment="Left" Margin="10,3,0,0" VerticalAlignment="Top"/>
+                <Label Content="Фамилия" HorizontalAlignment="Left" Margin="115,3,0,0" VerticalAlignment="Top"/>
+                <Label Content="Адрес" HorizontalAlignment="Left" Margin="10,1,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+                <Label Content="Дом" HorizontalAlignment="Left" Margin="10,5,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+                <Label Content="Квартира" HorizontalAlignment="Left" Margin="142,5,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+                <Label Content="Диагноз" Grid.Column="1" HorizontalAlignment="Left" Margin="10,3,0,0" VerticalAlignment="Top"/>
+                <Label Content="Результат" Grid.Column="1" HorizontalAlignment="Left" Margin="10,2,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+            </Grid>
+        </Border>
+        <DataGrid x:Name="gridCalls" ItemsSource="{Binding listOfCalls}" IsReadOnly="True" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserReorderColumns="False" Margin="10,10,10,3" Grid.Row="1" MouseDoubleClick="GridCalls_MouseDoubleClick">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" Binding="{Binding CallNumber}" Width="1*"/>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding Patient.FIO}" Width="6*"/>
+                <DataGridTextColumn Header="Улица" Binding="{Binding Patient.Street}" Width="8*"/>
+                <DataGridTextColumn Header="Дом" Binding="{Binding Patient.HouseNumber}" Width="1*"/>
+                <DataGridTextColumn Header="Кв." Binding="{Binding Patient.FlatNumber}" Width="1*"/>
+                <DataGridTextColumn Header="Воз." Binding="{Binding Patient.Age}" Width="1*"/>
+                <DataGridTextColumn Header="Повод" Binding="{Binding Diagnosis}" Width="6*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="buttonShowRecord" Content="Просмотр вызова" HorizontalAlignment="Left" Margin="130,0,0,0" Grid.Row="2" VerticalAlignment="Center" Height="40" Width="200" Click="ButtonShowRecord_Click"/>
+        <Button x:Name="buttonSearch" Content="Поиск" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Height="40" Width="200" Click="ButtonSearch_Click"/>
+        <Label Content="запиcей найдено" FontSize="15" FontFamily="Arial" FontWeight="SemiBold" Margin="1050,0,0,0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Width="128"/>
+        <Label x:Name="lableFoundRecordNumber" Content="0" FontSize="15" FontFamily="Arial" FontWeight="SemiBold" Margin="993,0,0,0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Width="52"/>
+    </Grid>
+</Window>

@@ -1,0 +1,120 @@
+﻿<Window x:Class="Ambulance.InputCall"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ambulance"
+        mc:Ignorable="d"
+        Title="Ввод вызова" WindowStartupLocation="CenterScreen" Background="LightGray" MinHeight="700" MinWidth="1100" MaxHeight="700" MaxWidth="1100">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <GroupBox Header="Ввод данных" FontSize="13" FontFamily="Arial" Foreground="Green" FontWeight="SemiBold" BorderThickness="2" Margin="10,0,10,10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1.4*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1.1*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="textTransferDate" VerticalContentAlignment="Center" HorizontalAlignment="Left" FontSize="17" Height="30" Margin="167,62,0,0" Text="__.__.__"  VerticalAlignment="Top" Width="120" GotFocus="TextBox_GotFocus"/>
+                    <TextBox x:Name="textTransferTime" VerticalContentAlignment="Center" HorizontalAlignment="Left" FontSize="17" Height="30" Margin="167,97,0,0" Text="__:__"  VerticalAlignment="Top" Width="120" GotFocus="TextBox_GotFocus"/>
+                    <TextBox x:Name="textArrivalDate" VerticalContentAlignment="Center" HorizontalAlignment="Left" FontSize="17" Height="30" Margin="167,132,0,0" Text="__.__.__"  VerticalAlignment="Top" Width="120" GotFocus="TextBox_GotFocus"/>
+                    <TextBox x:Name="textArrivalTime" VerticalContentAlignment="Center" HorizontalAlignment="Left" FontSize="17" Height="30" Margin="167,167,0,0" Text="__:__"  VerticalAlignment="Top" Width="120" GotFocus="TextBox_GotFocus"/>
+                    <TextBox x:Name="textDepartureDate" VerticalContentAlignment="Center" HorizontalAlignment="Left" FontSize="17" Height="30" Margin="167,202,0,0" Text="__.__.__"  VerticalAlignment="Top" Width="120" GotFocus="TextBox_GotFocus"/>
+                    <TextBox x:Name="textDepartureTime" VerticalContentAlignment="Center" HorizontalAlignment="Left" FontSize="17" Height="30" Margin="167,237,0,0" Text="__:__"  VerticalAlignment="Top" Width="120" GotFocus="TextBox_GotFocus"/>
+                    <TextBox x:Name="textComebackDate" VerticalContentAlignment="Center" HorizontalAlignment="Left" FontSize="17" Height="30" Margin="167,272,0,0" Text="__.__.__"  VerticalAlignment="Top" Width="120" GotFocus="TextBox_GotFocus"/>
+                    <TextBox x:Name="textComebackTime" VerticalContentAlignment="Center" HorizontalAlignment="Left" FontSize="17" Height="30" Margin="167,307,0,0" Text="__:__"  VerticalAlignment="Top" Width="120" GotFocus="TextBox_GotFocus"/>
+                    <Label Content="Дата передачи" FontSize="15" FontFamily="Arial" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Время передачи" FontSize="15" FontFamily="Arial" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Дата прибытия" FontSize="15" FontFamily="Arial" HorizontalAlignment="Left" Margin="10,133,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Время прибытия" FontSize="15" FontFamily="Arial" HorizontalAlignment="Left" Margin="10,168,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Дата убытия" FontSize="15" FontFamily="Arial" HorizontalAlignment="Left" Margin="10,203,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Время убытия" FontSize="15" FontFamily="Arial" HorizontalAlignment="Left" Margin="10,238,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Дата возвращения" FontSize="15" FontFamily="Arial" HorizontalAlignment="Left" Margin="10,273,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Время возв." FontSize="15" FontFamily="Arial" HorizontalAlignment="Left" Margin="10,308,0,0" VerticalAlignment="Top"/>
+                    <Border BorderThickness="1" CornerRadius="10" BorderBrush="Green" Grid.Column="0" Margin="72,377,0,0" HorizontalAlignment="Left" Width="215" Height="33" VerticalAlignment="Top">
+                        <Grid Margin="0,0,-1,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <CheckBox x:Name="checkMale" Content="Мужской" IsEnabled="False" FontSize="15" FontFamily="Arial" HorizontalAlignment="Center" VerticalAlignment="Center" Click="CheckMale_Click"/>
+                            <CheckBox x:Name="chekFamale" Content="Женский" IsEnabled="False" FontSize="15" FontFamily="Arial" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Click="CheckFamale_Click"/>
+                        </Grid>
+                    </Border>
+                    <CheckBox x:Name="checkGender" Content="Пол" FontSize="15" FontFamily="Arial" Grid.Column="0" HorizontalAlignment="Left" Margin="10,385,0,0" VerticalAlignment="Top" IsChecked="False" Click="CheckGender_Click"/>
+                    <ComboBox x:Name="comboBrigadeType" FontSize="20" FontFamily="Convers" FontWeight="SemiBold" VerticalContentAlignment="Center" Typography.Capitals="AllSmallCaps" IsEditable="True" Grid.Column="1" HorizontalAlignment="Left" Margin="86,37,0,0" VerticalAlignment="Top" Width="230" Height="30"/>
+                    <ComboBox x:Name="comboDoktor" FontSize="20" FontFamily="Convers" FontWeight="SemiBold" VerticalContentAlignment="Center" Typography.Capitals="AllSmallCaps" IsEditable="True" Grid.Column="1" HorizontalAlignment="Left" Margin="86,94,0,0" VerticalAlignment="Top" Width="230" Height="30"/>
+                    <ComboBox x:Name="comboMedAssistant1" FontSize="20" FontFamily="Convers" FontWeight="SemiBold" VerticalContentAlignment="Center" Typography.Capitals="AllSmallCaps" IsEditable="True" Grid.Column="1" HorizontalAlignment="Left" Margin="86,147,0,0" VerticalAlignment="Top" Width="230" Height="30"/>
+                    <ComboBox x:Name="comboMedAssistant2" FontSize="20" FontFamily="Convers" FontWeight="SemiBold" VerticalContentAlignment="Center" Typography.Capitals="AllSmallCaps" IsEditable="True" Grid.Column="1" HorizontalAlignment="Left" Margin="86,204,0,0" VerticalAlignment="Top" Width="230" Height="30"/>
+                    <ComboBox x:Name="comboOrderly" FontSize="20" FontFamily="Convers" FontWeight="SemiBold" VerticalContentAlignment="Center" Typography.Capitals="AllSmallCaps" IsEditable="True" Grid.Column="1" HorizontalAlignment="Left" Margin="86,261,0,0" VerticalAlignment="Top" Width="230" Height="30"/>
+                    <ComboBox x:Name="comboDriver" FontSize="20" FontFamily="Convers" FontWeight="SemiBold" VerticalContentAlignment="Center" Typography.Capitals="AllSmallCaps" IsEditable="True" Grid.Column="1" HorizontalAlignment="Left" Margin="86,318,0,0" VerticalAlignment="Top" Width="230" Height="30"/>
+                    <Label Content="Тип бригады" FontSize="15" FontFamily="Arial" Grid.Column="1" HorizontalAlignment="Left" Margin="86,10,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Доктор" FontSize="15" FontFamily="Arial" Grid.Column="1" HorizontalAlignment="Left" Margin="86,67,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Фельдшер 1" FontSize="15" FontFamily="Arial" Grid.Column="1" HorizontalAlignment="Left" Margin="86,124,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Фельдшер 2" FontSize="15" FontFamily="Arial" Grid.Column="1" HorizontalAlignment="Left" Margin="86,177,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Санитра" FontSize="15" FontFamily="Arial" Grid.Column="1" HorizontalAlignment="Left" Margin="86,234,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Водитель" FontSize="15" FontFamily="Arial" Grid.Column="1" HorizontalAlignment="Left" Margin="86,291,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="textBrigadeNumber" Grid.Column="1" FontSize="17" HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="196,360,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="30" PreviewTextInput="NumberValidationTextBox"/>
+                    <TextBox x:Name="textKMBefore" Grid.Column="1" FontSize="17" HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="196,395,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="30" PreviewTextInput="NumberValidationTextBox"/>
+                    <TextBox x:Name="textKMAfter" Grid.Column="1" FontSize="17" HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="196,430,0,0" Text="123421" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="30" PreviewTextInput="NumberValidationTextBox"/>
+                    <Label Content="Номер бригады" Grid.Column="1" HorizontalAlignment="Left" Margin="79,363,0,0" VerticalAlignment="Top"/>
+                    <Label Content="КМ до выезда" Grid.Column="1" HorizontalAlignment="Left" Margin="90,398,0,0" VerticalAlignment="Top"/>
+                    <Label Content="КМ после выезда" Grid.Column="1" HorizontalAlignment="Left" Margin="68,433,0,0" VerticalAlignment="Top"/>
+                    <ComboBox x:Name="comboResult" FontSize="20" FontFamily="Convers" FontWeight="SemiBold" VerticalContentAlignment="Center" Typography.Capitals="AllSmallCaps" HorizontalAlignment="Left" IsEditable="True" Margin="99,430,0,0" VerticalAlignment="Top" Width="188" Height="30"/>
+                    <Label Content="Результат" FontSize="15" FontFamily="Arial" HorizontalAlignment="Left" Margin="10,431,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="textIncidentalCallnumber" HorizontalAlignment="Left" FontSize="20" FontFamily="Arial" Margin="167,10,0,0" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="120" Height="35"/>
+                    <Label x:Name="lableCallNumber" Content="№ вызова" FontSize="19" FontFamily="Arial" HorizontalAlignment="Left" Margin="31,12,0,0" VerticalAlignment="Top"/>
+                </Grid>
+                <Label Content="Улица / Деревня" FontSize="15" FontFamily="Arial" Margin="10,13,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="136"/>
+                <ComboBox Name="ComboStreets" FontSize="16" FontFamily="Convers" FontWeight="SemiBold" VerticalContentAlignment="Center" Typography.Capitals="AllSmallCaps" Text="УЛ. К.МАРКСА" Margin="151,15,10,0" BorderThickness="2" VerticalAlignment="Top" IsEditable="True" Grid.Column="0"/>
+                <Label Content="Дом" FontSize="15" FontFamily="Arial" Margin="10,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="42"/>
+                <TextBox x:Name="textHouseNumber" Text="21" Grid.Column="0" VerticalContentAlignment="Center" BorderThickness="2" Margin="151,47,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="125" Height="24"/>
+                <Label Content="Квартира" FontSize="15" FontFamily="Arial" Margin="10,77,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="84"/>
+                <Label Content="Возраст"  FontSize="15" FontFamily="Arial" Margin="10,153,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="83"/>
+                <Label Content="Ф. И. О." FontSize="15" FontFamily="Arial" Margin="10,109,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="68"/>
+                <TextBox x:Name="textFlatNumber" Text="3" Grid.Column="0" VerticalContentAlignment="Center" BorderThickness="2" Margin="151,79,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="125" Height="24"/>
+
+                <TextBox x:Name="textFIO" FontSize="15" FontFamily="Arial" VerticalContentAlignment="Center" CharacterCasing="Upper" Text="ДАВЫДЕНКО ИВАН" Grid.Column="0" BorderThickness="2" Margin="151,111,10,0" VerticalAlignment="Top" Height="24"/>
+                <TextBox x:Name="textAge" Text="31" Grid.Column="0" BorderThickness="2" Margin="151,155,0,0" VerticalContentAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Width="58" Height="24"/>
+                <ComboBox x:Name="ComboDepartment" Text="1" Margin="214,155,10,0" BorderThickness="2" VerticalAlignment="Top" IsEditable="True" Grid.Column="0" Height="24"/>
+                <Label Content="Подстанция" HorizontalAlignment="Left" Margin="214,136,0,0" VerticalAlignment="Top" Grid.Column="0"/>
+                <Label Content="Повод" FontSize="15" FontFamily="Arial" Margin="10,185,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="57"/>
+                <ComboBox x:Name="ComboReason" FontSize="16" FontFamily="Convers" FontWeight="SemiBold" VerticalContentAlignment="Center" Typography.Capitals="AllSmallCaps" Text="ЗНАЧИТЕЛЬНОЕ ИЗМЕНЕНИЕ АД" Margin="151,187,10,0" BorderThickness="2" VerticalAlignment="Top" IsEditable="True" Grid.Column="0"/>
+                <Label Content="Кто вызывал" FontSize="15" FontFamily="Arial" Margin="10,217,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="124"/>
+                <ComboBox x:Name="ComboCaller" FontFamily="Convers" FontWeight="SemiBold" VerticalContentAlignment="Center" Typography.Capitals="AllSmallCaps" Text="Жена" Margin="151,219,10,0" BorderThickness="2" VerticalAlignment="Top" IsEditable="True" Grid.Column="0"/>
+                <Label Content="Экстренность" FontSize="15" FontFamily="Arial" Margin="10,249,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="113"/>
+                <ComboBox x:Name="comboPlace" FontSize="16" FontFamily="Convers" FontWeight="SemiBold" VerticalContentAlignment="Center" Typography.Capitals="AllSmallCaps" IsEditable="True" Margin="151,283,10,0" VerticalAlignment="Top" Height="23"/>
+                <Label Content="Место вызова" FontSize="15" FontFamily="Arial" HorizontalAlignment="Left" Margin="10,281,0,0" VerticalAlignment="Top"/>
+                <ComboBox x:Name="ComboUrgency" FontFamily="Convers" FontWeight="SemiBold" VerticalContentAlignment="Center" Typography.Capitals="AllSmallCaps" Margin="151,251,10,0" BorderThickness="2" VerticalAlignment="Top" IsEditable="True" Grid.Column="0">
+                    <ComboBoxItem Background="Green" IsSelected="True" >Неотложный</ComboBoxItem>
+                    <ComboBoxItem Background="Red">Экстренный</ComboBoxItem>
+                </ComboBox>
+                <TextBox x:Name="textBoxNote" Grid.Column="0" BorderThickness="2" FontSize="17" FontFamily="Arial" Margin="151,313,10,0" Text="Text" TextWrapping="Wrap" AcceptsReturn="True" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="106" VerticalAlignment="Top"/>
+                <Label Content="Примечание" FontSize="15" FontFamily="Arial" Margin="10,313,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="104"/>
+                <TextBox x:Name="textReceivingDate" VerticalContentAlignment="Center" Grid.Row="1" HorizontalAlignment="Left" FontSize="17" Height="30" Margin="151,11,0,0" Text="__.__.__"  VerticalAlignment="Top" Width="120" GotFocus="TextBox_GotFocus"/>
+                <TextBox x:Name="textReceivingTime" VerticalContentAlignment="Center" Grid.Row="1" HorizontalAlignment="Left" FontSize="17" Height="30" Margin="151,55,0,0" Text="__:__"  VerticalAlignment="Top" Width="120" GotFocus="TextBox_GotFocus"/>
+                <Label Content="Дата приема" FontSize="15" FontFamily="Arial" HorizontalAlignment="Left" Margin="10,12,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+                <Label Content="Время приема" FontSize="15" FontFamily="Arial" HorizontalAlignment="Left" Margin="10,56,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+                <ComboBox x:Name="comboDiagnosis" FontSize="20" FontFamily="Convers" FontWeight="SemiBold" VerticalContentAlignment="Center" Typography.Capitals="AllSmallCaps" HorizontalAlignment="Center" IsEditable="True" Margin="0,432,0,0" Width="425" Height="30" VerticalAlignment="Top"/>
+                <Label Content="Диагноз" FontSize="15" FontFamily="Arial" HorizontalAlignment="Left" Margin="17,405,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="textTreatment" Grid.Column="1" FontSize="17" HorizontalAlignment="Left" Margin="210,0,0,0" Grid.Row="1" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Center" Width="403" Height="72" GotFocus="TreatmentTextBox_GotFocus"/>
+                <Label Content="Лечение" FontSize="15" FontFamily="Arial" Grid.Column="1" HorizontalAlignment="Left" Margin="133,10,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+            </Grid>
+        </GroupBox>
+        <Button Content="Принять" FontSize="17" FontFamily="Arial" Foreground="Green" FontWeight="SemiBold" HorizontalAlignment="Left" Margin="156,13,0,0" Grid.Row="1" VerticalAlignment="Top" Height="40" Width="150" Click="AcceptButton_Click"/>
+        <Button Content="Очистить" FontSize="17" FontFamily="Arial" Foreground="Red" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,13,0,0" Grid.Row="1" VerticalAlignment="Top" Height="40" Width="150" Click="ClearButton_Click"/>
+        <Button Content="Закрыть" FontSize="17" FontFamily="Arial" FontWeight="SemiBold" HorizontalAlignment="Left" Margin="808,13,0,0" Grid.Row="1" VerticalAlignment="Top" Height="40" Width="150" Click="ColseButton_Click"/>
+
+    </Grid>
+</Window>
