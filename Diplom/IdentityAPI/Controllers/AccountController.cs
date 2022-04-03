@@ -1,4 +1,5 @@
-﻿using IdentityAPI.RequestModels;
+﻿using IdentityAPI.Models;
+using IdentityAPI.RequestModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
