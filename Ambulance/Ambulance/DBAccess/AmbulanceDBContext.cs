@@ -8,6 +8,11 @@ namespace Ambulance.DBAccess
 {
     class AmbulanceDBContext : DbContext
     {
+        public AmbulanceDBContext()
+        {
+            Database.EnsureCreated();
+        }
+
         public DbSet<Dispatcher> Dispatchers { get;  set; }
 
         public DbSet<Doktor> Doktors { get;  set; }

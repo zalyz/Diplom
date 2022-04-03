@@ -1,0 +1,7 @@
+C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\obj\Debug\net5.0\IdentityAPI.csproj.AssemblyReference.cache
+C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\obj\Debug\net5.0\IdentityAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\obj\Debug\net5.0\IdentityAPI.AssemblyInfoInputs.cache
+C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\obj\Debug\net5.0\IdentityAPI.AssemblyInfo.cs
+C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\obj\Debug\net5.0\IdentityAPI.csproj.CoreCompileInputs.cache
+C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\obj\Debug\net5.0\IdentityAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\obj\Debug\net5.0\IdentityAPI.MvcApplicationPartsAssemblyInfo.cache

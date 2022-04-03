@@ -5,7 +5,22 @@
       "ProjectGuid": "69336f21-1029-4051-9bdc-f69438d99e6d",
       "DisplayName": "CallAPI",
       "ColorIndex": 0
+    },
+    "ddfa6770-c8d5-4dec-9888-78c725f307e2": {
+      "ProjectGuid": "ddfa6770-c8d5-4dec-9888-78c725f307e2",
+      "DisplayName": "IdentityAPI",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "703b0f1a-53e0-4815-aa8b-ce178e8cd7dc": {
+      "ProjectGuid": "703b0f1a-53e0-4815-aa8b-ce178e8cd7dc",
+      "DisplayName": "IdentityAPI",
+      "ColorIndex": 2
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 3
 }
