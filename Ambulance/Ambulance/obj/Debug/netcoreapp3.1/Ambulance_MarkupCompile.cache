@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\slava\Desktop\копия\Ambulance\Ambulance\obj\Debug\netcoreapp3.1\
+C:\Users\Viachaslau_Draneu\Desktop\Diplom\Ambulance\Ambulance\obj\Debug\netcoreapp3.1\
 Ambulance
 none
 false
-TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
-C:\Users\slava\Desktop\копия\Ambulance\Ambulance\App.xaml
-16247885444
+TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
+C:\Users\Viachaslau_Draneu\Desktop\Diplom\Ambulance\Ambulance\App.xaml
+16558133413
 
-37-760269018
-210-981389889
+37348280645
+210-859827699
 AddRemoveWindow.xaml;CallInformation.xaml;CallMonitoring.xaml;CarsInfrmationWindow.xaml;ChronicPatientWindow.xaml;DataWindow.xaml;DispatcherRegistrationWindow.xaml;EditingCalls.xaml;FullCallInformationWindow.xaml;InputCall.xaml;MainWindow.xaml;ReportWindow.xaml;ReprocessingCallsWindow.xaml;SearchForCallInformation.xaml;TreatmentWindow.xaml;WorkerWindow.xaml;
 
 False
