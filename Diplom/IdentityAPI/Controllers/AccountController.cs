@@ -1,4 +1,5 @@
-﻿using IdentityAPI.RequestModels;
+﻿using IdentityAPI.Models;
+using IdentityAPI.RequestModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -30,14 +31,11 @@ namespace IdentityAPI.Controllers
             {
                 return BadRequest();
             }
-
-            var language = GetUserLanguage(model.Language);
             var user = new User
             {
                 UserName = model.Email,
                 Email = model.Email,
                 TimeZone = model.TimeZone,
-                Language = language,
                 EmailConfirmed = true,
             };
 
