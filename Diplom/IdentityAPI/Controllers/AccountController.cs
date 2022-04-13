@@ -31,14 +31,11 @@ namespace IdentityAPI.Controllers
             {
                 return BadRequest();
             }
-
-            var language = GetUserLanguage(model.Language);
             var user = new User
             {
                 UserName = model.Email,
                 Email = model.Email,
                 TimeZone = model.TimeZone,
-                Language = language,
                 EmailConfirmed = true,
             };
 

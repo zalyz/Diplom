@@ -4,13 +4,11 @@ using MediatR;
 
 namespace CallAPI.CreateCall
 {
-    public class CreateCallCommand : MessageBase, IRequest<int>
+    public class CreateCallCommand : MessageBase<CreateCallRequest>, IRequest<int>
     {
-        public CreateCallCommand(string organisationCode)
-            : base(organisationCode)
+        public CreateCallCommand(CreateCallRequest createCallRequest)
+            : base(createCallRequest)
         {
         }
-
-        public CreateCallRequest CreateCallRequest { get; set; }
     }
 }

@@ -1,12 +1,12 @@
 ﻿namespace Ambulance.Domain
 {
-    public class MessageBase
+    public class MessageBase<T>
     {
-        public MessageBase(string organisationCode)
+        public MessageBase(T request)
         {
-            OrganisationCode = organisationCode;
+            Request = request;
         }
 
-        public string OrganisationCode { get; set; }
+        public T Request { get; set; }
     }
 }

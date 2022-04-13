@@ -20,11 +20,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="Core\" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Ambulance.DAL\Ambulance.DAL.csproj" />
     <ProjectReference Include="..\Ambulance.Domain\Ambulance.Domain.csproj" />
   </ItemGroup>
 

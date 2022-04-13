@@ -10,11 +10,13 @@ namespace Ambulance.DAL.CallAPI.Models
 
         public int PatientId { get; set; }
 
+        public int AmbulanceBrigadeId { get; set; }
+
+        public int DispatcherId { get; set; }
+
         public string Diagnosis { get; set; }
 
         public string Results { get; set; }
-
-        public int AmbulanceBrigadeId { get; set; }
 
         public DateTime DateTimeReception { get; set; }
 
@@ -26,9 +28,9 @@ namespace Ambulance.DAL.CallAPI.Models
 
         public DateTime ComeBackDateTime { get; set; }
 
-        public string TransferringDispatcher { get; set; }
+        public int TransferringDispatcherId { get; set; }
 
-        public string ProcessingDispatcher { get; set; }
+        public int ProcessingDispatcherid { get; set; }
 
         public int KilometrageBefor { get; set; }
 
@@ -40,6 +42,6 @@ namespace Ambulance.DAL.CallAPI.Models
 
         public string CallType { get; set; }
 
-        public string Treatment { get; set; }
+        public bool IsProcessed { get; set; }
     }
 }
