@@ -9,9 +9,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityAPI", "IdentityAPI\
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "CallDatabase", "CallDatabase\CallDatabase.sqlproj", "{38C46C32-A139-41F7-9ED3-DC90D920EB01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ambulance.Domain", "Ambulance.Domain\Ambulance.Domain.csproj", "{48209C5F-9BAE-4CF9-B219-9322757F06E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ambulance.Domain", "Ambulance.Domain\Ambulance.Domain.csproj", "{48209C5F-9BAE-4CF9-B219-9322757F06E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ambulance.DAL", "Ambulance.DAL\Ambulance.DAL.csproj", "{F294A23E-4AF5-48C9-AA8D-D62364E9C1F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ambulance.DAL", "Ambulance.DAL\Ambulance.DAL.csproj", "{F294A23E-4AF5-48C9-AA8D-D62364E9C1F5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{050D8FFA-9057-48E1-9C7E-011FE58C223F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "APIs", "APIs", "{1761AC0E-9FDE-436B-967D-E0DE4A168CC7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApp", "WebApp", "{9BFDAFFE-485F-431A-BCA3-06C42B0EFA84}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DesktopApp", "DesktopApp", "{E2C5FB45-9017-4963-A693-46B0EFA7CAB4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +52,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{69336F21-1029-4051-9BDC-F69438D99E6D} = {1761AC0E-9FDE-436B-967D-E0DE4A168CC7}
+		{703B0F1A-53E0-4815-AA8B-CE178E8CD7DC} = {1761AC0E-9FDE-436B-967D-E0DE4A168CC7}
+		{48209C5F-9BAE-4CF9-B219-9322757F06E0} = {050D8FFA-9057-48E1-9C7E-011FE58C223F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {28631FC5-DB76-4B3C-9EC9-497BD9F37F1D}

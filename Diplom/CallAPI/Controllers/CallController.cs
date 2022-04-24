@@ -29,7 +29,7 @@ namespace CallAPI.Controllers
         public async Task<IActionResult> Create([FromBody] CreateCallRequest createCallRequest, CancellationToken cancellationToken = default)
         {
             var command = new CreateCallCommand(createCallRequest);
-            var result = await _mediator.Send(command);
+            var result = await _mediator.Send(command, cancellationToken);
             var link = Url.ActionLink(nameof(Get), "Call", new
             {
                 id = result.ToString(),
@@ -41,7 +41,7 @@ namespace CallAPI.Controllers
         [HttpPatch]
         public Task<IActionResult> Update()
         {
-            return Task.CompletedTask;
+            return (Task<IActionResult>)Task.CompletedTask;
         }
     }
 }
