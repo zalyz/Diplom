@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[Doktor]
+﻿CREATE TABLE [dbo].[Doktors]
 (
 	[Id] INT NOT NULL PRIMARY KEY Identity(1, 1), 
     [Name] VARCHAR(200) NOT NULL, 

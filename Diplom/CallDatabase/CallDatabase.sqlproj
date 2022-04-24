@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{38c46c32-a139-41f7-9ed3-dc90d920eb01}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql140DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
@@ -57,5 +57,25 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="Tables" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Tables\MedicalAssistants.sql" />
+    <Build Include="Tables\Drivers.sql" />
+    <Build Include="Tables\Orderlies.sql" />
+    <Build Include="Tables\Dispatchers.sql" />
+    <Build Include="Tables\GlobalSettings.sql" />
+    <Build Include="Tables\Places.sql" />
+    <Build Include="Tables\AmbulanceBrigades.sql" />
+    <Build Include="Tables\Diagnosies.sql" />
+    <Build Include="Tables\Results.sql" />
+    <Build Include="Tables\Treatments.sql" />
+    <Build Include="Tables\Medicaments.sql" />
+    <Build Include="Tables\CallAdditionalInfo.sql" />
+    <Build Include="Tables\Call.sql" />
+    <Build Include="Tables\Patients.sql" />
+    <Build Include="Tables\Doktors.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CallDatabase.publish.xml" />
   </ItemGroup>
 </Project>
