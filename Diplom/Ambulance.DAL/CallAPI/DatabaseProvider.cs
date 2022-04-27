@@ -32,7 +32,7 @@ namespace Ambulance.DAL.CallAPI
         public async Task InDatabaseScope<T>(Func<ICallContext, Task<T>> action)
         {
             await _callContext.Database.BeginTransactionAsync();
-            var result = await action(_callContext);
+            await action(_callContext);
             _callContext.SaveChanges();
             await _callContext.Database.CommitTransactionAsync();
         }

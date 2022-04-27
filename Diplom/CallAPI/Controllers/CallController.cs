@@ -25,7 +25,7 @@ namespace CallAPI.Controllers
             return (IActionResult)Task.CompletedTask;
         }
 
-        [HttpPost]
+        [HttpPost()]
         public async Task<IActionResult> Create([FromBody] CreateCallRequest createCallRequest, CancellationToken cancellationToken = default)
         {
             var command = new CreateCallCommand(createCallRequest);
