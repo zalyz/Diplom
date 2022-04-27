@@ -2,5 +2,9 @@ C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallDatabase\bin\Debug\CallData
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallDatabase\bin\Debug\CallDatabase.dll
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallDatabase\bin\Debug\CallDatabase.pdb
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallDatabase\obj\Debug\CallDatabase.sqlproj.AssemblyReference.cache
+C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallDatabase\obj\Debug\Model.xml
+C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallDatabase\obj\Debug\refactor.xml
+C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallDatabase\obj\Debug\postdeploy.sql
+C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallDatabase\obj\Debug\predeploy.sql
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallDatabase\obj\Debug\CallDatabase.dll
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallDatabase\obj\Debug\CallDatabase.pdb

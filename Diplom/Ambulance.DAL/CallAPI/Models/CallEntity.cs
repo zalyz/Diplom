@@ -1,7 +1,9 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Ambulance.DAL.CallAPI.Models
 {
+    [Table("Call")]
     public class CallEntity
     {
         public int Id { get; set; }
@@ -11,6 +13,8 @@ namespace Ambulance.DAL.CallAPI.Models
         public int AmbulanceBrigadeId { get; set; }
 
         public int DispatcherId { get; set; }
+
+        public string PhoneNumber { get; set; }
 
         public int CallNumber { get; set; }
 

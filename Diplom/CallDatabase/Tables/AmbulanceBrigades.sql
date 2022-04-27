@@ -10,7 +10,7 @@
     [BrigadeType] TINYINT NOT NULL, 
     [DateTimeStart] DATETIME NOT NULL, 
     [DateTimeEnd] DATETIME NOT NULL, 
-    [StationName] NCHAR(10) NULL,
+    [StationName] varchar(50) NULL,
     Constraint [FK_Doktors] Foreign key (DoktorId) references [dbo].[Doktors] (Id),
     Constraint [FK_FirstMA] Foreign key (FirstMedicalAssistantId) references [dbo].[MedicalAssistants] (Id),
     Constraint [FK_SecondMA] Foreign key (SecondMedicalAssistantId) references [dbo].[MedicalAssistants] (Id),

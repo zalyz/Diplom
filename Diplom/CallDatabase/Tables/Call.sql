@@ -1,6 +1,7 @@
 ﻿CREATE TABLE [dbo].[Call]
 (
 	[Id] INT NOT NULL PRIMARY KEY identity(1, 1),
+	[PhoneNumber] varchar(50),
 	[CallNumber] int not null,
 	[PatientId] int not null,
 	[AmbulanceBrigadeId] int not null,
@@ -9,6 +10,7 @@
 	[IsIncidential] bit not null,
 	[ResultId] int not null,
 	[DiagnosisId] int not null,
+	[CallerId] int not null,
 	[DateTimeReception] datetime not null,
 	[TransferDateTime] datetime not null,
 	[ArrivalDateTime] datetime not null,
@@ -29,6 +31,7 @@
 	Constraint [FK_LinkedCall] foreign key (LinkedCallId) references [dbo].[Call] (Id),
 	Constraint [FK_Result] foreign key (ResultId) references Results (Id),
 	Constraint [FK_Diagnosis] foreign key (DiagnosisId) references Diagnosies (Id),
+	Constraint [FK_Callers] foreign key (CallerId) references Callers (Id),
 	Constraint [FK_TransfDispatcher] foreign key (TransferingDispatcherId) references Dispatchers (Id),
 	Constraint [FK_ProcessDispatcher] foreign key (ProcessingDispatcherId) references Dispatchers (Id),
 	Constraint [FK_Place] foreign key (PlaceId) references Places (Id),

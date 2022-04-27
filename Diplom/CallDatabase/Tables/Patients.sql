@@ -6,6 +6,6 @@
 	[Street] varchar(500) not null,
 	[HouseNumber] varchar(20) not null,
 	[FlatNumber] varchar(20) not null,
-	[PassportNumber] varchar(50),
+	[PassportNumber] varchar(10),
 	[Gender] bit not null,
 )
