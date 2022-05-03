@@ -11,6 +11,7 @@
     [DateTimeStart] DATETIME NOT NULL, 
     [DateTimeEnd] DATETIME NOT NULL, 
     [StationName] varchar(50) NULL,
+    [Status] TINYINT NOT NULL, 
     Constraint [FK_Doktors] Foreign key (DoktorId) references [dbo].[Doktors] (Id),
     Constraint [FK_FirstMA] Foreign key (FirstMedicalAssistantId) references [dbo].[MedicalAssistants] (Id),
     Constraint [FK_SecondMA] Foreign key (SecondMedicalAssistantId) references [dbo].[MedicalAssistants] (Id),

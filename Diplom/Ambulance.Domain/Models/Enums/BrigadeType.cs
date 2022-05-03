@@ -1,4 +1,4 @@
-﻿namespace Ambulance.DAL.CallAPI.Models.Enums
+﻿namespace Ambulance.Domain.Models.Enums
 {
     public enum BrigadeType
     {

@@ -1481,6 +1481,16 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "Ambulance.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/Ambulance.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Ambulance.Domain.dll": {}
+        }
       }
     }
   },
@@ -5693,10 +5703,16 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
+    },
+    "Ambulance.Domain/1.0.0": {
+      "type": "project",
+      "path": "../Ambulance.Domain/Ambulance.Domain.csproj",
+      "msbuildProject": "../Ambulance.Domain/Ambulance.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "Ambulance.Domain >= 1.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.15"
     ]
   },
@@ -5726,7 +5742,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Viachaslau_Draneu\\Desktop\\Diplom\\Diplom\\Ambulance.Domain\\Ambulance.Domain.csproj": {
+              "projectPath": "C:\\Users\\Viachaslau_Draneu\\Desktop\\Diplom\\Diplom\\Ambulance.Domain\\Ambulance.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

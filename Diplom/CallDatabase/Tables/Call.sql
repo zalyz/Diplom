@@ -4,7 +4,7 @@
 	[PhoneNumber] varchar(50),
 	[CallNumber] int not null,
 	[PatientId] int not null,
-	[AmbulanceBrigadeId] int not null,
+	[AmbulanceBrigadeId] int,
 	[DispatcherId] int not null,
 	[LinkedCallId] int,
 	[IsIncidential] bit not null,
@@ -23,7 +23,7 @@
 	[PlaceId] int not null,
 	[CallNotes] varchar(max),
 	[CallType] tinyint not null,
-	[IsProcessed] bit not null,
+	[Status] TINYINT not null,
 
 	Constraint [FK_Patient] foreign key (PatientId) references Patients (Id),
 	Constraint [FK_AmbulanceBrigade] foreign key (AmbulanceBrigadeId) references AmbulanceBrigades (Id),

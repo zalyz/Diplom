@@ -1,5 +1,5 @@
 ﻿using Ambulance.Domain.Models.Call;
-using CallAPI.CreateCall;
+using CallAPI.Call;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -10,7 +10,7 @@ namespace CallAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CallController : ControllerBase
+    public class CallController : Controller
     {
         private readonly IMediator _mediator;
 
@@ -19,29 +19,50 @@ namespace CallAPI.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> Get([FromQuery]int id)
+        [HttpGet("accepted")]
+        public async Task<IActionResult> GetAccepted(CancellationToken cancellationToken = default)
         {
-            return (IActionResult)Task.CompletedTask;
+            var query = new GetAcceptedCallsQuery(Guid.Empty);
+            var calls = await _mediator.Send(query, cancellationToken);
+            return Ok(calls);
         }
 
-        [HttpPost()]
+        ////[HttpGet("pending")]
+        ////public async Task<IActionResult> GetPending([FromQuery] string tenant, CancellationToken cancellationToken = default)
+        ////{
+        ////    var query = new (tenant);
+        ////    var calls = await _mediator.Send<>(query, cancellationToken);
+        ////    return Ok(calls);
+        ////}
+
+        ////[HttpGet("processed")]
+        ////public async Task<IActionResult> GetProcessed([FromQuery] string tenant, CancellationToken cancellationToken = default)
+        ////{
+        ////    var query = new (tenant);
+        ////    var calls = await _mediator.Send(query, cancellationToken);
+        ////    return Ok(calls);
+        ////}
+
+        [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateCallRequest createCallRequest, CancellationToken cancellationToken = default)
         {
             var command = new CreateCallCommand(createCallRequest);
             var result = await _mediator.Send(command, cancellationToken);
-            var link = Url.ActionLink(nameof(Get), "Call", new
-            {
-                id = result.ToString(),
-            });
-            var address = new UriBuilder(new Uri(link)).Uri;
-            return Created(address, result);
+            return Ok(result);
         }
 
-        [HttpPatch]
-        public Task<IActionResult> Update()
+        [HttpPatch("process")]
+        public async Task<IActionResult> ProcessCall(ProcessCallRequest request, CancellationToken cancellationToken = default)
         {
-            return (Task<IActionResult>)Task.CompletedTask;
+            await _mediator.Send(request, cancellationToken);
+            return Ok();
         }
+
+        ////[HttpPatch("additionalInfo")]
+        ////public async Task<IActionResult> UpdateCallWithAdditionalInfo()
+        ////{
+        ////    await _mediator.Send();
+        ////    return Ok();
+        ////}
     }
 }
