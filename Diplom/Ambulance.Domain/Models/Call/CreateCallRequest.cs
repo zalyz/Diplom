@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ambulance.Domain.Models.Enums;
+using System;
 
 namespace Ambulance.Domain.Models.Call
 {

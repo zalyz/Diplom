@@ -1,10 +1,11 @@
 ﻿using Ambulance.DAL.CallAPI;
 using Ambulance.DAL.CallAPI.Models;
+using Mapster;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CallAPI.CreateCall
+namespace CallAPI.Call
 {
     public class CreateCallHandler : IRequestHandler<CreateCallCommand, int>
     {
@@ -22,18 +23,12 @@ namespace CallAPI.CreateCall
                 FIO = request.Request.PatientFIO,
                 Age = request.Request.Age,
                 Gender = request.Request.Gender,
-                HisAddress = new PatientEntity.Address
-                {
-                    Street = request.Request.Street,
-                    FlatNumber = request.Request.FlatNumber,
-                    HouseNumber = request.Request.HouseNumber,
-                },
+                HisAddress = request.Request.Adapt<PatientEntity.Address>(),
             };
-            var call = new CallEntity
-            {
-                PatientId = patient.Id,
-            };
-            var result = await _databaseProvider.InDatabaseScope(context => context.Calls.AddAsync(new CallEntity()));
+            await _databaseProvider.InDatabaseScope(context => context.Patients.AddAsync(patient), cancellationToken);
+            var call = request.Request.Adapt<CallEntity>();
+            call.PatientId = patient.Id;
+            var result = await _databaseProvider.InDatabaseScope(context => context.Calls.AddAsync(call), cancellationToken);
             return result.Entity.Id;
         }
     }

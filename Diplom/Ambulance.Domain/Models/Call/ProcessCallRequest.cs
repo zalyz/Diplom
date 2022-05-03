@@ -1,23 +1,18 @@
-﻿using Ambulance.Domain.Models.Enums;
-using System;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
 
-namespace Ambulance.DAL.CallAPI.Models
+namespace Ambulance.Domain.Models.Call
 {
-    [Table("Call")]
-    public class CallEntity
+    public class ProcessCallRequest
     {
         public int Id { get; set; }
 
-        public int PatientId { get; set; }
+        public int CallNumber { get; set; }
 
-        public int? AmbulanceBrigadeId { get; set; }
+        public int AmbulanceBrigadeId { get; set; }
 
         public int DispatcherId { get; set; }
 
         public string PhoneNumber { get; set; }
-
-        public int CallNumber { get; set; }
 
         public int LinkedCallId { get; set; }
 
@@ -52,7 +47,5 @@ namespace Ambulance.DAL.CallAPI.Models
         public string CallNotes { get; set; }
 
         public string CallType { get; set; }
-
-        public CallStatus Status { get; set; }
     }
 }

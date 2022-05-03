@@ -2,6 +2,19 @@
   "version": 3,
   "targets": {
     "net5.0": {
+      "Mapster/5.3.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.3.0",
+          "System.Reflection.Emit": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Mapster.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Mapster.dll": {}
+        }
+      },
       "MediatR/10.0.1": {
         "type": "package",
         "dependencies": {
@@ -1046,7 +1059,7 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.1/_._": {}
+          "ref/netstandard1.1/System.Reflection.Emit.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Reflection.Emit.dll": {}
@@ -1060,7 +1073,7 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.0/_._": {}
+          "ref/netstandard1.0/System.Reflection.Emit.ILGeneration.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Reflection.Emit.ILGeneration.dll": {}
@@ -1588,6 +1601,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
+          "Ambulance.Domain": "1.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.15"
         },
         "compile": {
@@ -1610,6 +1624,22 @@
     }
   },
   "libraries": {
+    "Mapster/5.3.2": {
+      "sha512": "DCx8X468fJ33+KAq+JkLkMLm1c7BSkThVhye020MhSlyYGlX4ju4iavIeTLvma5IJpu+F5PDwSI/l+UT2QA7NQ==",
+      "type": "package",
+      "path": "mapster/5.3.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "icon.png",
+        "lib/net40/Mapster.dll",
+        "lib/net45/Mapster.dll",
+        "lib/netstandard1.3/Mapster.dll",
+        "lib/netstandard2.0/Mapster.dll",
+        "mapster.5.3.2.nupkg.sha512",
+        "mapster.nuspec"
+      ]
+    },
     "MediatR/10.0.1": {
       "sha512": "vnjbk4giDJzJelh34Ygt0eorApCKrRFB7j0pauFPY1oxfO3cEZ7FugBrIOjCM76SDGTOmPFfbfmVnz1t3iFrGA==",
       "type": "package",
@@ -6050,6 +6080,7 @@
     "net5.0": [
       "Ambulance.DAL >= 1.0.0",
       "Ambulance.Domain >= 1.0.0",
+      "Mapster >= 5.3.2",
       "MediatR >= 10.0.1",
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.14.0",
       "Swashbuckle.AspNetCore >= 5.6.3"
@@ -6101,6 +6132,10 @@
       "net5.0": {
         "targetAlias": "net5.0",
         "dependencies": {
+          "Mapster": {
+            "target": "Package",
+            "version": "[5.3.2, )"
+          },
           "MediatR": {
             "target": "Package",
             "version": "[10.0.1, )"

@@ -4,5 +4,5 @@
     [TreatmentId] int not null,
     [Name] VARCHAR(MAX) NOT NULL, 
     [Dosage] FLOAT NOT NULL,
-    Constraint [FK_Treatment] foreign key (TreatmentId) references [dbo].[Treatments] (id),
+    Constraint [FK_Treatment] foreign key (TreatmentId) references [dbo].[Treatments] (Id),
 )

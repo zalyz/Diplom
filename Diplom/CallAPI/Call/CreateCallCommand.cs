@@ -2,7 +2,7 @@
 using Ambulance.Domain.Models.Call;
 using MediatR;
 
-namespace CallAPI.CreateCall
+namespace CallAPI.Call
 {
     public class CreateCallCommand : MessageBase<CreateCallRequest>, IRequest<int>
     {

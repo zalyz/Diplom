@@ -1,4 +1,4 @@
-﻿using Ambulance.DAL.CallAPI.Models.Enums;
+﻿using Ambulance.Domain.Models.Enums;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
