@@ -9,12 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="CallAPI\Models\Enums\" />
     <Folder Include="IdentityAPI\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Ambulance.Domain\Ambulance.Domain.csproj" />
   </ItemGroup>
 
 </Project>

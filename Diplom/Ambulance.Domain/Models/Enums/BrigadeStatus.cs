@@ -1,6 +1,6 @@
 ﻿namespace Ambulance.Domain.Models.Enums
 {
-    public enum BrigadeStatus
+    public enum BrigadeStatus : byte
     {
         Active,
         Finished

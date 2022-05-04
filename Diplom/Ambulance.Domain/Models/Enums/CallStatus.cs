@@ -1,6 +1,6 @@
 ﻿namespace Ambulance.Domain.Models.Enums
 {
-    public enum CallStatus
+    public enum CallStatus : byte
     {
         Accepted = 0,
         TransferedToBrigade = 1,

@@ -27,23 +27,15 @@ namespace CallAPI.Controllers
             return Ok(calls);
         }
 
-        ////[HttpGet("pending")]
-        ////public async Task<IActionResult> GetPending([FromQuery] string tenant, CancellationToken cancellationToken = default)
-        ////{
-        ////    var query = new (tenant);
-        ////    var calls = await _mediator.Send<>(query, cancellationToken);
-        ////    return Ok(calls);
-        ////}
+        [HttpGet("pending")]
+        public async Task<IActionResult> GetPending(CancellationToken cancellationToken = default)
+        {
+            var query = new GetPendingCallQuery(Guid.Empty);
+            var calls = await _mediator.Send(query, cancellationToken);
+            return Ok(calls);
+        }
 
-        ////[HttpGet("processed")]
-        ////public async Task<IActionResult> GetProcessed([FromQuery] string tenant, CancellationToken cancellationToken = default)
-        ////{
-        ////    var query = new (tenant);
-        ////    var calls = await _mediator.Send(query, cancellationToken);
-        ////    return Ok(calls);
-        ////}
-
-        [HttpPost]
+        [HttpPost("create")]
         public async Task<IActionResult> Create([FromBody] CreateCallRequest createCallRequest, CancellationToken cancellationToken = default)
         {
             var command = new CreateCallCommand(createCallRequest);
@@ -54,15 +46,9 @@ namespace CallAPI.Controllers
         [HttpPatch("process")]
         public async Task<IActionResult> ProcessCall(ProcessCallRequest request, CancellationToken cancellationToken = default)
         {
-            await _mediator.Send(request, cancellationToken);
+            var command = new ProcessCallCommand(request);
+            await _mediator.Send(command, cancellationToken);
             return Ok();
         }
-
-        ////[HttpPatch("additionalInfo")]
-        ////public async Task<IActionResult> UpdateCallWithAdditionalInfo()
-        ////{
-        ////    await _mediator.Send();
-        ////    return Ok();
-        ////}
     }
 }

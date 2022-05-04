@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "ytThsGIbDt7+qIoHzwnnwI8oVJTW8wO5xjCxtZq2DweNK4zoEYOPqxOLuEBOvFYMKVO6fuXOjhV9g6sYFukCyQ==",
+  "dgSpecHash": "LpnC/DiJrWjUG099yAFpEo1Pd9IGvW1MNKzsxKdRdmDDDH6K9+xVWtdvGyzo2xC1aa+YwktEv0Pv1u7g4h527Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\Viachaslau_Draneu\\Desktop\\Diplom\\Diplom\\CallAPI\\CallAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Viachaslau_Draneu\\.nuget\\packages\\mapster\\5.3.2\\mapster.5.3.2.nupkg.sha512",
     "C:\\Users\\Viachaslau_Draneu\\.nuget\\packages\\mediatr\\10.0.1\\mediatr.10.0.1.nupkg.sha512",
     "C:\\Users\\Viachaslau_Draneu\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",
+    "C:\\Users\\Viachaslau_Draneu\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\10.0.1\\mediatr.extensions.microsoft.dependencyinjection.10.0.1.nupkg.sha512",
     "C:\\Users\\Viachaslau_Draneu\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Viachaslau_Draneu\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
     "C:\\Users\\Viachaslau_Draneu\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.0.1\\microsoft.data.sqlclient.sni.runtime.2.0.1.nupkg.sha512",
@@ -20,7 +21,7 @@
     "C:\\Users\\Viachaslau_Draneu\\.nuget\\packages\\microsoft.extensions.caching.memory\\5.0.0\\microsoft.extensions.caching.memory.5.0.0.nupkg.sha512",
     "C:\\Users\\Viachaslau_Draneu\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\Viachaslau_Draneu\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\5.0.2\\microsoft.extensions.dependencyinjection.5.0.2.nupkg.sha512",
-    "C:\\Users\\Viachaslau_Draneu\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\Viachaslau_Draneu\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\Viachaslau_Draneu\\.nuget\\packages\\microsoft.extensions.logging\\5.0.0\\microsoft.extensions.logging.5.0.0.nupkg.sha512",
     "C:\\Users\\Viachaslau_Draneu\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\Viachaslau_Draneu\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",

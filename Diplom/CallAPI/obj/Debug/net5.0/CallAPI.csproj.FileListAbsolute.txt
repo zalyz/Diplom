@@ -63,3 +63,5 @@ C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\obj\Debug\net5.0\refint
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\obj\Debug\net5.0\CallAPI.pdb
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\obj\Debug\net5.0\CallAPI.genruntimeconfig.cache
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\obj\Debug\net5.0\ref\CallAPI.dll
+C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\bin\Debug\net5.0\MediatR.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll

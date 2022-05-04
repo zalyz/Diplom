@@ -21,9 +21,9 @@ namespace CallAPI.Brigade
 
         public async Task<List<AmbulanceBrigade>> Handle(GetBrigadeQuery request, CancellationToken cancellationToken)
         {
-            var brigades = (await _databaseProvider.InDatabaseScope(context => context.AmbulanceBrigades.Where(e => e.Status == BrigadeStatus.Active).ToList(), cancellationToken))
+            var brigades = (await _databaseProvider.InDatabaseScope(context => context.AmbulanceBrigades.Where(e => e.Status == (byte)BrigadeStatus.Active).ToList(), cancellationToken))
                 .Adapt<List<AmbulanceBrigade>>();
-            var calls = await _databaseProvider.InDatabaseScope(context => context.Calls.Where(e => e.Status == CallStatus.TransferedToBrigade
+            var calls = await _databaseProvider.InDatabaseScope(context => context.Calls.Where(e => e.Status == (byte)CallStatus.TransferedToBrigade
                 && !e.AmbulanceBrigadeId.HasValue).ToList(), cancellationToken);
             brigades.ForEach(b =>
             {

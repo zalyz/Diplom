@@ -9,8 +9,6 @@ namespace Ambulance.DAL.CallAPI.Models
 
         public int TreatmentId { get; set; }
 
-        public string Name { get; set; }
-
-        public float Dosage { get; set; }
+        public int DrugId { get; set; }
     }
 }

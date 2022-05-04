@@ -28,6 +28,22 @@ namespace CallAPI.Controllers
             return Ok(brigades);
         }
 
+        [HttpPost("create")]
+        public async Task<IActionResult> CreateBrigade([FromBody]CreateBrigadeRequest request, CancellationToken cancellationToken = default)
+        {
+            var command = new CreateBrigadeCommand(request);
+            var id = await _mediator.Send(command, cancellationToken);
+            return Ok(id);
+        }
+
+        [HttpDelete("remove")]
+        public async Task<IActionResult> DeleteBrigade([FromBody]int brigadeId, CancellationToken cancellationToken = default)
+        {
+            var command = new DeleteBrigadeCommand(brigadeId);
+            _ = await _mediator.Send(command, cancellationToken);
+            return Ok();
+        }
+
         // Возвращает обновленную бригаду, для замены в списоке на компе
         [HttpPatch("assignCall")]
         public async Task<IActionResult> AssignCallToBrigade([FromBody] AssignCallRequest request, CancellationToken cancellationToken = default)
@@ -41,6 +57,14 @@ namespace CallAPI.Controllers
         public async Task<IActionResult> ReleaseBrigade([FromBody]int brigadeId, CancellationToken cancellationToken = default)
         {
             var command = new ReleaseBrigadeCommand(brigadeId);
+            _ = await _mediator.Send(command, cancellationToken);
+            return Ok();
+        }
+
+        [HttpPatch("return")]
+        public async Task<IActionResult> ReturnCall([FromBody]int brigadeId, CancellationToken cancellationToken = default)
+        {
+            var command = new ReturnCallCommand(brigadeId);
             _ = await _mediator.Send(command, cancellationToken);
             return Ok();
         }

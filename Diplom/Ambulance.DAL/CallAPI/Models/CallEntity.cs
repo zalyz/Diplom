@@ -1,5 +1,4 @@
-﻿using Ambulance.Domain.Models.Enums;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Ambulance.DAL.CallAPI.Models
@@ -21,7 +20,7 @@ namespace Ambulance.DAL.CallAPI.Models
 
         public int LinkedCallId { get; set; }
 
-        public bool IsIncidental { get; set; }
+        public bool IsIncidential { get; set; }
 
         public string ResultId { get; set; }
 
@@ -39,11 +38,11 @@ namespace Ambulance.DAL.CallAPI.Models
 
         public DateTime ComeBackDateTime { get; set; }
 
-        public int TransferringDispatcherId { get; set; }
+        public int TransferingDispatcherId { get; set; }
 
         public int ProcessingDispatcherid { get; set; }
 
-        public int KilometrageBefor { get; set; }
+        public int KilometrageBefore { get; set; }
 
         public int KilometrageAfter { get; set; }
 
@@ -51,8 +50,8 @@ namespace Ambulance.DAL.CallAPI.Models
 
         public string CallNotes { get; set; }
 
-        public string CallType { get; set; }
+        public byte CallType { get; set; }
 
-        public CallStatus Status { get; set; }
+        public byte Status { get; set; }
     }
 }

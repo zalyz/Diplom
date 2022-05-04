@@ -22,7 +22,7 @@ namespace CallAPI.Call
 
         public async Task<List<CallOfficeInfo>> Handle(GetAcceptedCallsQuery request, CancellationToken cancellationToken)
         {
-            var callEntities = await _databaseProvider.InDatabaseScope(context => context.Calls.Where(e => e.Status == CallStatus.Accepted), cancellationToken);
+            var callEntities = await _databaseProvider.InDatabaseScope(context => context.Calls.Where(e => e.Status == (byte)CallStatus.Accepted), cancellationToken);
             var calls = await callEntities.ToListAsync();
             return calls.Adapt<List<CallOfficeInfo>>();
         }

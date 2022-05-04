@@ -18,13 +18,7 @@ namespace CallAPI.Call
 
         public async Task<int> Handle(CreateCallCommand request, CancellationToken cancellationToken)
         {
-            var patient = new PatientEntity
-            {
-                FIO = request.Request.PatientFIO,
-                Age = request.Request.Age,
-                Gender = request.Request.Gender,
-                HisAddress = request.Request.Adapt<PatientEntity.Address>(),
-            };
+            var patient = request.Request.Adapt<PatientEntity>();
             await _databaseProvider.InDatabaseScope(context => context.Patients.AddAsync(patient), cancellationToken);
             var call = request.Request.Adapt<CallEntity>();
             call.PatientId = patient.Id;
