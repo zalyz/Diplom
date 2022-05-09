@@ -5,17 +5,15 @@ namespace Ambulance.Domain.Models.Call
 {
     public class CreateCallRequest
     {
-        public string PatientFIO { get; set; }
+        public string FIO { get; set; }
 
-        public string Street { get; set; }
+        public int StreetId { get; set; }
 
         public string HouseNumber { get; set; }
 
         public string FlatNumber { get; set; }
 
         public int Age { get; set; }
-
-        public Gender Gender { get; set; }
 
         public int CallerId { get; set; }
 
@@ -29,6 +27,6 @@ namespace Ambulance.Domain.Models.Call
 
         public string CallNotes { get; set; }
 
-        public string CallType { get; set; }
+        public CallType CallType { get; set; }
     }
 }

@@ -6,7 +6,7 @@ namespace Ambulance.DAL.CallAPI
 {
     public interface IDatabaseProvider
     {
-        Task<T> InDatabaseScope<T>(Func<ICallContext, ValueTask<T>> action, CancellationToken cancellationToken = default);
+        Task<T> InDatabaseScopeValue<T>(Func<ICallContext, ValueTask<T>> action, CancellationToken cancellationToken = default);
 
         Task<T> InDatabaseScope<T>(Func<ICallContext, Task<T>> action, CancellationToken cancellationToken = default);
 
@@ -15,26 +15,26 @@ namespace Ambulance.DAL.CallAPI
 
     public class DatabaseProvider : IDatabaseProvider
     {
-        private readonly CallContext _callContext;
+        private readonly ICallContext _callContext;
 
-        public DatabaseProvider(CallContext callContext)
+        public DatabaseProvider(ICallContext callContext)
         {
             _callContext = callContext;
         }
 
-        public async Task<T> InDatabaseScope<T>(Func<ICallContext, ValueTask<T>> action, CancellationToken cancellationToken)
+        public async Task<T> InDatabaseScopeValue<T>(Func<ICallContext, ValueTask<T>> action, CancellationToken cancellationToken)
         {
             try
             {
-                await _callContext.Database.BeginTransactionAsync(cancellationToken);
+                await _callContext.DatabaseInstance.BeginTransactionAsync(cancellationToken);
                 var result = await action(_callContext);
-                _callContext.SaveChanges();
-                await _callContext.Database.CommitTransactionAsync(cancellationToken);
+                await _callContext.SaveMyChangesAsync();
+                await _callContext.DatabaseInstance.CommitTransactionAsync(cancellationToken);
                 return result;
             }
             catch
             {
-                await _callContext.Database.RollbackTransactionAsync(cancellationToken);
+                await _callContext.DatabaseInstance.RollbackTransactionAsync(cancellationToken);
                 throw;
             }
         }
@@ -43,15 +43,15 @@ namespace Ambulance.DAL.CallAPI
         {
             try
             {
-                await _callContext.Database.BeginTransactionAsync(cancellationToken);
+                await _callContext.DatabaseInstance.BeginTransactionAsync(cancellationToken);
                 var result = await action(_callContext);
-                _callContext.SaveChanges();
-                await _callContext.Database.CommitTransactionAsync(cancellationToken);
+                await _callContext.SaveMyChangesAsync();
+                await _callContext.DatabaseInstance.CommitTransactionAsync(cancellationToken);
                 return result;
             }
             catch
             {
-                await _callContext.Database.RollbackTransactionAsync(cancellationToken);
+                await _callContext.DatabaseInstance.RollbackTransactionAsync(cancellationToken);
                 throw;
             }
         }
@@ -60,15 +60,15 @@ namespace Ambulance.DAL.CallAPI
         {
             try
             {
-                await _callContext.Database.BeginTransactionAsync(cancellationToken);
+                await _callContext.DatabaseInstance.BeginTransactionAsync(cancellationToken);
                 var result = action(_callContext);
-                _callContext.SaveChanges();
-                await _callContext.Database.CommitTransactionAsync(cancellationToken);
+                await _callContext.SaveMyChangesAsync();
+                await _callContext.DatabaseInstance.CommitTransactionAsync(cancellationToken);
                 return result;
             }
-            catch
+            catch (Exception ex)
             {
-                await _callContext.Database.RollbackTransactionAsync(cancellationToken);
+                await _callContext.DatabaseInstance.RollbackTransactionAsync(cancellationToken);
                 throw;
             }
         }

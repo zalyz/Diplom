@@ -36,7 +36,7 @@ namespace Ambulance
                 AmbulanceCall._nextcallNumber = ((uint)cont.ProcessedCalls.Count() +1);
             }
 
-                ComboStreets.ItemsSource = ServerService.GetStreets();
+            ComboStreets.ItemsSource = ServerService.GetStreets();
             ComboDepartment.ItemsSource = ServerService.GetDepartments();
             ComboReason.ItemsSource = ServerService.GetDiagnoses();
             ComboCaller.ItemsSource = ServerService.GetCallers();

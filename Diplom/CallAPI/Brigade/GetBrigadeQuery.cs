@@ -1,14 +1,12 @@
 ﻿using Ambulance.Domain;
 using Ambulance.Domain.Models;
 using MediatR;
-using System;
-using System.Collections.Generic;
 
 namespace CallAPI.Brigade
 {
-    public class GetBrigadeQuery : MessageBase<Guid>, IRequest<List<AmbulanceBrigade>>
+    public class GetBrigadeQuery : MessageBase<int>, IRequest<AmbulanceBrigade>
     {
-        public GetBrigadeQuery(Guid request)
+        public GetBrigadeQuery(int request)
             : base(request)
         {
         }

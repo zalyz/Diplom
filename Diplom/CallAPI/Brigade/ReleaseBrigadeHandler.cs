@@ -21,9 +21,8 @@ namespace CallAPI.Brigade
         {
             var call = await _databaseProvider.InDatabaseScope(context => context.Calls.FirstAsync(e => e.AmbulanceBrigadeId.HasValue &&
                 e.AmbulanceBrigadeId.Value == request.Request
-                && e.Status == CallStatus.TransferedToBrigade), cancellationToken);
-            call.AmbulanceBrigadeId = null;
-            call.Status = CallStatus.Accepted;
+                && e.Status == (byte)CallStatus.TransferedToBrigade), cancellationToken);
+            call.Status = (byte)CallStatus.PendingForProcessing;
             _ = await _databaseProvider.InDatabaseScope(context => context.Calls.Update(call), cancellationToken);
             return Guid.NewGuid();
         }

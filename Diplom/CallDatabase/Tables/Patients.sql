@@ -1,11 +1,12 @@
 ﻿CREATE TABLE [dbo].[Patients]
 (
 	[Id] INT NOT NULL PRIMARY KEY identity(1, 1),
-	[FIO] varchar(max) not null,
+	[FIO] nvarchar(max) not null,
 	[Age] int not null,
-	[Street] varchar(500) not null,
-	[HouseNumber] varchar(20) not null,
-	[FlatNumber] varchar(20) not null,
-	[PassportNumber] varchar(10),
-	[Gender] bit not null,
+	[StreetId] int not null,
+	[HouseNumber] nvarchar(20) not null,
+	[FlatNumber] nvarchar(20) not null,
+	[PassportNumber] nvarchar(10),
+	[Gender] TINYINT not null,
+	Constraint [FK_Street] foreign key (StreetId) references Streets (Id),
 )

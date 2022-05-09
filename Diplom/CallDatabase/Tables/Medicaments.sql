@@ -2,7 +2,7 @@
 (
 	[Id] INT NOT NULL PRIMARY KEY Identity(1,1),
     [TreatmentId] int not null,
-    [Name] VARCHAR(MAX) NOT NULL, 
-    [Dosage] FLOAT NOT NULL,
+    [DrugId] int not null,
     Constraint [FK_Treatment] foreign key (TreatmentId) references [dbo].[Treatments] (Id),
+    Constraint [FK_Drug] foreign key (DrugId) references [dbo].[Drugs] (Id),
 )

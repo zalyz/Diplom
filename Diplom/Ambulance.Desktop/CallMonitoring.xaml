@@ -1,0 +1,129 @@
+﻿<Window x:Class="Ambulance.CallMonitoring"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ambulance"
+        mc:Ignorable="d"
+        Title="Передача вызовов" WindowState="Maximized" MinHeight="715" MinWidth="975">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3.6*"></ColumnDefinition>
+            <ColumnDefinition Width="2.5*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid ShowGridLines="True">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <DataGrid x:Name="callDataGrid" FontWeight="SemiBold" FontSize="15" FontFamily="Arial" Background="SpringGreen" ItemsSource="{Binding _calls}" IsReadOnly="True" VerticalScrollBarVisibility="Visible" SelectionMode="Single" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserReorderColumns="False" AutoGenerateColumns="False" CanUserSortColumns="False" PreviewMouseLeftButtonUp = "callData_MouseLeftButtonUp">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Улица" Binding="{Binding Street}" Width="2*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Дом" Binding="{Binding HouseNumber}" Width="0.5*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Фамилия" Binding="{Binding FIO}" Width="2*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Воз." Binding="{Binding Age}" Width="0.5*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Повод" Binding="{Binding Diagnosis}" Width="2*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Экстренность" Binding="{Binding Type}" Width="1*"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Border Grid.Row="1" BorderBrush="Green" BorderThickness="2" CornerRadius="15" Background="LightGray">
+                <Grid Grid.Row="1" Background="LightGray" Margin="4,4,4,4">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1.2*"/>
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox x:Name="textCallMonitoringNumber" FontWeight="SemiBold" Background="Coral" VerticalAlignment="Top" BorderThickness="2" Margin="10,19,1,0" IsReadOnly="True"/>
+                        <TextBox x:Name="textCallMonitoringStreet" FontWeight="SemiBold" BorderThickness="2" VerticalAlignment="Top" Margin="82,19,77,0" IsReadOnly="True" Grid.ColumnSpan="3"/>
+                        <TextBox x:Name="textCallMonitoringHouse" FontWeight="SemiBold" Grid.Column="2" BorderThickness="2" VerticalAlignment="Top" Margin="10,19,5,0" IsReadOnly="True"/>
+                        <TextBox x:Name="textCallMonitoringFlat" FontWeight="SemiBold" Grid.Column="2" BorderThickness="2" VerticalAlignment="Top" Margin="82,19,11,0" IsReadOnly="True" Grid.ColumnSpan="2"/>
+                        <Label Content="№ вызова" FontFamily="Arial" FontSize="14" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Улица /Деревня" FontFamily="Arial" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1"/>
+                        <Label Content="Дом" FontFamily="Arial" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="2" Margin="10,0,0,0"/>
+                        <Label Content="Квартира" FontFamily="Arial" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="3"/>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.9*"/>
+                            <ColumnDefinition Width="0.2*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox x:Name="textCallMonitoringFIO" FontWeight="SemiBold" BorderThickness="2" VerticalAlignment="Top" Margin="10,19,1,0" IsReadOnly="True"/>
+                        <TextBox x:Name="textCallMonitoringAge" FontWeight="SemiBold" Grid.Column="1" BorderThickness="2" VerticalAlignment="Top" Margin="0,19,1,0" IsReadOnly="True"/>
+                        <TextBox x:Name="textCallMonitoringReason" FontWeight="SemiBold" Grid.Column="2" BorderThickness="2" VerticalAlignment="Top" Margin="10,19,10,0" IsReadOnly="True"/>
+                        <Label Content="Фамилия" FontFamily="Arial" FontSize="14" HorizontalAlignment="Left" Margin="5,-1,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Возраст" FontFamily="Arial" FontSize="14" HorizontalAlignment="Left"  VerticalAlignment="Top" Grid.Column="1" Margin="0,-1,0,0"/>
+                        <Label Content="Повод" FontFamily="Arial" FontSize="14" HorizontalAlignment="Left"  VerticalAlignment="Top" Grid.Column="2" Margin="10,-1,0,0"/>
+                    </Grid>
+                    <Grid Grid.Row="2" Margin="0,0,287,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox x:Name="textCallMonitoringWho" FontWeight="SemiBold" BorderThickness="2" VerticalAlignment="Top" Margin="10,18,5,0" IsReadOnly="True"/>
+                        <TextBox x:Name="textCallMonitoringReceptionTime" FontWeight="SemiBold" BorderThickness="2" Grid.Column="1" VerticalAlignment="Top" Margin="0,18,0,0" IsReadOnly="True"/>
+                        <TextBox x:Name="textCallMonitoringTransmissionTime" FontWeight="SemiBold" TextAlignment="Center" BorderThickness="2" Grid.Column="2" VerticalAlignment="Top" Margin="0,18,0,0" IsReadOnly="True"/>
+                        <Label Content="Кто вызвал" FontFamily="Arial" FontSize="14" HorizontalAlignment="Left"  VerticalAlignment="Top"  Margin="5,-2,0,0"/>
+                        <Label Content="Поступ." FontFamily="Arial" FontSize="14" HorizontalAlignment="Left"  VerticalAlignment="Top" Grid.Column="1" Margin="0,-2,0,0"/>
+                        <Label Content="Перед." FontFamily="Arial" FontSize="14" HorizontalAlignment="Left"  VerticalAlignment="Top" Grid.Column="2" Margin="0,-2,0,0"/>
+                    </Grid>
+                    <Grid Grid.Row="3" Margin="0,0,287,0">
+                        <Border BorderThickness="1" BorderBrush="Green" CornerRadius="10" Margin="10,0,10,10">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="13*"/>
+                                    <RowDefinition Height="2*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <ComboBox x:Name="comboBrigadeNumbers" IsEditable="True" Height="22" VerticalAlignment="Center" HorizontalAlignment="Center" Width="69"/>
+                                <Button Content="Передать бригаде" Background="LightGreen" FontWeight="SemiBold" FontFamily="Arial" FontSize="14" Grid.Column="1" Margin="0,5,10,5" Click="TransferToBrigade_Click" />
+                            </Grid>
+                        </Border>
+                    </Grid>
+                    <TextBox x:Name="textCallMonitoringInformation" FontWeight="SemiBold" IsReadOnly="True" Background="LightYellow" Margin="0,5,10,10" BorderThickness="2" Grid.RowSpan="2" Grid.Row="2" Text="TextBox" TextWrapping="Wrap" HorizontalAlignment="Right" Width="272"/>
+                </Grid>
+            </Border>
+        </Grid>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <DataGrid x:Name="carsDataGrid" FontWeight="SemiBold" ItemsSource="{Binding _brigade}" Background="SpringGreen" Grid.Column="1" IsReadOnly="True" VerticalScrollBarVisibility="Auto" SelectionMode="Single" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserReorderColumns="False" AutoGenerateColumns="False" CanUserSortColumns="False" MouseDoubleClick="CarRow_DoubleClick" MouseRightButtonUp="CarsDataGrid_MouseRightButtonUp">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="№ б." Width="1*" Binding="{Binding Path = Number}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Тип" Width="1.5*" Binding="{Binding Path = BrigadeType}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Местонахождение" Width="4*" Binding="{Binding Path = Street}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Дом" Width="2*" Binding="{Binding Path = HouseNumber}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="№ вызова" Width="2*" Binding="{Binding Path = CallNumber}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Время" Width="2*" Binding="{Binding Path = ActionDateTime}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Подс." Width="1*" Binding="{Binding Path = StationName}"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Grid Grid.Row="1" Background="LightGray">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Button Content="Свободна" FontSize="15" FontWeight="SemiBold" Foreground="Blue" Background="White" Grid.Column="1" VerticalAlignment="Center" Height="25" Margin="11,0,11,0" Click="FreeAtStation_Click"/>
+                <Button Content="Возврат вызова" FontSize="15" FontWeight="SemiBold" Foreground="Blue" Background="White" VerticalAlignment="Center" Height="25" Margin="10,0,10,0" Click="ReturnCall_Click"/>
+
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

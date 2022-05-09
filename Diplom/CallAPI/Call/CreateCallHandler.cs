@@ -2,6 +2,7 @@
 using Ambulance.DAL.CallAPI.Models;
 using Mapster;
 using MediatR;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -18,17 +19,13 @@ namespace CallAPI.Call
 
         public async Task<int> Handle(CreateCallCommand request, CancellationToken cancellationToken)
         {
-            var patient = new PatientEntity
-            {
-                FIO = request.Request.PatientFIO,
-                Age = request.Request.Age,
-                Gender = request.Request.Gender,
-                HisAddress = request.Request.Adapt<PatientEntity.Address>(),
-            };
-            await _databaseProvider.InDatabaseScope(context => context.Patients.AddAsync(patient), cancellationToken);
+            var patient = request.Request.Adapt<PatientEntity>();
+            await _databaseProvider.InDatabaseScopeValue(context => context.Patients.AddAsync(patient), cancellationToken);
             var call = request.Request.Adapt<CallEntity>();
+            var count = await _databaseProvider.InDatabaseScope(context => context.Calls.Count(), cancellationToken);
             call.PatientId = patient.Id;
-            var result = await _databaseProvider.InDatabaseScope(context => context.Calls.AddAsync(call), cancellationToken);
+            call.CallNumber = count + 1;
+            var result = await _databaseProvider.InDatabaseScopeValue(context => context.Calls.AddAsync(call), cancellationToken);
             return result.Entity.Id;
         }
     }

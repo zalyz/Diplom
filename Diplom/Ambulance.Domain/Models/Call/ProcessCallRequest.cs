@@ -8,17 +8,15 @@ namespace Ambulance.Domain.Models.Call
 
         public int CallNumber { get; set; }
 
+        public int PatientId { get; set; }
+
         public int AmbulanceBrigadeId { get; set; }
 
         public int DispatcherId { get; set; }
 
         public string PhoneNumber { get; set; }
 
-        public int LinkedCallId { get; set; }
-
-        public bool IsIncidental { get; set; }
-
-        public string ResultId { get; set; }
+        public int ResultId { get; set; }
 
         public int DiagnosisId { get; set; }
 
@@ -42,10 +40,8 @@ namespace Ambulance.Domain.Models.Call
 
         public int KilometrageAfter { get; set; }
 
-        public string PlaceId { get; set; }
+        public int PlaceId { get; set; }
 
         public string CallNotes { get; set; }
-
-        public string CallType { get; set; }
     }
 }

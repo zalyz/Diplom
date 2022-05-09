@@ -1,7 +1,8 @@
 ﻿namespace Ambulance.Domain.Models.Enums
 {
-    public enum BrigadeType
+    public enum BrigadeType : byte
     {
         Emergency,
+        Resuscitation,
     }
 }
