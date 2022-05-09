@@ -41,5 +41,21 @@ namespace ServiceAPI.Controllers
             var streets = await _mediator.Send(query, cancellationToken);
             return Ok(streets);
         }
+
+        [HttpGet("places")]
+        public async Task<IActionResult> GetPlaces(CancellationToken cancellationToken = default)
+        {
+            var query = new GetPlacesQuery(Guid.Empty);
+            var result = await _mediator.Send(query, cancellationToken);
+            return Ok(result);
+        }
+
+        [HttpGet("results")]
+        public async Task<IActionResult> GetResults(CancellationToken cancellationToken = default)
+        {
+            var query = new GetResultsQuery(Guid.Empty);
+            var result = await _mediator.Send(query, cancellationToken);
+            return Ok(result);
+        }
     }
 }

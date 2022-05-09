@@ -18,10 +18,6 @@ namespace Ambulance.DAL.CallAPI.Models
 
         public int CallNumber { get; set; }
 
-        public int LinkedCallId { get; set; }
-
-        public bool IsIncidential { get; set; }
-
         public string ResultId { get; set; }
 
         public int DiagnosisId { get; set; }
@@ -38,15 +34,15 @@ namespace Ambulance.DAL.CallAPI.Models
 
         public DateTime ComeBackDateTime { get; set; }
 
-        public int TransferingDispatcherId { get; set; }
+        public int? TransferingDispatcherId { get; set; }
 
-        public int ProcessingDispatcherid { get; set; }
+        public int? ProcessingDispatcherid { get; set; }
 
         public int KilometrageBefore { get; set; }
 
         public int KilometrageAfter { get; set; }
 
-        public string PlaceId { get; set; }
+        public int? PlaceId { get; set; }
 
         public string CallNotes { get; set; }
 

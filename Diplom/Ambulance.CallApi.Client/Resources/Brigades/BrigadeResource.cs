@@ -23,9 +23,24 @@ namespace Ambulance.CallApi.Client.Resources.Brigades
             return Execute<int>(token => Client.CreateBrigade(request, token), cancellationToken);
         }
 
+        public Task<AmbulanceBrigade> GetBrigade(int brigadeId, CancellationToken cancellationToken = default)
+        {
+            return Execute<AmbulanceBrigade>(token => Client.GetBrigade(brigadeId, token), cancellationToken);
+        }
+
         public Task<List<AmbulanceBrigade>> GetBrigades(CancellationToken cancellationToken = default)
         {
             return Execute<List<AmbulanceBrigade>>(token => Client.GetBrigades(token), cancellationToken);
+        }
+
+        public Task<List<BrigadeMonitoringInfo>> GetBrigadesMonitoringInfo(CancellationToken cancellationToken = default)
+        {
+            return Execute<List<BrigadeMonitoringInfo>>(token => Client.GetBrigadesMonitoringInfo(token), cancellationToken);
+        }
+
+        public Task<List<CallOfficeInfo>> GetCalls(int brigadeId, CancellationToken cancellationToken = default)
+        {
+            return Execute<List<CallOfficeInfo>>(token => Client.GetCalls(brigadeId, token), cancellationToken);
         }
 
         public async Task ReleaseBrigade(int brigadeId, CancellationToken cancellationToken = default)
@@ -33,14 +48,14 @@ namespace Ambulance.CallApi.Client.Resources.Brigades
             await Execute(token => Client.ReleaseBrigade(brigadeId, token), cancellationToken);
         }
 
-        public async Task RemoveBrigade(int brigadeId, CancellationToken cancellationToken = default)
+        public async Task RemoveBrigade(DeleteBrigadeRequest request, CancellationToken cancellationToken = default)
         {
-            await Execute(token => Client.RemoveBrigade(brigadeId, token), cancellationToken);
+            await Execute(token => Client.RemoveBrigade(request, token), cancellationToken);
         }
 
         public async Task ReturnCall(int brigadeId, CancellationToken cancellationToken = default)
         {
-            await Execute(token => Client.ReleaseBrigade(brigadeId, token), cancellationToken);
+            await Execute(token => Client.ReturnCall(brigadeId, token), cancellationToken);
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Ambulance.Domain.Models.Brigade
 
         public int FirstMedicalAssistantId { get; set; }
 
-        public int SecondMedicalAssistantId { get; set; }
+        public int? SecondMedicalAssistantId { get; set; }
 
         public int DriverId { get; set; }
 
@@ -20,8 +20,6 @@ namespace Ambulance.Domain.Models.Brigade
         public BrigadeType BrigadeType { get; set; }
 
         public DateTime DateTimeStart { get; set; }
-
-        public DateTime DateTimeEnd { get; set; }
 
         public string StationName { get; set; }
     }

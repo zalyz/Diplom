@@ -8,12 +8,18 @@ namespace Ambulance.ServiceAPI.Client.Resources.Service
     public interface IServiceEndpoint : IBaseContract
     {
         [Get("api/service/callers")]
-        public Task<HttpResponseMessage> GetCallers(CancellationToken cancellationToken = default);
+        Task<HttpResponseMessage> GetCallers(CancellationToken cancellationToken = default);
 
         [Get("api/service/diagnosis")]
-        public Task<HttpResponseMessage> GetDiagnosis(CancellationToken cancellationToken = default);
+        Task<HttpResponseMessage> GetDiagnosis(CancellationToken cancellationToken = default);
 
         [Get("api/service/streets")]
-        public Task<HttpResponseMessage> GetStreets(CancellationToken cancellationToken = default);
+        Task<HttpResponseMessage> GetStreets(CancellationToken cancellationToken = default);
+
+        [Get("api/service/places")]
+        Task<HttpResponseMessage> GetPlaces(CancellationToken cancellationToken = default);
+
+        [Get("api/service/results")]
+        Task<HttpResponseMessage> GetResults(CancellationToken cancellationToken = default);
     }
 }

@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Ambulance.DAL.CallAPI.Models
 {
+    [Table("Streets")]
     public class StreetEntity
     {
         public int Id { get; set; }

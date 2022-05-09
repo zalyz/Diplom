@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [dbo].[Streets]
 (
 	[Id] INT NOT NULL PRIMARY KEY identity(1,1),
-	[Name] varchar(500) not null,
+	[Name] nvarchar(500) not null,
 )

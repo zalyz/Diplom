@@ -2,6 +2,8 @@
 using Ambulance.ServiceAPI.Client;
 using Microsoft.Extensions.DependencyInjection;
 using System.Configuration;
+using System.Globalization;
+using System.Threading;
 using System.Windows;
 
 namespace Ambulance.Desktop
@@ -16,6 +18,8 @@ namespace Ambulance.Desktop
         public App()
         {
             var services = new ServiceCollection();
+            CultureInfo culture = new CultureInfo("ru-RU");
+            Thread.CurrentThread.CurrentCulture = culture;
             ConfigureServices(services);
             _serviceProvider = services.BuildServiceProvider();
         }

@@ -19,9 +19,10 @@ namespace CallAPI.Brigade
 
         public async Task<Guid> Handle(DeleteBrigadeCommand request, CancellationToken cancellationToken)
         {
-            var brigade = await _databaseProvider.InDatabaseScope(context => context.AmbulanceBrigades.FirstAsync(e => e.Id == request.Request
+            var brigade = await _databaseProvider.InDatabaseScope(context => context.AmbulanceBrigades.FirstAsync(e => e.Id == request.Request.Id
                 && e.Status == (byte)BrigadeStatus.Active), cancellationToken);
             brigade.Status = (byte)BrigadeStatus.Finished;
+            brigade.DateTimeEnd = request.Request.EndDateTime;
             _ = await _databaseProvider.InDatabaseScope(context => context.AmbulanceBrigades.Update(brigade), cancellationToken);
             return Guid.NewGuid();
         }

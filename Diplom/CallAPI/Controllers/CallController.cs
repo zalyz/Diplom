@@ -19,6 +19,14 @@ namespace CallAPI.Controllers
             _mediator = mediator;
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Get([FromBody]int id, CancellationToken cancellationToken = default)
+        {
+            var query = new GetCallQuery(id);
+            var call = await _mediator.Send(query, cancellationToken);
+            return Ok(call);
+        }
+
         [HttpGet("accepted")]
         public async Task<IActionResult> GetAccepted(CancellationToken cancellationToken = default)
         {

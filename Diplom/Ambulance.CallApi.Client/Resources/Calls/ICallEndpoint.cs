@@ -9,6 +9,9 @@ namespace Ambulance.CallApi.Client.Resources.Calls
     [AllowAnyStatusCode]
     public interface ICallEndpoint : IBaseContract
     {
+        [Get("api/call")]
+        Task<HttpResponseMessage> GetCall([Body] int id, CancellationToken cancellationToken = default);
+
         [Get("api/call/accepted")]
         Task<HttpResponseMessage> GetAccepted(CancellationToken cancellationToken = default);
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ambulance.Domain.Models.Enums;
+using System;
 
 namespace Ambulance.Domain.Models
 {
@@ -12,7 +13,7 @@ namespace Ambulance.Domain.Models
 
         public string Street { get; set; }
 
-        public string HomeNumber { get; set; }
+        public string HouseNumber { get; set; }
 
         public string FlatNumber { get; set; }
 
@@ -31,5 +32,7 @@ namespace Ambulance.Domain.Models
         public int TransferingDispatcherId { get; set; }
 
         public string CallNotes { get; set; }
+
+        public CallType Type { get; set; }
     }
 }

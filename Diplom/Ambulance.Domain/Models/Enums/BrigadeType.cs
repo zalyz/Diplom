@@ -3,5 +3,6 @@
     public enum BrigadeType : byte
     {
         Emergency,
+        Resuscitation,
     }
 }

@@ -8,6 +8,8 @@ namespace Ambulance.CallApi.Client.Resources.Calls
 {
     public interface ICallResource
     {
+        Task<CallOfficeInfo> GetCall(int id, CancellationToken cancellationToken = default);
+
         Task<List<CallOfficeInfo>> GetAccepted(CancellationToken cancellationToken = default);
 
         Task<List<CallFullOfficeInfo>> GetPending(CancellationToken cancellationToken = default);

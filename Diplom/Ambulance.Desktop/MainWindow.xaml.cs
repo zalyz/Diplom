@@ -5,6 +5,7 @@ using Ambulance.Domain.Models.Enums;
 using Ambulance.ServiceAPI.Client;
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
@@ -16,13 +17,7 @@ namespace Ambulance.Desktop
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static ObservableCollection<AmbulanceBrigade> Brigade = new ObservableCollection<AmbulanceBrigade>();
-
-        //public static ObservableCollection<ProcessedCall> AmbulanceCallsForProcessing = new ObservableCollection<ProcessedCall>();
-
-        private static readonly ObservableCollection<CallOfficeInfo> ambulanceCalls = new ObservableCollection<CallOfficeInfo>();
-
-        private string _dispatcher { get; set; }
+        private Domain.Models.Dispatcher _dispatcher { get; set; }
 
         private readonly ICallApiClient _callClient;
 
@@ -38,25 +33,25 @@ namespace Ambulance.Desktop
         public void InitializeWindow()
         {
             InitializeComponent();
-            DispatcherTimer LiveTime = new DispatcherTimer
+            DispatcherTimer LiveTime = new()
             {
                 Interval = TimeSpan.FromSeconds(1)
             };
             LiveTime.Start();
 
-            ComboStreets.ItemsSource = _serviceClient.ServiceResource.GetStreets().GetAwaiter().GetResult();
+            ComboStreets.ItemsSource = _serviceClient.ServiceResource.GetStreets().GetAwaiter().GetResult(); ;
             ComboReason.ItemsSource = _serviceClient.ServiceResource.GetDiagnosis().GetAwaiter().GetResult();
             ComboCaller.ItemsSource = _serviceClient.ServiceResource.GetCallers().GetAwaiter().GetResult();
         }
 
         public void DispetcherClick(object sender, RoutedEventArgs e)
         {
-            //DispatcherRegistrationWindow dispatcherRegistrationWindow = new DispatcherRegistrationWindow
-            //{
-            //    Owner = this
-            //};
-            //dispatcherRegistrationWindow.ShowDialog();
-            //_dispatcher = dispatcherRegistrationWindow.AmbDispatcher;
+            DispatcherRegistrationWindow dispatcherRegistrationWindow = new(_serviceClient)
+            {
+                Owner = this
+            };
+            dispatcherRegistrationWindow.ShowDialog();
+            _dispatcher = dispatcherRegistrationWindow.Dispatcher;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -75,42 +70,43 @@ namespace Ambulance.Desktop
 
         private void CallMonitoring_Click(object sender, RoutedEventArgs e)
         {
-            //if (_dispatcher != null)
-            //{
-            //    var callMonitoring = new CallMonitoring(ambulanceCalls, _dispatcher);
-            //    callMonitoring.ShowDialog();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Вы не зарегистрировались как диспетчер");
-            //}
+            if (_dispatcher != null)
+            {
+                var callMonitoring = new CallMonitoring(_dispatcher, _callClient);
+                callMonitoring.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Вы не зарегистрировались как диспетчер");
+            }
         }
 
+        // Обработка вызова
         private void EditCallWindow_Click(object sender, RoutedEventArgs e)
         {
-            //if (_dispatcher != null)
-            //{
-            //    var editCallsWindow = new EditingCalls(_dispatcher);
-            //    editCallsWindow.Owner = this;
-            //    editCallsWindow.Show();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Вы не зарегистрировались как диспетчер");
-            //}
+            if (_dispatcher != null)
+            {
+                var editCallsWindow = new EditingCalls(_dispatcher, _callClient, _serviceClient);
+                editCallsWindow.Owner = this;
+                editCallsWindow.Show();
+            }
+            else
+            {
+                MessageBox.Show("Вы не зарегистрировались как диспетчер");
+            }
         }
 
         private void DataWindow_Click(object sender, RoutedEventArgs e)
         {
-            //if (_dispatcher != null)
-            //{
-            //    var dataWindow = new DataWindow(Brigade);
-            //    dataWindow.Show();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Вы не зарегистрировались как диспетчер");
-            //}
+            if (_dispatcher != null)
+            {
+                var dataWindow = new DataWindow(_callClient, _serviceClient);
+                dataWindow.Show();
+            }
+            else
+            {
+                MessageBox.Show("Вы не зарегистрировались как диспетчер");
+            }
         }
 
         private void SearchForCallInformation_Click(object sender, RoutedEventArgs e)
@@ -126,41 +122,42 @@ namespace Ambulance.Desktop
             //}
         }
 
-        private async Task AcceptCall_Click(object sender, RoutedEventArgs e)
+        private async void AcceptCall_Click(object sender, RoutedEventArgs e)
         {
             if (_dispatcher != null)
             {
                 try
                 {
-                    var street = ComboStreets.Text;
+                    var streetId = (int)ComboStreets.SelectedValue;
                     var houseNumber = textHouseNumber.Text;
                     var flatNumber = textFlatNumber.Text;
                     var FIO = textFIO.Text;
                     var age = int.Parse(textAge.Text);
-                    var reason = ComboReason.Text;
-                    var whoCalled = ComboCaller.Text;
-                    var callType = ComboUrgency.Text;
+                    var reasonId = (int)ComboReason.SelectedValue;
+                    var callerId = (int)ComboCaller.SelectedValue;
+                    var callType = string.Equals(ComboUrgency.Text, "Неотложный") ? 0 : 1;
                     var phoneNumber = textTelephoneNumber.Text;
                     var callNotes = textBoxNote.Text + "\n" + phoneNumber;
 
                     var call = new CreateCallRequest
                     {
                         FIO = FIO,
-                        Street = street,
+                        StreetId = streetId,
                         HouseNumber = houseNumber,
                         FlatNumber = flatNumber,
                         Age = age,
-                        CallerId = 123,
+                        CallerId = callerId,
                         PhoneNumber = phoneNumber,
-                        DispatcherId = 123,
+                        DispatcherId = _dispatcher.Id,
+                        DiagnosisId = reasonId,
                         DateTimeReception = DateTime.Now,
                         CallNotes = callNotes,
-                        CallType = Enum.Parse<CallType>(callType),
+                        CallType = (CallType)callType,
                     };
 
-                    await _callClient.CallOperations.CreateCall(call);
+                    var number = await _callClient.CallOperations.CreateCall(call);
 
-                    MessageBox.Show("OK");
+                    MessageBox.Show($"Вызов добавлен с номером: {number}");
                 }
                 catch (Exception ex)
                 {
@@ -171,49 +168,6 @@ namespace Ambulance.Desktop
             {
                 MessageBox.Show("Вы не зарегистрировались как диспетчер");
             }
-        }
-
-        private void AddWorker_Click(object sender, RoutedEventArgs e)
-        {
-            //var workerWindow = new WorkerWindow
-            //{
-            //    Owner = this
-            //};
-            //workerWindow.ShowDialog();
-        }
-
-        private void AddDiagnosis_Click(object sender, RoutedEventArgs e)
-        {
-            //var addDiagnosisWindow = new AddDiagnosis(true)
-            //{
-            //    Owner = this
-            //};
-            //addDiagnosisWindow.ShowDialog();
-        }
-
-        private void AddStreet_Click(object sender, RoutedEventArgs e)
-        {
-            //var addDiagnosisWindow = new AddDiagnosis(false)
-            //{
-            //    Owner = this
-            //};
-            //addDiagnosisWindow.ShowDialog();
-        }
-
-        private void EmergencyEnter_Click(object sender, RoutedEventArgs e)
-        {
-            //if (_dispatcher != null)
-            //{
-            //    var inputCallWindow = new InputCall(WindowTypes.EnterCall, _dispatcher)
-            //    {
-            //        Owner = this
-            //    };
-            //    inputCallWindow.Show();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Вы не зарегистрировались как диспетчер");
-            //}
         }
 
         private void EditCallMenuItem_Click(object sender, RoutedEventArgs e)
@@ -239,25 +193,6 @@ namespace Ambulance.Desktop
             //    Owner = this
             //};
             //reportWindow.Show();
-        }
-
-        private void ChronicButton_Click(object sender, RoutedEventArgs e)
-        {
-            //if (_dispatcher != null)
-            //{
-            //    var chronicPatientWindow = new ChronicPatientWindow();
-            //    chronicPatientWindow.Owner = this;
-            //    chronicPatientWindow.ShowDialog();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Вы не зарегистрировались как диспетчер");
-            //}
-        }
-
-        public static void AddAmbulanceCall(CallOfficeInfo ambulanceCall)
-        {
-            ambulanceCalls.Add(ambulanceCall);
         }
 
         private void Logout_Click(object sender, RoutedEventArgs e)

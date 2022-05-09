@@ -21,13 +21,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApp", "WebApp", "{9BFDAF
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DesktopApp", "DesktopApp", "{E2C5FB45-9017-4963-A693-46B0EFA7CAB4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ambulance.CallApi.Client", "Ambulance.CallApi.Client\Ambulance.CallApi.Client.csproj", "{24F16114-54A3-4944-8AE2-3802F132C4A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ambulance.CallApi.Client", "Ambulance.CallApi.Client\Ambulance.CallApi.Client.csproj", "{24F16114-54A3-4944-8AE2-3802F132C4A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ambulance.Desktop", "Ambulance.Desktop\Ambulance.Desktop.csproj", "{40B62153-60AA-486C-B207-787E104D6DFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ambulance.Desktop", "Ambulance.Desktop\Ambulance.Desktop.csproj", "{40B62153-60AA-486C-B207-787E104D6DFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceAPI", "ServiceAPI\ServiceAPI.csproj", "{4F18B832-90E0-4C2A-9D44-AE25E3955661}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceAPI", "ServiceAPI\ServiceAPI.csproj", "{4F18B832-90E0-4C2A-9D44-AE25E3955661}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ambulance.ServiceAPI.Client", "Ambulance.ServiceAPI.Client\Ambulance.ServiceAPI.Client.csproj", "{86A6C9CD-74FB-4DC4-8EF4-B5C4418FE6C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ambulance.ServiceAPI.Client", "Ambulance.ServiceAPI.Client\Ambulance.ServiceAPI.Client.csproj", "{86A6C9CD-74FB-4DC4-8EF4-B5C4418FE6C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ambulance.Web", "Ambulance.Web\Ambulance.Web.csproj", "{DF87E355-7A9C-470A-AFB5-C933AA45111E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +75,10 @@ Global
 		{86A6C9CD-74FB-4DC4-8EF4-B5C4418FE6C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86A6C9CD-74FB-4DC4-8EF4-B5C4418FE6C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86A6C9CD-74FB-4DC4-8EF4-B5C4418FE6C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF87E355-7A9C-470A-AFB5-C933AA45111E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF87E355-7A9C-470A-AFB5-C933AA45111E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF87E355-7A9C-470A-AFB5-C933AA45111E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF87E355-7A9C-470A-AFB5-C933AA45111E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -85,6 +91,7 @@ Global
 		{40B62153-60AA-486C-B207-787E104D6DFB} = {E2C5FB45-9017-4963-A693-46B0EFA7CAB4}
 		{4F18B832-90E0-4C2A-9D44-AE25E3955661} = {1761AC0E-9FDE-436B-967D-E0DE4A168CC7}
 		{86A6C9CD-74FB-4DC4-8EF4-B5C4418FE6C3} = {050D8FFA-9057-48E1-9C7E-011FE58C223F}
+		{DF87E355-7A9C-470A-AFB5-C933AA45111E} = {9BFDAFFE-485F-431A-BCA3-06C42B0EFA84}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {28631FC5-DB76-4B3C-9EC9-497BD9F37F1D}

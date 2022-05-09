@@ -23,6 +23,11 @@ namespace Ambulance.CallApi.Client.Resources.Calls
             return Execute<List<CallOfficeInfo>>(token => Client.GetAccepted(token), cancellationToken);
         }
 
+        public Task<CallOfficeInfo> GetCall(int id, CancellationToken cancellationToken = default)
+        {
+            return Execute<CallOfficeInfo>(token => Client.GetCall(id, token), cancellationToken);
+        }
+
         public Task<List<CallFullOfficeInfo>> GetPending(CancellationToken cancellationToken = default)
         {
             return Execute<List<CallFullOfficeInfo>>(token => Client.GetPending(token), cancellationToken);

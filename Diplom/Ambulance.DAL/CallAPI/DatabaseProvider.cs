@@ -6,7 +6,7 @@ namespace Ambulance.DAL.CallAPI
 {
     public interface IDatabaseProvider
     {
-        Task<T> InDatabaseScope<T>(Func<ICallContext, ValueTask<T>> action, CancellationToken cancellationToken = default);
+        Task<T> InDatabaseScopeValue<T>(Func<ICallContext, ValueTask<T>> action, CancellationToken cancellationToken = default);
 
         Task<T> InDatabaseScope<T>(Func<ICallContext, Task<T>> action, CancellationToken cancellationToken = default);
 
@@ -22,7 +22,7 @@ namespace Ambulance.DAL.CallAPI
             _callContext = callContext;
         }
 
-        public async Task<T> InDatabaseScope<T>(Func<ICallContext, ValueTask<T>> action, CancellationToken cancellationToken)
+        public async Task<T> InDatabaseScopeValue<T>(Func<ICallContext, ValueTask<T>> action, CancellationToken cancellationToken)
         {
             try
             {

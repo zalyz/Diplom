@@ -12,7 +12,7 @@ namespace Ambulance.DAL.CallAPI.Models
 
         public int Age { get; set; }
 
-        public string StreetId { get; set; }
+        public int StreetId { get; set; }
 
         [MaxLength(20, ErrorMessage = "House number is more then 20 characters.")]
         public string HouseNumber { get; set; }

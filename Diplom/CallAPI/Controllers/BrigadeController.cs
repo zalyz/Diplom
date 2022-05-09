@@ -19,13 +19,36 @@ namespace CallAPI.Controllers
             _mediator = mediator;
         }
 
-        // Возвращает список бригад с их вызовами (могут быть пустыми)
         [HttpGet]
+        public async Task<IActionResult> Get(int brigadeId, CancellationToken cancellationToken = default)
+        {
+            var query = new GetBrigadeQuery(brigadeId);
+            var result = await _mediator.Send(query, cancellationToken);
+            return Ok(result);
+        }
+
+        [HttpGet("information")]
         public async Task<IActionResult> GetBrigades(CancellationToken cancellationToken = default)
         {
-            var query = new GetBrigadeQuery(Guid.Empty);
+            var query = new GetBrigadesQuery(Guid.Empty);
             var brigades = await _mediator.Send(query, cancellationToken);
             return Ok(brigades);
+        }
+
+        [HttpGet("monitoringInfo")]
+        public async Task<IActionResult> GetBrigadesMonitoringInfo(CancellationToken cancellationToken = default)
+        {
+            var query = new GetBrigadeMonitoringInfosQuery(Guid.Empty);
+            var result = await _mediator.Send(query, cancellationToken);
+            return Ok(result);
+        }
+
+        [HttpGet("calls")]
+        public async Task<IActionResult> GetCalls([FromBody] int brigadeId, CancellationToken cancellationToken = default)
+        {
+            var query = new GetCallsQuery(brigadeId);
+            var result = await _mediator.Send(query, cancellationToken);
+            return Ok(result);
         }
 
         [HttpPost("create")]
@@ -37,9 +60,9 @@ namespace CallAPI.Controllers
         }
 
         [HttpDelete("remove")]
-        public async Task<IActionResult> DeleteBrigade([FromBody]int brigadeId, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> DeleteBrigade([FromBody] DeleteBrigadeRequest request, CancellationToken cancellationToken = default)
         {
-            var command = new DeleteBrigadeCommand(brigadeId);
+            var command = new DeleteBrigadeCommand(request);
             _ = await _mediator.Send(command, cancellationToken);
             return Ok();
         }

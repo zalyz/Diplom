@@ -7,7 +7,7 @@ namespace Ambulance.Domain.Models.Call
     {
         public string FIO { get; set; }
 
-        public string Street { get; set; }
+        public int StreetId { get; set; }
 
         public string HouseNumber { get; set; }
 

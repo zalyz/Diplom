@@ -28,17 +28,10 @@
             </MenuItem>
             <MenuItem Header="Меню">
                 <MenuItem Header="Диспетчер" Click="DispetcherClick"/>
-                <MenuItem Header="Аварийный ввод" Click="EmergencyEnter_Click"/>
                 <MenuItem Header="Необслуженные вызова" Click="CallMonitoring_Click"/>
                 <MenuItem Header="Обработка вызовов" Click="EditCallWindow_Click"/>
                 <MenuItem Header="Данные" Click="DataWindow_Click"/>
                 <MenuItem Header="Хронические больные"/>
-            </MenuItem>
-            <MenuItem Header="Добавить">
-                <MenuItem Header="Добавить сотрудника" Click="AddWorker_Click"/>
-                <MenuItem Header="Добавить диагноз" Click="AddDiagnosis_Click"/>
-                <MenuItem Header="Добавить адрес" Click="AddStreet_Click"/>
-                <MenuItem Header=""/>
             </MenuItem>
         </Menu>
         <Grid Grid.Row="1" Height="70" VerticalAlignment="Top" Grid.ColumnSpan="2">
@@ -59,8 +52,8 @@
             <Button Grid.Column="0" Click="DispetcherClick" Background="MediumPurple" BorderBrush="LawnGreen" BorderThickness="1" Margin="0,23,0,0" Grid.RowSpan="2">
                 <Image Source="Resourses\images.png"></Image>
             </Button>
-            <Button Content="Хрон. пациенты" FontWeight="SemiBold" Foreground="Yellow" Grid.Column="1" Margin="0,23,0,0" Grid.RowSpan="2" Background="MediumPurple" BorderBrush="LawnGreen" BorderThickness="1" Click="ChronicButton_Click"/>
-            <Button Grid.Column="2" FontWeight="SemiBold" Foreground="Yellow" Content="Авар. ввод" Margin="0,23,0,0" Grid.RowSpan="2" Background="MediumPurple" BorderBrush="LawnGreen" BorderThickness="1" Click="EmergencyEnter_Click" />
+            <!--<Button Content="Хрон. пациенты" FontWeight="SemiBold" Foreground="Yellow" Grid.Column="1" Margin="0,23,0,0" Grid.RowSpan="2" Background="MediumPurple" BorderBrush="LawnGreen" BorderThickness="1" Click="ChronicButton_Click"/>-->
+            <!--<Button Grid.Column="2" FontWeight="SemiBold" Foreground="Yellow" Content="Авар. ввод" Margin="0,23,0,0" Grid.RowSpan="2" Background="MediumPurple" BorderBrush="LawnGreen" BorderThickness="1" Click="EmergencyEnter_Click" />-->
             <TextBlock Name="DatePanel1" Grid.ColumnSpan="2" Grid.Column="3" Background="Blue" FontSize="25" Foreground="White" TextAlignment="Center" FontFamily="Times new Roman" VerticalAlignment="Center" Grid.Row="1"/>
             <Button Content="Передача выз." FontWeight="SemiBold" Foreground="Yellow" Grid.Column="5" Margin="0,23,0,0" Grid.RowSpan="2" Background="MediumPurple" BorderBrush="LawnGreen" BorderThickness="1" Click="CallMonitoring_Click">
             </Button>
@@ -72,10 +65,8 @@
                 <ColumnDefinition Width="2*" MinWidth="170"></ColumnDefinition>
                 <ColumnDefinition Width="3*" MinWidth="280"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <TextBox x:Name="TextBoxInformation" Background="LightYellow" Margin="10,20,10,0" Grid.ColumnSpan="2" BorderThickness="2" FontSize="17" FontFamily="Arial" TextWrapping="Wrap" AcceptsReturn="True" MinHeight="80" Height="100" VerticalAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
-            <Label Content="Информация по вызову" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Foreground="Green" FontWeight="SemiBold" FontSize="15" FontFamily="Arial"/>
             <Label Content="Улица / Деревня" FontSize="15" FontFamily="Arial" Margin="10,157,10,0" VerticalAlignment="Top"/>
-            <ComboBox Name="ComboStreets" FontSize="14" FontFamily="Convers" FontWeight="SemiBold" VerticalContentAlignment="Center" Typography.Capitals="AllPetiteCaps" Text="УЛ. К.МАРКСА" Margin="10,160,10,0" BorderThickness="2" VerticalAlignment="Top" IsEditable="True" Grid.Column="1"/>
+            <ComboBox xml:lang="ru-RUS" Name="ComboStreets" DisplayMemberPath="Name" SelectedValuePath="Id" FontSize="14" FontFamily="Convers" FontWeight="SemiBold" VerticalContentAlignment="Center" Typography.Capitals="AllPetiteCaps" Text="{Binding Path=Name}" Margin="10,160,10,0" BorderThickness="2" VerticalAlignment="Top" IsEditable="True" Grid.Column="1"/>
             <Label Content="Дом" FontSize="15" FontFamily="Arial" Margin="10,189,10,0" VerticalAlignment="Top"/>
             <TextBox x:Name="textHouseNumber" FontSize="15" FontFamily="Arial" VerticalContentAlignment="Center" Text="21" Grid.Column="1" BorderThickness="2" Margin="10,192,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="125" Height="24"/>
             <Label Content="Квартира" FontSize="15" FontFamily="Arial" Margin="10,221,10,0" VerticalAlignment="Top"/>
@@ -90,9 +81,9 @@
             <TextBox x:Name="textFIO" FontSize="15" FontFamily="Arial" VerticalContentAlignment="Center" CharacterCasing="Upper" Text="ДАВЫДЕНКО ИВАН" Grid.Column="1" BorderThickness="2" Margin="10,256,10,0" VerticalAlignment="Top" Height="24"/>
             <TextBox x:Name="textAge" FontSize="15" FontFamily="Arial" VerticalContentAlignment="Center" Text="31" Grid.Column="1" BorderThickness="2" Margin="10,296,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="125" Height="24"/>
             <Label Content="Повод" FontSize="15" FontFamily="Arial" Margin="10,325,10,0" VerticalAlignment="Top"/>
-            <ComboBox x:Name="ComboReason" FontSize="14" FontFamily="Convers" FontWeight="SemiBold" VerticalContentAlignment="Center" Typography.Capitals="AllPetiteCaps" Text="ЗНАЧИТЕЛЬНОЕ ИЗМЕНЕНИЕ АД" Margin="10,328,10,0" BorderThickness="2" VerticalAlignment="Top" IsEditable="True" Grid.Column="1"/>
+            <ComboBox x:Name="ComboReason" DisplayMemberPath="Name" SelectedValuePath="Id" FontSize="14" FontFamily="Convers" FontWeight="SemiBold" VerticalContentAlignment="Center" Typography.Capitals="AllPetiteCaps" Text="ЗНАЧИТЕЛЬНОЕ ИЗМЕНЕНИЕ АД" Margin="10,328,10,0" BorderThickness="2" VerticalAlignment="Top" IsEditable="True" Grid.Column="1"/>
             <Label Content="Кто вызывает" FontSize="15" FontFamily="Arial" Margin="10,357,10,0" VerticalAlignment="Top"/>
-            <ComboBox x:Name="ComboCaller" FontSize="14" FontFamily="Convers" FontWeight="SemiBold" VerticalContentAlignment="Center" Typography.Capitals="AllPetiteCaps" Text="Жена" Margin="10,360,10,0" BorderThickness="2" VerticalAlignment="Top" IsEditable="True" Grid.Column="1"/>
+            <ComboBox x:Name="ComboCaller" DisplayMemberPath="Name" SelectedValuePath="Id" FontSize="14" FontFamily="Convers" FontWeight="SemiBold" VerticalContentAlignment="Center" Typography.Capitals="AllPetiteCaps" Text="Жена" Margin="10,360,10,0" BorderThickness="2" VerticalAlignment="Top" IsEditable="True" Grid.Column="1"/>
             <Label Content="Экстренность" FontSize="15" FontFamily="Arial" Margin="10,389,10,0" VerticalAlignment="Top"/>
             <ComboBox x:Name="ComboUrgency" FontSize="11" FontWeight="SemiBold"  Margin="10,392,10,0" BorderThickness="2" VerticalAlignment="Top" IsEditable="True" Grid.Column="1">
                 <ComboBoxItem Background="Green" IsSelected="True" >Неотложный</ComboBoxItem>

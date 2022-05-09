@@ -9,15 +9,15 @@ namespace Ambulance.DAL.CallAPI.Models
     {
         public int Id { get; set; }
 
-        public int DoktorId { get; set; }
+        public int? DoktorId { get; set; }
 
         public int FirstMedicalAssistantId { get; set; }
 
-        public int SecondMedicalAssistantId { get; set; }
+        public int? SecondMedicalAssistantId { get; set; }
 
         public int DriverId { get; set; }
 
-        public int OrderlyId { get; set; }
+        public int? OrderlyId { get; set; }
 
         public int Number { get; set; }
 

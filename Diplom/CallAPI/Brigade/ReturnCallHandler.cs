@@ -23,6 +23,8 @@ namespace CallAPI.Brigade
                 e.AmbulanceBrigadeId.Value == request.Request
                 && e.Status == (byte)CallStatus.TransferedToBrigade), cancellationToken);
             call.AmbulanceBrigadeId = null;
+            call.TransferingDispatcherId = null;
+            call.TransferDateTime = DateTime.MinValue;
             call.Status = (byte)CallStatus.Accepted;
             _ = await _databaseProvider.InDatabaseScope(context => context.Calls.Update(call), cancellationToken);
             return Guid.NewGuid();

@@ -21,7 +21,7 @@ namespace CallAPI.Brigade
         {
             var brigade = request.Request.Adapt<AmbulanceBrigadeEntity>();
             brigade.Status = (byte)BrigadeStatus.Active;
-            var entity = await _databaseProvider.InDatabaseScope(context => context.AmbulanceBrigades.AddAsync(brigade), cancellationToken);
+            var entity = await _databaseProvider.InDatabaseScopeValue(context => context.AmbulanceBrigades.AddAsync(brigade), cancellationToken);
             return entity.Entity.Id;
         }
     }

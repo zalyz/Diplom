@@ -1,5 +1,6 @@
 ﻿using Ambulance.CallApi.Client.Resources.Brigades;
 using Ambulance.CallApi.Client.Resources.Calls;
+using Ambulance.CallApi.Client.Resources.Patients;
 
 namespace Ambulance.CallApi.Client
 {
@@ -8,6 +9,8 @@ namespace Ambulance.CallApi.Client
         ICallResource CallOperations { get; }
 
         IBrigadeResource BrigadeOperations { get; }
+
+        IPatientResource PatientResource { get; }
     }
 
     public class CallApiClient : ICallApiClient
@@ -22,5 +25,7 @@ namespace Ambulance.CallApi.Client
         public ICallResource CallOperations => _resourceCreator.CreateResource<ICallEndpoint, CallResource>();
 
         public IBrigadeResource BrigadeOperations => _resourceCreator.CreateResource<IBrigadeEndpoint, BrigadeResource>();
+
+        public IPatientResource PatientResource => _resourceCreator.CreateResource<IPatientEndpoint, PatientResource>();
     }
 }
