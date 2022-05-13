@@ -24,7 +24,6 @@ namespace CallAPI.Call
         {
             var callEntity = await _databaseProvider.InDatabaseScope(context => context.Calls.FirstAsync(e => e.Id == request.Request.Id), cancellationToken);
             // Каждую проперти нужно обновить через = 
-            callEntity
             await _databaseProvider.InDatabaseScope(context => context.Calls.Update(callEntity), cancellationToken);
             await _databaseProvider.InDatabaseScope(context => context.Treatments.AddRangeAsync(request.Request.Treatment.Select(e =>
             {

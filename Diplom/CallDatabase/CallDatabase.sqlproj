@@ -76,6 +76,9 @@
     <Build Include="Tables\Callers.sql" />
     <Build Include="Tables\Drugs.sql" />
     <Build Include="Tables\Streets.sql" />
+    <Build Include="Tables\Users.sql" />
+    <Build Include="Tables\UserRoles.sql" />
+    <Build Include="Tables\Roles.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CallDatabase.publish.xml" />
