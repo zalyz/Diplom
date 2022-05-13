@@ -23,8 +23,6 @@ namespace Ambulance.DAL.CallAPI
 
         DbSet<MedicalAssistantEntity> MedicalAssistants { get; set; }
 
-        DbSet<MedicamentEntity> Medicaments { get; set; }
-
         DbSet<OrderlyEntity> Orderlies { get; set; }
 
         DbSet<PatientEntity> Patients { get; set; }
@@ -36,6 +34,8 @@ namespace Ambulance.DAL.CallAPI
         DbSet<ResultEntity> Results { get; set; }
 
         DbSet<TreatmentEntity> Treatments { get; set; }
+
+        DbSet<DrugEntity> Drugs { get; set; }
 
         DatabaseFacade DatabaseInstance { get; }
 
@@ -60,8 +60,6 @@ namespace Ambulance.DAL.CallAPI
 
         public DbSet<MedicalAssistantEntity> MedicalAssistants { get; set; }
 
-        public DbSet<MedicamentEntity> Medicaments { get; set; }
-
         public DbSet<OrderlyEntity> Orderlies { get; set; }
 
         public DbSet<PatientEntity> Patients { get; set; }
@@ -75,6 +73,8 @@ namespace Ambulance.DAL.CallAPI
         public DbSet<TreatmentEntity> Treatments { get; set; }
 
         public DatabaseFacade DatabaseInstance => Database;
+
+        public DbSet<DrugEntity> Drugs { get; set; }
 
         public Task<int> SaveMyChangesAsync() => SaveChangesAsync();
 

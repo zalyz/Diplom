@@ -19,7 +19,7 @@ namespace Ambulance.CallApi.Client.Resources.Patients
 
         public Task UpdatePatient(UpdatePatienRequest request, CancellationToken cancellationToken = default)
         {
-            return Execute(token => Client.UpdatePatient(request, cancellationToken));
+            return Execute(token => Client.UpdatePatient(request, token), cancellationToken);
         }
     }
 }

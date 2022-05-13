@@ -69,7 +69,6 @@
     <Build Include="Tables\Diagnosies.sql" />
     <Build Include="Tables\Results.sql" />
     <Build Include="Tables\Treatments.sql" />
-    <Build Include="Tables\Medicaments.sql" />
     <Build Include="Tables\CallAdditionalInfo.sql" />
     <Build Include="Tables\Call.sql" />
     <Build Include="Tables\Patients.sql" />
@@ -77,6 +76,9 @@
     <Build Include="Tables\Callers.sql" />
     <Build Include="Tables\Drugs.sql" />
     <Build Include="Tables\Streets.sql" />
+    <Build Include="Tables\Users.sql" />
+    <Build Include="Tables\UserRoles.sql" />
+    <Build Include="Tables\Roles.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CallDatabase.publish.xml" />

@@ -29,11 +29,16 @@ namespace Ambulance
 
         private List<CallFullOfficeInfo> _calls = new();
 
+        private List<Drug> _treatment = new();
+
         private readonly ICallApiClient _apiClient;
+
+        private readonly IServiceApiClient _serviceApiClient;
 
         public EditingCalls(Dispatcher dispatcher, ICallApiClient callApiClient, IServiceApiClient serviceApiClient)
         {
             _apiClient = callApiClient;
+            _serviceApiClient = serviceApiClient;
             InitializeComponent();
             _dispatcher = dispatcher;
             _calls = callApiClient.CallOperations.GetPending().GetAwaiter().GetResult();
@@ -156,7 +161,6 @@ namespace Ambulance
             textFIO.Text = "";
             textAge.Text = "";
             textNotes.Text = "";
-            textTreatment.Text = "";
 
             _selectedCall = -1;
         }
@@ -261,7 +265,7 @@ namespace Ambulance
                     PatientId = patient.Id,
                     CallNumber = processedCall.CallNumber,
                     AmbulanceBrigadeId = processedCall.AmbulanceBrigadeId.Value,
-                    DispatcherId = 123,
+                    DispatcherId = processedCall.DispatcherId,
                     PhoneNumber = string.Empty,
                     ResultId = result.Id,
                     DiagnosisId = diagnosis.Id,
@@ -271,12 +275,13 @@ namespace Ambulance
                     ArrivalDateTime = DateTime.Parse(dateOfArival + " " + timeOfArival),
                     DepartureDateTime = DateTime.Parse(dateOfDeparture + " " + timeOfDeparture),
                     ComeBackDateTime = DateTime.Parse(dateOfComeback + " " + TimeOfComeback),
-                    TransferringDispatcherId = processedCall.TransferingDispatcherId,
-                    ProcessingDispatcherid = processedCall.ProcessingDispatcherid,
-                    KilometrageBefor = kmBefore,
+                    TransferingDispatcherId = processedCall.TransferingDispatcherId,
+                    ProcessingDispatcherid = _dispatcher.Id,
+                    KilometrageBefore = kmBefore,
                     KilometrageAfter = kmAfter,
                     PlaceId = place.Id,
                     CallNotes = notes,
+                    Treatment = _treatment,
                 };
 
                 await _apiClient.PatientResource.UpdatePatient(patient);
@@ -314,6 +319,16 @@ namespace Ambulance
                 SetCall(_calls[indexOfSelectedSell]);
                 _selectedCall = gridEditCalls.SelectedIndex;
             }
+        }
+
+        private void Treatment_Click(object sender, RoutedEventArgs e)
+        {
+            var treatment = new TreatmentWindow(_serviceApiClient)
+            {
+                Owner = this,
+            };
+            treatment.ShowDialog();
+            _treatment = treatment.Treatment.ToList();
         }
     }
 }

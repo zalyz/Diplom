@@ -66,7 +66,7 @@ namespace Ambulance.DAL.CallAPI
                 await _callContext.DatabaseInstance.CommitTransactionAsync(cancellationToken);
                 return result;
             }
-            catch (Exception ex)
+            catch
             {
                 await _callContext.DatabaseInstance.RollbackTransactionAsync(cancellationToken);
                 throw;
