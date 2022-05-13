@@ -21,5 +21,8 @@ namespace Ambulance.ServiceAPI.Client.Resources.Service
 
         [Get("api/service/results")]
         Task<HttpResponseMessage> GetResults(CancellationToken cancellationToken = default);
+
+        [Get("api/service/drugs")]
+        Task<HttpResponseMessage> GetDrugs(CancellationToken cancellationToken = default);
     }
 }

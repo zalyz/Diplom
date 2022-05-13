@@ -17,5 +17,7 @@ namespace Ambulance.ServiceAPI.Client.Resources.Service
         Task<List<Place>> GetPlaces(CancellationToken cancellationToken = default);
 
         Task<List<Result>> GetResults(CancellationToken cancellationToken = default);
+
+        Task<List<Drug>> GetDrugs(CancellationToken cancellationToken = default);
     }
 }

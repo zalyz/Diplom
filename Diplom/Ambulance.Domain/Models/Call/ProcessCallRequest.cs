@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Ambulance.Domain.Models.Call
 {
@@ -32,16 +33,18 @@ namespace Ambulance.Domain.Models.Call
 
         public DateTime ComeBackDateTime { get; set; }
 
-        public int TransferringDispatcherId { get; set; }
+        public int? TransferingDispatcherId { get; set; }
 
         public int ProcessingDispatcherid { get; set; }
 
-        public int KilometrageBefor { get; set; }
+        public int KilometrageBefore { get; set; }
 
         public int KilometrageAfter { get; set; }
 
         public int PlaceId { get; set; }
 
         public string CallNotes { get; set; }
+
+        public List<Drug> Treatment { get; set; }
     }
 }

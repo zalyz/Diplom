@@ -28,7 +28,7 @@
                         <DataGridTextColumn Header="Фамилия" Binding="{Binding FIO}" Width="6*"/>
                         <DataGridTextColumn Header="Воз." Binding="{Binding Age}" Width="1*"/>
                         <DataGridTextColumn Header="Повод" Binding="{Binding DiagnosisName}" Width="6*"/>
-                        <DataGridTextColumn Header="Время" Binding="{Binding ActionTime}" Width="2*"/>
+                        <DataGridTextColumn Header="Время" Binding="{Binding TransferDateTime}" Width="2*"/>
                     </DataGrid.Columns>
                 </DataGrid>
                 <Label Content="Найдено записей:" FontSize="19" FontWeight="Bold" FontFamily="Arial" Foreground="Blue" HorizontalAlignment="Left" Margin="756,0,0,0" VerticalAlignment="Center" Height="36"/>
@@ -48,8 +48,8 @@
                     </Grid.ColumnDefinitions>
                     <TextBox x:Name="textNotes" Grid.Column="1" FontSize="19" BorderThickness="1" BorderBrush="Black" VerticalScrollBarVisibility="Visible" HorizontalAlignment="Left" Margin="138,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" AcceptsReturn="True" Background="LightYellow" Width="403" Height="65"/>
                     <Label Content="Примечания" FontSize="16" FontWeight="SemiBold" FontFamily="Arial" Grid.Column="1" HorizontalAlignment="Left" Margin="22,10,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="textTreatment" HorizontalAlignment="Left" FontSize="18" Margin="100,0,0,0" Text="TextBox" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" VerticalAlignment="Center" Width="607" Height="55" GotFocus="TreatmentTextBox_GotFocus"/>
-                    <Label Content="Лечение" FontSize="15" FontFamily="Arial" HorizontalAlignment="Left" Margin="10,11,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="Treatment" Content="Заполнить лечение" Width="500" Height="35" Margin="108,20,109,20" Click="Treatment_Click"/>
+                    <Label Content="Лечение" FontSize="15" FontFamily="Arial" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center"/>
                 </Grid>
                 <Grid ShowGridLines="False">
                     <Grid.ColumnDefinitions>

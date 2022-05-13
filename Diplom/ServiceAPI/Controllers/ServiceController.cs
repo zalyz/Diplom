@@ -57,5 +57,13 @@ namespace ServiceAPI.Controllers
             var result = await _mediator.Send(query, cancellationToken);
             return Ok(result);
         }
+
+        [HttpGet("drugs")]
+        public async Task<IActionResult> GetDrugs(CancellationToken cancellationToken = default)
+        {
+            var query = new GetDrugsQuery(Guid.Empty);
+            var result = await _mediator.Send(query, cancellationToken);
+            return Ok(result);
+        }
     }
 }

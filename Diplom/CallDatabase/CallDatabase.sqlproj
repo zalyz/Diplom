@@ -69,7 +69,6 @@
     <Build Include="Tables\Diagnosies.sql" />
     <Build Include="Tables\Results.sql" />
     <Build Include="Tables\Treatments.sql" />
-    <Build Include="Tables\Medicaments.sql" />
     <Build Include="Tables\CallAdditionalInfo.sql" />
     <Build Include="Tables\Call.sql" />
     <Build Include="Tables\Patients.sql" />

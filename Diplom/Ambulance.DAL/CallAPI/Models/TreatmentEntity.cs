@@ -8,5 +8,7 @@ namespace Ambulance.DAL.CallAPI.Models
         public int Id { get; set; }
 
         public int CallId { get; set; }
+
+        public int DrugId { get; set; }
     }
 }

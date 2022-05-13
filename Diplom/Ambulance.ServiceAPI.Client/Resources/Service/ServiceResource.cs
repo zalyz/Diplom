@@ -23,6 +23,11 @@ namespace Ambulance.ServiceAPI.Client.Resources.Service
             return Execute<List<Diagnosis>>(token => Client.GetDiagnosis(token), cancellationToken);
         }
 
+        public Task<List<Drug>> GetDrugs(CancellationToken cancellationToken = default)
+        {
+            return Execute<List<Drug>>(token => Client.GetDrugs(token), cancellationToken);
+        }
+
         public Task<List<Place>> GetPlaces(CancellationToken cancellationToken = default)
         {
             return Execute<List<Place>>(token => Client.GetPlaces(token), cancellationToken);
