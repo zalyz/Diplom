@@ -7,17 +7,12 @@ C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\bin\Debug\net5.0\Id
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\bin\Debug\net5.0\IdentityAPI.dll
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\bin\Debug\net5.0\IdentityAPI.pdb
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
-C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
-C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\bin\Debug\net5.0\Microsoft.Data.SqlClient.dll
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.SqlServer.dll
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
-C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
-C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\bin\Debug\net5.0\Microsoft.Identity.Client.dll
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
@@ -61,3 +56,7 @@ C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\obj\Debug\net5.0\re
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\obj\Debug\net5.0\IdentityAPI.pdb
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\obj\Debug\net5.0\IdentityAPI.genruntimeconfig.cache
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\obj\Debug\net5.0\ref\IdentityAPI.dll
+C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\bin\Debug\net5.0\Ambulance.DAL.dll
+C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\bin\Debug\net5.0\Ambulance.DAL.pdb
+C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\bin\Debug\net5.0\Ambulance.Domain.dll
+C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\bin\Debug\net5.0\Ambulance.Domain.pdb

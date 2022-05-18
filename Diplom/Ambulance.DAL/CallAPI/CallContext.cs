@@ -1,6 +1,8 @@
 ﻿using Ambulance.DAL.CallAPI.Models;
+using Ambulance.DAL.Settings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.Extensions.Options;
 using System.Threading.Tasks;
 
 namespace Ambulance.DAL.CallAPI
@@ -37,6 +39,12 @@ namespace Ambulance.DAL.CallAPI
 
         DbSet<DrugEntity> Drugs { get; set; }
 
+        DbSet<UserEntity> Users { get; set; }
+
+        DbSet<UserRoleEntity> UserRoles { get; set; }
+
+        DbSet<RoleEntity> Roles { get; set; }
+
         DatabaseFacade DatabaseInstance { get; }
 
         Task<int> SaveMyChangesAsync();
@@ -44,6 +52,8 @@ namespace Ambulance.DAL.CallAPI
 
     public class CallContext : DbContext, ICallContext
     {
+        private readonly ConnectionSetting _connectionSetting;
+
         public DbSet<AmbulanceBrigadeEntity> AmbulanceBrigades { get; set; }
 
         public DbSet<CallEntity> Calls { get; set; }
@@ -76,11 +86,27 @@ namespace Ambulance.DAL.CallAPI
 
         public DbSet<DrugEntity> Drugs { get; set; }
 
+        public DbSet<UserEntity> Users { get; set; }
+
+        public DbSet<UserRoleEntity> UserRoles { get; set; }
+
+        public DbSet<RoleEntity> Roles { get; set; }
+
         public Task<int> SaveMyChangesAsync() => SaveChangesAsync();
 
-        public CallContext(DbContextOptions options)
+        public CallContext(DbContextOptions options, IOptionsSnapshot<ConnectionSetting> connection)
             : base(options)
         {
+            _connectionSetting = connection.Value;
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                var connectionString = _connectionSetting.ConnectionString;
+                optionsBuilder.UseSqlServer(connectionString);
+            }
         }
     }
 }

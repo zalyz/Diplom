@@ -1,4 +1,5 @@
 using Ambulance.DAL.CallAPI;
+using Ambulance.DAL.Services;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -7,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using ServiceAPI.Middleware;
 
 namespace ServiceAPI
 {
@@ -22,8 +24,8 @@ namespace ServiceAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ICallContext, CallContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("Database")));
+            services.AddScoped<ISecretStorageService, SecretStorageService>();
+            services.AddDbContext<ICallContext, CallContext>();
             services.AddScoped<IDatabaseProvider, DatabaseProvider>();
             services.AddMediatR(typeof(Startup).Assembly);
 
@@ -49,7 +51,7 @@ namespace ServiceAPI
             app.UseRouting();
 
             app.UseAuthorization();
-
+            app.UseMiddleware<ConnectionStringMiddleware>();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

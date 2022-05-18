@@ -1,10 +1,9 @@
-﻿using IdentityAPI.Models;
-using IdentityAPI.RequestModels;
+﻿using Ambulance.Domain.Models.Account;
+using IdentityAPI.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace IdentityAPI.Controllers
@@ -13,40 +12,64 @@ namespace IdentityAPI.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
-        private readonly UserManager<User> _userManager;
+        private readonly IAccountService _accountService;
+        private readonly ITokenService _tokenService;
 
-        public AccountController(UserManager<User> userManager)
+        public AccountController(IAccountService accountService, ITokenService tokenService)
         {
-            _userManager = userManager;
+            _accountService = accountService;
+            _tokenService = tokenService;
         }
 
-        [HttpPost("Register")]
+        [HttpPost("register")]
         [AllowAnonymous]
-        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(IEnumerable<IdentityError>), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Post([FromForm] RegisterModel model)
+        public async Task<IActionResult> Post([FromForm] RegisterModel model, CancellationToken cancellationToken = default)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
-            var user = new User
-            {
-                UserName = model.Email,
-                Email = model.Email,
-                TimeZone = model.TimeZone,
-                EmailConfirmed = true,
-            };
 
-            var result = await _userManager.CreateAsync(user, model.Password);
-            if (result.Succeeded)
+            var result = await _accountService.Register(model);
+            if (result)
             {
-                await _userManager.AddToRoleAsync(user, "Customer");
-                return Ok(user.Id);
+                return Ok();
             }
 
-            return BadRequest(result.Errors);
+            return BadRequest("Wrong credentials.");
+        }
+
+        [HttpPost("login")]
+        [AllowAnonymous]
+        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> Post([FromForm] LoginModel model, CancellationToken cancellationToken = default)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _accountService.Login(model);
+            if (!string.IsNullOrWhiteSpace(result))
+            {
+                return Ok(result);
+            }
+
+            return Forbid();
+        }
+
+        [HttpGet("validate")]
+        [AllowAnonymous]
+        [ProducesResponseType(typeof(bool), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        public IActionResult Validate([FromQuery]string token, CancellationToken cancellationToken = default)
+        {
+            var result = _tokenService.ValidateToken(token);
+            return result ? Ok(result) : Forbid();
         }
     }
 }
