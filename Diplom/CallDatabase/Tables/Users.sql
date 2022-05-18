@@ -4,5 +4,6 @@
 	[MedicalAssistantId] int null,
 	[Login] nvarchar(max) not null,
 	[PasswordHash] varchar(max) not null,
+	[Email] varchar(max) null,
 	Constraint [FK_MedicalAssistant] foreign key (MedicalAssistantId) references MedicalAssistants (Id)
 )

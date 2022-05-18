@@ -1,0 +1,1 @@
+[{"Tenant":"FirstCity","Path":"Server=.\\SQLEXPRESS; Database=DiplomDB; Trusted_Connection=True"},{"Tenant":"SecondCity","Path":"Server=.\\SQLEXPRESS; Database=DiplomDB2; Trusted_Connection=True"}]

@@ -11,13 +11,13 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-        <DataGrid x:Name="gridCalls" Grid.Row="1" Margin="10,10,10,10" FontWeight="SemiBold" Grid.Column="1" IsReadOnly="True" VerticalScrollBarVisibility="Auto" SelectionMode="Single" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserReorderColumns="False" AutoGenerateColumns="False" CanUserSortColumns="False">
+        <DataGrid x:Name="gridCalls" Grid.Row="1" Margin="10,10,10,10" ItemsSource="{Binding calls}" FontWeight="SemiBold" Grid.Column="1" IsReadOnly="True" VerticalScrollBarVisibility="Auto" SelectionMode="Single" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserReorderColumns="False" AutoGenerateColumns="False" CanUserSortColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Номер" Binding="{Binding CallNumber}" Width="1*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Улица" Binding="{Binding Patient.Street}" Width="2*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Дом" Binding="{Binding Patient.HouseNumber}" Width="0.5*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Фамилия" Binding="{Binding Patient.FIO}" Width="2*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Воз." Binding="{Binding Patient.Age}" Width="0.5*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Номер" Binding="{Binding CallNumber}" Width="1*"></DataGridTextColumn>  
+                <DataGridTextColumn Header="Улица" Binding="{Binding Street}" Width="2*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дом" Binding="{Binding HouseNumber}" Width="0.5*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding FIO}" Width="2*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Воз." Binding="{Binding Age}" Width="0.5*"></DataGridTextColumn>
                 <DataGridTextColumn Header="Повод" Binding="{Binding Diagnosis}" Width="2*"></DataGridTextColumn>
                 <DataGridTextColumn Header="Экстренность" Binding="{Binding Type}" Width="1*"></DataGridTextColumn>
             </DataGrid.Columns>
