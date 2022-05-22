@@ -23,5 +23,11 @@ namespace Ambulance.CallApi.Client.Resources.Calls
 
         [Patch("api/call/process")]
         Task<HttpResponseMessage> ProcessCall([Body] ProcessCallRequest request, CancellationToken cancellationToken = default);
+
+        [Post("api/call/filter")]
+        Task<HttpResponseMessage> FilterCall([Body] FilterRequest request, CancellationToken cancellationToken = default);
+
+        [Post("api/call/additional")]
+        Task<HttpResponseMessage> AddAdditionalInfo([Body] AdditionalInfoRequest request, CancellationToken cancellationToken = default);
     }
 }

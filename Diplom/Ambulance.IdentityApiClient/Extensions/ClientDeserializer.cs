@@ -12,5 +12,11 @@ namespace Ambulance.IdentityApi.Client.Extensions
             var stringContent = await message.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
             return JsonConvert.DeserializeObject<T>(stringContent);
         }
+
+        public static async Task<string> DeserializeToString(this HttpResponseMessage message, CancellationToken cancellationToken = default)
+        {
+            var stringContent = await message.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+            return stringContent;
+        }
     }
 }

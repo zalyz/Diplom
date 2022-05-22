@@ -40,6 +40,10 @@ C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\bin\Debug\net5.0\ru
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\bin\Debug\net5.0\Ambulance.DAL.dll
+C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\bin\Debug\net5.0\Ambulance.Domain.dll
+C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\bin\Debug\net5.0\Ambulance.DAL.pdb
+C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\bin\Debug\net5.0\Ambulance.Domain.pdb
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\obj\Debug\net5.0\IdentityAPI.csproj.AssemblyReference.cache
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\obj\Debug\net5.0\IdentityAPI.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\obj\Debug\net5.0\IdentityAPI.AssemblyInfoInputs.cache
@@ -56,7 +60,3 @@ C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\obj\Debug\net5.0\re
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\obj\Debug\net5.0\IdentityAPI.pdb
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\obj\Debug\net5.0\IdentityAPI.genruntimeconfig.cache
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\obj\Debug\net5.0\ref\IdentityAPI.dll
-C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\bin\Debug\net5.0\Ambulance.DAL.dll
-C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\bin\Debug\net5.0\Ambulance.DAL.pdb
-C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\bin\Debug\net5.0\Ambulance.Domain.dll
-C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\IdentityAPI\bin\Debug\net5.0\Ambulance.Domain.pdb

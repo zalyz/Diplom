@@ -25,7 +25,7 @@ namespace IdentityAPI.Controllers
         [AllowAnonymous]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Post([FromForm] RegisterModel model, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> Post([FromBody] RegisterModel model, CancellationToken cancellationToken = default)
         {
             if (!ModelState.IsValid)
             {
@@ -46,7 +46,7 @@ namespace IdentityAPI.Controllers
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Post([FromForm] LoginModel model, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> Post([FromBody] LoginModel model, CancellationToken cancellationToken = default)
         {
             if (!ModelState.IsValid)
             {

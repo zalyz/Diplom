@@ -80,7 +80,4 @@
     <Build Include="Tables\UserRoles.sql" />
     <Build Include="Tables\Roles.sql" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="CallDatabase.publish.xml" />
-  </ItemGroup>
 </Project>

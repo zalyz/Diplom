@@ -3,7 +3,7 @@ using Ambulance.IdentityApi.Client.Resources;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Ambulance.IdentityApiClient.Resources.Account
+namespace Ambulance.IdentityApi.Client.Resources.Account
 {
     public class AccountResource : ResourceBase<IAccountEndpoint>, IAccountResource
     {
@@ -14,7 +14,7 @@ namespace Ambulance.IdentityApiClient.Resources.Account
 
         public Task<string> Login(LoginModel model, CancellationToken cancellationToken = default)
         {
-            return Execute<string>(token => Client.Login(model, token), cancellationToken);
+            return ExecuteAndReturnString(token => Client.Login(model, token), cancellationToken);
         }
 
         public async Task Register(RegisterModel model, CancellationToken cancellationToken = default)

@@ -17,5 +17,9 @@ namespace Ambulance.CallApi.Client.Resources.Calls
         Task<int> CreateCall(CreateCallRequest request, CancellationToken cancellationToken = default);
 
         Task ProcessCall(ProcessCallRequest request, CancellationToken cancellationToken = default);
+
+        Task<List<CallFullOfficeInfo>> FilterCall(FilterRequest request, CancellationToken cancellationToken = default);
+
+        Task AddAdditionalInfo(AdditionalInfoRequest request, CancellationToken cancellationToken = default);
     }
 }

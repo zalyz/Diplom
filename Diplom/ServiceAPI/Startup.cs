@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using ServiceAPI.Middleware;
+using System.Collections.Generic;
 
 namespace ServiceAPI
 {
@@ -33,6 +34,24 @@ namespace ServiceAPI
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ServiceAPI", Version = "v1" });
+                c.AddSecurityDefinition("Tenant", new OpenApiSecurityScheme
+                {
+                    Description = "Tenant name",
+                    Name = "Tenant",
+                    In = ParameterLocation.Query,
+                    Type = SecuritySchemeType.ApiKey,
+                });
+
+                var tenant = new OpenApiSecurityScheme
+                {
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.SecurityScheme,
+                        Id = "Tenant",
+                    },
+                };
+
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement { [tenant] = new List<string>() });
             });
         }
 

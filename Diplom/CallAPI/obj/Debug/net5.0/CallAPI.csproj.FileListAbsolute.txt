@@ -1,10 +1,3 @@
-C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\obj\Debug\net5.0\CallAPI.csproj.AssemblyReference.cache
-C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\obj\Debug\net5.0\CallAPI.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\obj\Debug\net5.0\CallAPI.AssemblyInfoInputs.cache
-C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\obj\Debug\net5.0\CallAPI.AssemblyInfo.cs
-C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\obj\Debug\net5.0\CallAPI.csproj.CoreCompileInputs.cache
-C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\obj\Debug\net5.0\CallAPI.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\obj\Debug\net5.0\CallAPI.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\bin\Debug\net5.0\appsettings.Development.json
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\bin\Debug\net5.0\appsettings.json
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\bin\Debug\net5.0\CallAPI.exe
@@ -16,12 +9,14 @@ C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\bin\Debug\net5.0\CallAP
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\bin\Debug\net5.0\Mapster.dll
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\bin\Debug\net5.0\MediatR.dll
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\bin\Debug\net5.0\MediatR.Contracts.dll
+C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\bin\Debug\net5.0\MediatR.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\bin\Debug\net5.0\Microsoft.Data.SqlClient.dll
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.SqlServer.dll
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\bin\Debug\net5.0\Microsoft.Identity.Client.dll
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
@@ -54,6 +49,13 @@ C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\bin\Debug\net5.0\Ambula
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\bin\Debug\net5.0\Ambulance.Domain.dll
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\bin\Debug\net5.0\Ambulance.DAL.pdb
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\bin\Debug\net5.0\Ambulance.Domain.pdb
+C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\obj\Debug\net5.0\CallAPI.csproj.AssemblyReference.cache
+C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\obj\Debug\net5.0\CallAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\obj\Debug\net5.0\CallAPI.AssemblyInfoInputs.cache
+C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\obj\Debug\net5.0\CallAPI.AssemblyInfo.cs
+C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\obj\Debug\net5.0\CallAPI.csproj.CoreCompileInputs.cache
+C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\obj\Debug\net5.0\CallAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\obj\Debug\net5.0\CallAPI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\obj\Debug\net5.0\scopedcss\bundle\CallAPI.styles.css
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\obj\Debug\net5.0\staticwebassets\CallAPI.StaticWebAssets.Manifest.cache
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\obj\Debug\net5.0\CallAPI.RazorTargetAssemblyInfo.cache
@@ -63,5 +65,3 @@ C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\obj\Debug\net5.0\refint
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\obj\Debug\net5.0\CallAPI.pdb
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\obj\Debug\net5.0\CallAPI.genruntimeconfig.cache
 C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\obj\Debug\net5.0\ref\CallAPI.dll
-C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\bin\Debug\net5.0\MediatR.Extensions.Microsoft.DependencyInjection.dll
-C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallAPI\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll

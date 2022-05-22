@@ -1,4 +1,6 @@
 using Ambulance.DAL.CallAPI;
+using Ambulance.DAL.Services;
+using IdentityAPI.Middleware;
 using IdentityAPI.Services;
 using IdentityAPI.Settings;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -11,6 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace IdentityAPI
@@ -67,15 +70,33 @@ namespace IdentityAPI
                     },
                 };
 
+                options.AddSecurityDefinition("Tenant", new OpenApiSecurityScheme
+                {
+                    Description = "Tenant name",
+                    Name = "Tenant",
+                    In = ParameterLocation.Query,
+                    Type = SecuritySchemeType.ApiKey,
+                });
                 options.AddSecurityDefinition("Bearer", jwtSecurityScheme);
                 options.AddSecurityRequirement(new OpenApiSecurityRequirement
                 {
                     { jwtSecurityScheme, Array.Empty<string>() },
                 });
+
+                var tenant = new OpenApiSecurityScheme
+                {
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.SecurityScheme,
+                        Id = "Tenant",
+                    },
+                };
+
+                options.AddSecurityRequirement(new OpenApiSecurityRequirement { [tenant] = new List<string>() });
             });
 
-            services.AddDbContext<ICallContext, Ambulance.DAL.CallAPI.CallContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("Database")));
+            services.AddScoped<ISecretStorageService, SecretStorageService>();
+            services.AddDbContext<ICallContext, Ambulance.DAL.CallAPI.CallContext>();
             services.AddScoped<IDatabaseProvider, DatabaseProvider>();
 
             services.Configure<JwtTokenSettings>(tokenSettings);
@@ -100,7 +121,7 @@ namespace IdentityAPI
             app.UseAuthentication();
             app.UseRouting();
             app.UseAuthorization();
-
+            app.UseMiddleware<ConnectionStringMiddleware>();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Ambulance.IdentityApiClient.Resources.Account
+namespace Ambulance.IdentityApi.Client.Resources.Account
 {
     public interface IAccountEndpoint : IBaseContract
     {

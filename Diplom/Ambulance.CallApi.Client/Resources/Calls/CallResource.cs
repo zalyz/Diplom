@@ -13,9 +13,19 @@ namespace Ambulance.CallApi.Client.Resources.Calls
         {
         }
 
+        public async Task AddAdditionalInfo(AdditionalInfoRequest request, CancellationToken cancellationToken = default)
+        {
+            await Execute(token => Client.AddAdditionalInfo(request, token), cancellationToken);
+        }
+
         public Task<int> CreateCall(CreateCallRequest request, CancellationToken cancellationToken = default)
         {
             return Execute<int>(token => Client.CreateCall(request, token), cancellationToken);
+        }
+
+        public Task<List<CallFullOfficeInfo>> FilterCall(FilterRequest request, CancellationToken cancellationToken = default)
+        {
+            return Execute<List<CallFullOfficeInfo>>(token => Client.FilterCall(request, token), cancellationToken);
         }
 
         public Task<List<CallOfficeInfo>> GetAccepted(CancellationToken cancellationToken = default)
