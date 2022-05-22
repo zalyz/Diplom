@@ -1,10 +1,23 @@
 ﻿@page "/counter"
 
-<h1>Counter</h1>
+<AuthorizeView>
+    <Authorized>
+        <h1>Counter</h1>
+        <h1>@context.User.IsInRole("Default")</h1>
 
-<p>Current count: @currentCount</p>
+        <p>Current count: @currentCount</p>
 
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+        <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+    </Authorized>
+    <NotAuthorized>
+        <h1>@context.User.Identity.IsAuthenticated</h1>
+        <h1>@context.User.Identity.Name</h1>
+        <h1>Sorry )))</h1>
+    </NotAuthorized>
+    <Authorizing>
+        Как блять с этим работать. Я больше не могу
+    </Authorizing>
+</AuthorizeView>
 
 @code {
     private int currentCount = 0;

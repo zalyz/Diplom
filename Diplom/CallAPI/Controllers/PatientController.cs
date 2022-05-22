@@ -19,7 +19,7 @@ namespace CallAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetPatien([FromBody] int id, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> GetPatien([FromQuery] int id, CancellationToken cancellationToken = default)
         {
             var query = new GetPatientQuery(id);
             var result = await _mediator.Send(query, cancellationToken);

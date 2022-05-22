@@ -1,4 +1,4 @@
-﻿using Ambulance.IdentityApiClient.Resources.Account;
+﻿using Ambulance.IdentityApi.Client.Resources.Account;
 
 namespace Ambulance.IdentityApi.Client
 {

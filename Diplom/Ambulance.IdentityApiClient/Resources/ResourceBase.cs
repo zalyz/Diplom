@@ -38,5 +38,17 @@ namespace Ambulance.IdentityApi.Client.Resources
 
             return await operationResult.Deserialize<TResult>(cancellationToken).ConfigureAwait(false);
         }
+
+        protected async Task<string> ExecuteAndReturnString(Func<CancellationToken, Task<HttpResponseMessage>> action, CancellationToken cancellationToken = default)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            using var operationResult = await action(cancellationToken).ConfigureAwait(false);
+            if (!operationResult.IsSuccessStatusCode)
+            {
+                throw new Exception(operationResult.StatusCode.ToString());
+            }
+
+            return await operationResult.DeserializeToString(cancellationToken).ConfigureAwait(false);
+        }
     }
 }

@@ -1,0 +1,38 @@
+﻿@page "/callDisplay"
+
+<div>
+    <table class="table">
+        <tr class="thead-dark">
+            <th>Номер вызова</th>
+            <th>Пациень</th>
+            <th>Возраст</th>
+            <th>Улица</th>
+            <th>Номер дома</th>
+            <th>Номер квартиры</th>
+            <th>Диагноз</th>
+            <th>Номер бригады</th>
+        </tr>
+        @if(Calls.Any())
+        {
+            foreach (var call in Calls)
+            {
+                <tr>
+                    <td>@call.CallNumber</td>
+                    <td>@call.FIO</td>
+                    <td>@call.Age</td>
+                    <td>@call.Street</td>
+                    <td>@call.HouseNumber</td>
+                    <td>@call.FlatNumber</td>
+                    <td>@call.DiagnosisName</td>
+                    <td>@call.BrigadeNumber</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>Ничего не найдено</tr>
+        }
+    </table>
+</div>
+
+

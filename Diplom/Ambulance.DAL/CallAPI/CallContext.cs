@@ -13,6 +13,8 @@ namespace Ambulance.DAL.CallAPI
 
         DbSet<CallEntity> Calls { get; set; }
 
+        DbSet<CallAdditionalInfoEntity> CallAdditionalInfoEntities { get; set; }
+
         DbSet<CallerEntity> Callers { get; set; }
 
         DbSet<DiagnosisEntity> Diagnoses { get; set; }
@@ -57,6 +59,8 @@ namespace Ambulance.DAL.CallAPI
         public DbSet<AmbulanceBrigadeEntity> AmbulanceBrigades { get; set; }
 
         public DbSet<CallEntity> Calls { get; set; }
+
+        public DbSet<CallAdditionalInfoEntity> CallAdditionalInfoEntities { get; set; }
 
         public DbSet<CallerEntity> Callers { get; set; }
 

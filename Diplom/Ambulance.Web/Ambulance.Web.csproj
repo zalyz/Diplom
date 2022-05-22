@@ -1,14 +1,20 @@
-<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.16" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.16" PrivateAssets="all" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="5.0.16" />
-    <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
+    <PackageReference Include="Blazored.LocalStorage" Version="4.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.17" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Ambulance.CallApi.Client\Ambulance.CallApi.Client.csproj" />
+    <ProjectReference Include="..\Ambulance.Domain\Ambulance.Domain.csproj" />
+    <ProjectReference Include="..\Ambulance.IdentityApiClient\Ambulance.IdentityApi.Client.csproj" />
+    <ProjectReference Include="..\Ambulance.ServiceAPI.Client\Ambulance.ServiceAPI.Client.csproj" />
   </ItemGroup>
 
 </Project>

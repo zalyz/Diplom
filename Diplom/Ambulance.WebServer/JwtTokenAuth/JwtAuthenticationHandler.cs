@@ -38,7 +38,7 @@ namespace Ambulance.WebServer.JwtTokenAuth
             {
                 var result = await _identityApiClient.AccountResource.ValidateToken(token);
 
-                if (!result)
+                if (result is false)
                 {
                     throw new HttpRequestException();
                 }

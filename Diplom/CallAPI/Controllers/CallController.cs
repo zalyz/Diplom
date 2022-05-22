@@ -52,9 +52,25 @@ namespace CallAPI.Controllers
         }
 
         [HttpPatch("process")]
-        public async Task<IActionResult> ProcessCall(ProcessCallRequest request, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> ProcessCall([FromBody] ProcessCallRequest request, CancellationToken cancellationToken = default)
         {
             var command = new ProcessCallCommand(request);
+            await _mediator.Send(command, cancellationToken);
+            return Ok();
+        }
+
+        [HttpPost("filter")]
+        public async Task<IActionResult> Filter([FromBody]FilterRequest request, CancellationToken cancellationToken = default)
+        {
+            var command = new FilterCallCommand(request);
+            var result = await _mediator.Send(command, cancellationToken);
+            return Ok(result);
+        }
+
+        [HttpPost("additional")]
+        public async Task<IActionResult> AdditionalInfo([FromBody]AdditionalInfoRequest request, CancellationToken cancellationToken = default)
+        {
+            var command = new AdditionalInfoCommand(request);
             await _mediator.Send(command, cancellationToken);
             return Ok();
         }

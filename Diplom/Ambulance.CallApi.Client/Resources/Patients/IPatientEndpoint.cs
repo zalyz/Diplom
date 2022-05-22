@@ -9,7 +9,7 @@ namespace Ambulance.CallApi.Client.Resources.Patients
     public interface IPatientEndpoint : IBaseContract
     {
         [Get("api/patient")]
-        Task<HttpResponseMessage> GetPatient([Body] int id, CancellationToken cancellationToken = default);
+        Task<HttpResponseMessage> GetPatient([Query] int id, CancellationToken cancellationToken = default);
 
         [Patch("api/patient")]
         Task<HttpResponseMessage> UpdatePatient([Body] UpdatePatienRequest request, CancellationToken cancellationToken = default);

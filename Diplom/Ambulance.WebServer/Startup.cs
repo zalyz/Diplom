@@ -1,4 +1,7 @@
+using Ambulance.WebServer.Authorization;
 using Ambulance.WebServer.Data;
+using Ambulance.WebServer.JwtTokenAuth;
+using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
@@ -26,10 +29,12 @@ namespace Ambulance.WebServer
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages();
-            services.AddServerSideBlazor();
+            services.AddScoped<IAuthorizationService, AuthorizationService>();
             services.AddAuthentication(JwtAutheticationConstants.SchemeName)
                 .AddScheme<JwtAuthenticationOptions, JwtAuthenticationHandler>(JwtAutheticationConstants.SchemeName, null);
+            services.AddRazorPages();
+            services.AddServerSideBlazor();
+            services.AddBlazoredLocalStorage();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,11 +54,11 @@ namespace Ambulance.WebServer
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            app.UseAuthentication();
+            ////app.UseAuthentication();
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            ////app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
