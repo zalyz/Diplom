@@ -8,6 +8,7 @@ using Ambulance.DAL.CallAPI;
 using Mapster;
 using Ambulance.Domain.Models.Enums;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace CallAPI.Call
 {
@@ -96,6 +97,10 @@ namespace CallAPI.Call
                        join firstMed in context.MedicalAssistants on brigade.FirstMedicalAssistantId equals firstMed.Id
                        join orderly in context.Orderlies on brigade.OrderlyId equals orderly.Id
                        join driver in context.Drivers on brigade.DriverId equals driver.Id
+                       join result in context.Results on call.ResultId equals result.Id
+                       join dispatcher in context.Dispatchers on call.DispatcherId equals dispatcher.Id
+                       join dispatcherSecond in context.Dispatchers on call.ProcessingDispatcherid equals dispatcherSecond.Id
+                       join dispatcherThird in context.Dispatchers on call.TransferingDispatcherId equals dispatcherThird.Id
                        where call.Status == (byte)callStatus
                        select new
                        {
@@ -108,6 +113,10 @@ namespace CallAPI.Call
                            firstMed,
                            orderly,
                            driver,
+                           result,
+                           dispatcher,
+                           dispatcherSecond,
+                           dispatcherThird,
                        };
             });
 
@@ -132,6 +141,11 @@ namespace CallAPI.Call
                 call.DriverFIO = GetFIO(item.driver);
                 call.BrigadeNumber = item.brigade.Number;
                 call.DiagnosisName = item.diagnosis.Name;
+                call.ResultName = item.result.Name;
+                call.Dispatcher = GetFIO(item.dispatcher);
+                call.ProcessingDispatcher = GetFIO(item.dispatcherSecond);
+                call.TransferingDispatcher = GetFIO(item.dispatcherThird);
+                call.Type = GetType(item.call.CallType);
 
                 calls.Add(call);
             }
@@ -142,6 +156,12 @@ namespace CallAPI.Call
         private static string GetFIO(Ambulance.DAL.CallAPI.Models.EmployeeBase employee)
         {
             return $"{employee.Surname} {employee.Name[0]}.{employee.MiddleName[0]}.";
+        }
+
+        private static string GetType(byte type)
+        {
+            var callType = (CallType)type;
+            return callType.ToString();
         }
     }
 }

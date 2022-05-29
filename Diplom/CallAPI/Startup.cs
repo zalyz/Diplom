@@ -54,6 +54,8 @@ namespace CallAPI
 
                 c.AddSecurityRequirement(new OpenApiSecurityRequirement { [tenant] = new List<string>() });
             });
+
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -67,6 +69,13 @@ namespace CallAPI
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors(options =>
+            {
+                options.AllowAnyOrigin();
+                options.AllowAnyHeader();
+                options.AllowAnyMethod();
+            });
 
             app.UseRouting();
 

@@ -287,9 +287,9 @@ namespace Ambulance
                 await _apiClient.PatientResource.UpdatePatient(patient);
                 await _apiClient.CallOperations.ProcessCall(request);
 
-                ClearButton_Click(null,null);
                 MessageBox.Show("Вызов обработан");
                 _calls.RemoveAt(_selectedCall);
+                ClearButton_Click(null, null);
                 UpdateNumberOfCalls();
             }
             catch (ArgumentException argException)

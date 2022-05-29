@@ -12,7 +12,11 @@ namespace Ambulance.ServiceAPI.Client.Resources.Service
 
         Task<List<Diagnosis>> GetDiagnosis(CancellationToken cancellationToken = default);
 
+        Task AddDiagnosis(AddDiagnosisRequest request, CancellationToken cancellationToken = default);
+
         Task<List<Street>> GetStreets(CancellationToken cancellationToken = default);
+
+        Task AddStreet(AddStreetRequest request, CancellationToken cancellationToken = default);
 
         Task<List<Place>> GetPlaces(CancellationToken cancellationToken = default);
 

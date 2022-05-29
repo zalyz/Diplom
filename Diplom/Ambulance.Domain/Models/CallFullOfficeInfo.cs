@@ -37,9 +37,13 @@ namespace Ambulance.Domain.Models
 
         public int DispatcherId { get; set; }
 
+        public string Dispatcher { get; set; }
+
         public int CallNumber { get; set; }
 
         public int ResultId { get; set; }
+
+        public string ResultName { get; set; }
 
         public int DiagnosisId { get; set; }
 
@@ -59,7 +63,11 @@ namespace Ambulance.Domain.Models
 
         public int TransferingDispatcherId { get; set; }
 
+        public string TransferingDispatcher { get; set; }
+
         public int ProcessingDispatcherid { get; set; }
+
+        public string ProcessingDispatcher { get; set; }
 
         public int KilometrageBefor { get; set; }
 
@@ -68,5 +76,7 @@ namespace Ambulance.Domain.Models
         public int PlaceId { get; set; }
 
         public string CallNotes { get; set; }
+
+        public string Type { get; set; }
     }
 }

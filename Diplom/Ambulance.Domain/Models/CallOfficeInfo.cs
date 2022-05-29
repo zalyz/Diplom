@@ -29,7 +29,11 @@ namespace Ambulance.Domain.Models
 
         public int DispatcherId { get; set; }
 
+        public string Dispatcher { get; set; }
+
         public int TransferingDispatcherId { get; set; }
+
+        public string TransferingDispatcher { get; set; }
 
         public string CallNotes { get; set; }
 

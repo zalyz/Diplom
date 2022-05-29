@@ -210,5 +210,37 @@ namespace Ambulance.Desktop
                 MessageBox.Show("Диспетчер не введен!");
             }
         }
+
+        private void AddStreet_Click(object sender, RoutedEventArgs e)
+        {
+            if (_dispatcher != null)
+            {
+                var addStreet = new AddStreet(_serviceClient)
+                {
+                    Owner = this,
+                };
+                addStreet.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Вы не зарегистрировались как диспетчер");
+            }
+        }
+
+        private void AddDiagnosis_Click(object sender, RoutedEventArgs e)
+        {
+            if (_dispatcher != null)
+            {
+                var addStreet = new AddDiagnosis(_serviceClient)
+                {
+                    Owner = this,
+                };
+                addStreet.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Вы не зарегистрировались как диспетчер");
+            }
+        }
     }
 }

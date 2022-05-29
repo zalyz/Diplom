@@ -1,8 +1,9 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Ambulance.DAL.Services
@@ -22,9 +23,10 @@ namespace Ambulance.DAL.Services
 
         public async Task<string> GetConnectionString(string tenant)
         {
+            Debug.Print("Print degub teste for me. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             using var reader = new StreamReader(FilePath);
             var data = await reader.ReadToEndAsync();
-            var strings = JsonConvert.DeserializeObject<List<ConnectionString>>(data);
+            var strings = JsonSerializer.Deserialize<List<ConnectionString>>(data);
             return strings.FirstOrDefault(e => string.Equals(e.Tenant, tenant))?.Path;
         }
 

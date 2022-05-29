@@ -1,0 +1,121 @@
+﻿<Window x:Class="Ambulance.FullCallInformationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ambulance"
+        mc:Ignorable="d"
+        Title="Просмотр вызова" WindowStartupLocation="CenterScreen" MaxHeight="670" MaxWidth="1100" MinHeight="670" MinWidth="1100" Background="LightGray">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1.4*"/>
+            <RowDefinition Height="0.3*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <GroupBox Grid.Column="0" Header="Данные пациента" FontSize="15" FontFamily="Arial" FontWeight="SemiBold" Foreground="Blue" BorderThickness="2" BorderBrush="Green">
+                <Grid>
+                    <Label Content="Ф. И. О." FontSize="16" HorizontalAlignment="Left" Margin="10,13,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Возраст" FontSize="16" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Улица/дер." FontSize="16" HorizontalAlignment="Left" Margin="10,69,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Дом" FontSize="16" HorizontalAlignment="Left" Margin="10,102,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Квартира" FontSize="16" HorizontalAlignment="Left" Margin="10,139,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Пол" FontSize="16" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lableFIO" Content="info" FontSize="16" Foreground="Red" HorizontalAlignment="Left" Margin="138,13,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lableAge" Content="info" FontSize="16" HorizontalAlignment="Left" Margin="138,41,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lableStreet" Content="info" FontSize="16" Foreground="Purple" HorizontalAlignment="Left" Margin="138,69,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lableHouseNumber" Content="info" FontSize="16" Foreground="Blue" HorizontalAlignment="Left" Margin="138,102,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lableFlatNumber" Content="info" FontSize="16" Foreground="Blue" HorizontalAlignment="Left" Margin="138,139,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lableGender" Content="info" FontSize="16" HorizontalAlignment="Left" Margin="138,170,0,0" VerticalAlignment="Top"/>
+                </Grid>
+
+            </GroupBox>
+            <GroupBox Grid.Column="1" Header="Дата и время" FontSize="15" FontFamily="Arial" FontWeight="SemiBold" Foreground="Blue" BorderThickness="2" BorderBrush="Green">
+                <Grid>
+                    <Label Content="Прием" FontSize="15" FontFamily="Arial" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Передача" FontSize="15" FontFamily="Arial" HorizontalAlignment="Left" Margin="10,23,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Прибытие" FontSize="15" FontFamily="Arial" HorizontalAlignment="Left" Margin="10,48,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Убытие" FontSize="15" FontFamily="Arial" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Возвращение" FontSize="15" FontFamily="Arial" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Передовался" FontSize="15" FontFamily="Arial" HorizontalAlignment="Left" Margin="10,126,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Доезд" FontSize="15" FontFamily="Arial" HorizontalAlignment="Left" Margin="10,152,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Обслуживание" FontSize="15" FontFamily="Arial" HorizontalAlignment="Left" Margin="10,177,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lableReception" Content="info" FontSize="15" Foreground="Blue" FontFamily="Arial" HorizontalAlignment="Left" Margin="177,0,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lableTransfer" Content="info" FontSize="15" Foreground="Blue" FontFamily="Arial" HorizontalAlignment="Left" Margin="177,23,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lableArival" Content="info" FontSize="15" Foreground="Blue" FontFamily="Arial" HorizontalAlignment="Left" Margin="177,48,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lableDeparture" Content="info" FontSize="15" Foreground="Blue" FontFamily="Arial" HorizontalAlignment="Left" Margin="177,74,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lableComeback" Content="info" FontSize="15" Foreground="Blue" FontFamily="Arial" HorizontalAlignment="Left" Margin="177,100,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lableTransferingTime" Content="info" FontSize="15" Foreground="Blue" FontFamily="Arial" HorizontalAlignment="Left" Margin="177,126,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lableDrivingTime" Content="info" FontSize="15" Foreground="Blue" FontFamily="Arial" HorizontalAlignment="Left" Margin="177,152,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lableServiceTime" Content="info" FontSize="15" Foreground="Blue" FontFamily="Arial" HorizontalAlignment="Left" Margin="177,176,0,0" VerticalAlignment="Top"/>
+                </Grid>
+
+            </GroupBox>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <GroupBox Header="Состояние больного" FontSize="15" FontFamily="Arial" FontWeight="SemiBold" Foreground="Blue" BorderThickness="2" BorderBrush="Green" Margin="0,0,5,0">
+                <Grid>
+                    <Label Content="Диагноз" FontSize="17" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Результат" FontSize="17" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Действия" FontSize="17" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Примечание" FontSize="17" HorizontalAlignment="Left" Margin="10,206,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lableDiagnosis" Content="info" FontSize="20" Foreground="red" HorizontalAlignment="Left" Margin="141,8,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lableResult" Content="info" FontSize="17" Foreground="Green" HorizontalAlignment="Left" Margin="141,40,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="textTreatment" Text="info" HorizontalAlignment="Left" FontSize="18" Foreground="Purple" Margin="143,75,0,0" BorderThickness="0" VerticalScrollBarVisibility="Auto" IsReadOnly="True" TextWrapping="Wrap" VerticalAlignment="Top" Width="461" Height="113"/>
+                    <TextBox x:Name="textNotes" Text="info" HorizontalAlignment="Left" FontSize="18" Foreground="Purple" Margin="143,206,0,0" BorderThickness="0" VerticalScrollBarVisibility="Auto" IsReadOnly="True" TextWrapping="Wrap" VerticalAlignment="Top" Width="306" Height="88"/>
+                </Grid>
+
+            </GroupBox>
+            <GroupBox Grid.Column="1" Header="Другая информация" FontSize="15" FontFamily="Arial" FontWeight="SemiBold" Foreground="Blue" BorderThickness="2" BorderBrush="Green">
+                <Grid>
+                    <Label Content="Экстренность" FontSize="13" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Диспетчер(перед.)" FontSize="13" HorizontalAlignment="Left" Margin="10,32,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Диспетчер(обраб.)" FontSize="13" HorizontalAlignment="Left" Margin="10,57,0,0" VerticalAlignment="Top"/>
+                    <Label Content="№ бригады" FontSize="13" HorizontalAlignment="Left" Margin="10,82,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Врач" FontSize="13" HorizontalAlignment="Left" Margin="10,132,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Фельдшер 1" FontSize="13" HorizontalAlignment="Left" Margin="10,157,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Фельдшер 2" FontSize="13" HorizontalAlignment="Left" Margin="10,182,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Санитар" FontSize="13" HorizontalAlignment="Left" Margin="10,207,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Водитель" FontSize="13" HorizontalAlignment="Left" Margin="10,232,0,0" VerticalAlignment="Top"/>
+                    <Label Content="КМ до выезда" FontSize="13" HorizontalAlignment="Left" Margin="10,257,0,0" VerticalAlignment="Top"/>
+                    <Label Content="КМ после выезда" FontSize="13" HorizontalAlignment="Left" Margin="10,282,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lablUrgency" Content="info" FontSize="13" HorizontalAlignment="Left" Margin="140,7,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lableDispatcherTransfered" Content="info" FontSize="15" HorizontalAlignment="Left" Margin="140,30,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lableDispatcherProcessed" Content="info" FontSize="15" HorizontalAlignment="Left" Margin="140,55,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lableBrigadeNumber" Content="info" FontSize="15" Foreground="Red" HorizontalAlignment="Left" Margin="140,80,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lableDoktor" Content="info" FontSize="15" HorizontalAlignment="Left" Margin="140,132,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lableMedAssistant1" Content="info" FontSize="15" HorizontalAlignment="Left" Margin="140,157,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lableMedAssistant2" Content="info" FontSize="15" HorizontalAlignment="Left" Margin="140,182,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lableOrderly" Content="info" FontSize="15" HorizontalAlignment="Left" Margin="140,207,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lableDriver" Content="info" FontSize="15" HorizontalAlignment="Left" Margin="140,232,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lableKMBefore" Content="info" FontSize="13" Foreground="red" HorizontalAlignment="Left" Margin="140,257,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lableKMAfter" Content="info" FontSize="13" Foreground="red" HorizontalAlignment="Left" Margin="140,282,0,0" VerticalAlignment="Top"/>
+                </Grid>
+
+            </GroupBox>
+        </Grid>
+        <Button Content="Выход" FontSize="15" FontFamily="Arial" Foreground="Red" FontWeight="SemiBold" HorizontalAlignment="Left" Margin="931,0,0,0" Grid.Row="2" VerticalAlignment="Center" Height="30" Width="120" Click="Button_Click"/>
+        <Button Content="Печать" FontSize="15" FontFamily="Arial" FontWeight="SemiBold" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Height="30" Width="120"/>
+        <Button HorizontalAlignment="Left" FontSize="14" FontFamily="Arial" FontWeight="SemiBold" Margin="54,10,0,0" Grid.Row="2" VerticalAlignment="Top">
+            <StackPanel>
+                <Grid Height="45" Width="228">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Прослушать запись" Grid.ColumnSpan="2" Margin="57,8,13,10"/>
+                    <Image Source="Resourses\Sound.jpg" Height="30" Width="30" Margin="10,8,74,7" Stretch="Fill" />
+                </Grid>
+            </StackPanel>
+        </Button>
+
+    </Grid>
+</Window>

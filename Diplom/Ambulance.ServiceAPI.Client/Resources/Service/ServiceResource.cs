@@ -13,6 +13,16 @@ namespace Ambulance.ServiceAPI.Client.Resources.Service
         {
         }
 
+        public async Task AddDiagnosis(AddDiagnosisRequest request, CancellationToken cancellationToken = default)
+        {
+            await Execute(token => Client.AddDiagnosis(request, token), cancellationToken);
+        }
+
+        public async Task AddStreet(AddStreetRequest request, CancellationToken cancellationToken = default)
+        {
+            await Execute(token => Client.AddStreet(request, token), cancellationToken);
+        }
+
         public Task<List<Caller>> GetCallers(CancellationToken cancellationToken = default)
         {
             return Execute<List<Caller>>(token => Client.GetCallers(token), cancellationToken);

@@ -1,0 +1,96 @@
+﻿@page "/info"
+
+<h1>Find your call</h1>
+<div>
+    <EditForm Model="@model" OnSubmit="OnSeackClick">
+        <div class="d-flex flex-row">
+            <div class="p-2">
+                <label>
+                    Номер вызова:
+                    <InputNumber @bind-Value="model.CallNumber"/>
+                </label>
+            </div>
+            <div class="p-2">
+                <label>
+                    Фамилия пациента:
+                    <InputText @bind-Value="model.FIO"/>
+                </label>
+            </div>
+            <div class="p-1">
+                <label>
+                    Диагноз:
+                    <InputSelect @bind-Value="model.Diagnosis">
+                        <option>Н/О</option>
+                        @foreach (var diagnosis in Diagnosiss)
+                        {
+                            <option value="@diagnosis.Name">@diagnosis.Name</option>
+                        }
+                    </InputSelect>
+                </label>
+            </div>
+            <div class="p-2">
+                <label>
+                    Дата с:
+                    <InputDate @bind-Value="model.DateFrom"/>
+                </label>
+            </div>
+            <div class="p-2">
+                <label>
+                    Дата по:
+                    <InputDate @bind-Value="model.DateTo"/>
+                </label>
+            </div>
+        </div>
+        <div class="d-flex flex-row">
+            <div class="p-2">
+                <label>
+                    Улица:
+                    <InputSelect @bind-Value="model.Street">
+                        <option>Н/О</option>
+                        @foreach (var street in Streets)
+                        {
+                            <option value="@street.Name">@street.Name</option>
+                        }
+                    </InputSelect>
+                </label>
+            </div>
+            <div class="p-2">
+                <label>
+                    Номер дома:
+                    <InputText @bind-Value="model.HouseNumber"/>
+                </label>
+            </div>
+            <div class="p-2">
+                <label>
+                    Номер квартиры:
+                    <InputText @bind-Value="model.FlatNumber"/>
+                </label>
+            </div>
+            <div class="p-2">
+                <label>
+                    Результат:
+                    <InputSelect @bind-Value="model.Result">
+                        <option>Н/О</option>
+                        @foreach (var result in Results)
+                        {
+                            <option value="@result.Name">@result.Name</option>
+                        }
+                    </InputSelect>
+                </label>
+            </div>
+            <button class="btn btn-success p-2" type="submit">Найти</button>
+        </div>
+    </EditForm>
+</div>
+<CallDisplay Calls="@FilteredCalls"/>
+<div class="d-flex flex-row justify-content-center">
+    @if(isShowPrev)
+    {
+        <button @onclick="OnPrevClick" class="btn border border-2">Назад</button>
+    }
+    <button class="border border-2">@pagenumber</button>
+    @if(isShowNext)
+    {
+        <button @onclick="OnNextClick" class="btn border border-2">Вперед</button>
+    }
+</div>

@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using Ambulance.Domain.Models.ServiceModels;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using ServiceAPI.ServiceHandlers;
 using System;
@@ -34,12 +35,28 @@ namespace ServiceAPI.Controllers
             return Ok(diagnosies);
         }
 
+        [HttpPost("diagnosis")]
+        public async Task<IActionResult> AddDiagnosis([FromBody] AddDiagnosisRequest request, CancellationToken cancellationToken = default)
+        {
+            var command = new AddDiagnosisCommand(request);
+            await _mediator.Send(command, cancellationToken);
+            return Ok();
+        }
+
         [HttpGet("streets")]
         public async Task<IActionResult> GetStreets(CancellationToken cancellationToken = default)
         {
             var query = new GetStreetsQuery(Guid.Empty);
             var streets = await _mediator.Send(query, cancellationToken);
             return Ok(streets);
+        }
+
+        [HttpPost("streets")]
+        public async Task<IActionResult> AddStreet([FromBody] AddStreetRequest request, CancellationToken cancellationToken = default)
+        {
+            var command = new AddStreetCommand(request);
+            await _mediator.Send(command, cancellationToken);
+            return Ok();
         }
 
         [HttpGet("places")]
