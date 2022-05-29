@@ -23,12 +23,14 @@ namespace CallAPI.Call
             var resultSet = await _databaseProvider.InDatabaseScope(context =>
             {
                 return from call in context.Calls
+                       join dispatcher in context.Dispatchers on call.DispatcherId equals dispatcher.Id
+                       join dispatcherSecond in context.Dispatchers on call.TransferingDispatcherId equals dispatcherSecond.Id
                        join patient in context.Patients on call.PatientId equals patient.Id
                        join street in context.Streets on patient.StreetId equals street.Id
                        join diagnosis in context.Diagnoses on call.DiagnosisId equals diagnosis.Id
                        join caller in context.Callers on call.CallerId equals caller.Id
                        where call.Id == request.Request
-                       select new { call, patient, street, diagnosis, caller };
+                       select new { call, dispatcher, dispatcherSecond, patient, street, diagnosis, caller };
             }, cancellationToken);
 
             var item = resultSet.FirstOrDefault();
@@ -42,11 +44,18 @@ namespace CallAPI.Call
                 call.Age = item.patient.Age;
                 call.Diagnosis = item.diagnosis.Name;
                 call.Caller = item.caller.Name;
+                call.Dispatcher = GetFIO(item.dispatcher);
+                call.TransferingDispatcher = GetFIO(item.dispatcherSecond);
 
                 return call;
             }
 
             throw new ArgumentException(nameof(request.Request));
+        }
+
+        private static string GetFIO(Ambulance.DAL.CallAPI.Models.EmployeeBase employee)
+        {
+            return $"{employee.Surname} {employee.Name[0]}.{employee.MiddleName[0]}.";
         }
     }
 }

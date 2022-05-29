@@ -23,8 +23,8 @@ namespace Ambulance
             lableDiagnosis.Content = call.Diagnosis;
             lableWhoCalled.Content = call.Caller;
             lableUrgency.Content = call.Type.ToString();
-            lableDispatcherAccepted.Content = call.DispatcherId;
-            lableDispatcherPassed.Content = call.TransferingDispatcherId;
+            lableDispatcherAccepted.Content = call.Dispatcher;
+            lableDispatcherPassed.Content = call.TransferingDispatcher;
             textboxCallInformation.Text = call.CallNotes;
         }
 

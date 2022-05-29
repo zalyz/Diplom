@@ -74,5 +74,13 @@ namespace CallAPI.Controllers
             await _mediator.Send(command, cancellationToken);
             return Ok();
         }
+
+        [HttpGet("treatment")]
+        public async Task<IActionResult> GetTreatment([FromBody] GetTreatmentRequest request, CancellationToken cancellationToken = default)
+        {
+            var query = new GetTreatmentQuery(request);
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
     }
 }

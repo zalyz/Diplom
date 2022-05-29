@@ -37,10 +37,11 @@ namespace Ambulance.Web
             services.AddScoped<IAuthorizationService, AuthorizationService>();
             services.AddBlazoredLocalStorage();
             services.AddOptions();
-            services.AddAuthenticationCore();
+            
 
             services.AddScoped<IJwtAuthenticationStateProvider, JwtAuthenticationStateProvider>();
-            services.AddScoped<AuthenticationStateProvider>(provider => provider.GetRequiredService<JwtAuthenticationStateProvider>());
+            services.AddScoped<AuthenticationStateProvider, JwtAuthenticationStateProvider>().AddAuthorizationCore();
+           // services.AddScoped<AuthenticationStateProvider>(provider => provider.GetRequiredService<JwtAuthenticationStateProvider>());
 
             services.AddRazorPages();
             services.AddServerSideBlazor();

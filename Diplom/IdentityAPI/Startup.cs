@@ -104,6 +104,7 @@ namespace IdentityAPI
             services.AddScoped<IAccountService, AccountService>();
 
             services.AddControllers();
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -117,6 +118,13 @@ namespace IdentityAPI
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors(options =>
+            {
+                options.AllowAnyOrigin();
+                options.AllowAnyHeader();
+                options.AllowAnyMethod();
+            });
 
             app.UseAuthentication();
             app.UseRouting();

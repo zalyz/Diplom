@@ -1,0 +1,541 @@
+﻿@page "/fillCall"
+@using Ambulance.Domain.Models.Enums;
+@using Ambulance.WebClient.CustomHtml;
+
+<h3>Заполнение дополнительной информации</h3>
+
+<div>
+    <EditForm Model="@model" OnSubmit="OnSeackClick">
+        <div class="d-flex flex-row">
+            <div class="p-2">
+                <label>
+                    Номер вызова:
+                    <InputNumber @bind-Value="model.CallNumber"/>
+                </label>
+            </div>
+            <button class="btn btn-success p-2" type="submit">Найти</button>
+        </div>
+    </EditForm>
+</div>
+<div>
+    <table class="table">
+        <tr>
+            <th>ФИО</th>
+            <th>Возраст</th>
+            <th>Улица</th>
+            <th>Дома</th>
+            <th>Квартиры</th>
+            <th>Диагноз</th>
+            <th>Кто вызвал</th>
+            <th>Дата и время получения</th>
+        </tr>
+        @if(Call is not null)
+        {
+            <tr>
+                <td>@Call.FIO</td>
+                <td>@Call.Age</td>
+                <td>@Call.Street</td>
+                <td>@Call.HouseNumber</td>
+                <td>@Call.FlatNumber</td>
+                <td>@Call.Diagnosis</td>
+                <td>@Call.Caller</td>
+                <td>@Call.DateTimeReception</td>
+            </tr>
+        }
+        else
+        {
+            <tr>Вызова с таким номером не существует</tr>
+        }
+    </table>
+    <hr/>
+</div>
+<div>
+    <EditForm Model="@request" OnSubmit="OnSaveDataClick">
+        <label>
+            Вызов:
+            <InputSelect @bind-Value="request.Type" class="form-control">
+                <option value="@AdditionalInfoType.First">Первичный</option>
+                <option value="@AdditionalInfoType.Repeated">Повторный</option>
+                <option value="@AdditionalInfoType.Outpatient">Попутный</option>
+                <option value="@AdditionalInfoType.MassEvent">Массовое мероприятие</option>
+                <option value="@AdditionalInfoType.SpecialEvent">Спецмероприятие</option>
+            </InputSelect>
+        </label>
+        <label>
+            Безрезультатный выезд:
+            <InputSelect @bind-Value="request.UnsuccessfulDeparture" class="form-control">
+                <option value="null"></option>
+                <option value="@UnsuccessfulDeparture.CallCanceled">Вызов отменен</option>
+                <option value="@UnsuccessfulDeparture.NotFoundPatient">Пациент не найден</option>
+                <option value="@UnsuccessfulDeparture.NotFoundAddress">Адрес не найден</option>
+                <option value="@UnsuccessfulDeparture.DenialOfCompassion">Отказ от осмотра</option>
+                <option value="@UnsuccessfulDeparture.FalseDeparture">Ложный выезд</option>
+                <option value="@UnsuccessfulDeparture.Repair">Ремонт</option>
+            </InputSelect>
+        </label>
+        <label>
+            Дата и время ухудшения состояния:
+            <InputDateTime @bind-Value="request.DateAndTimeOfDeterioration" class="form-control"/>
+        </label>
+        <label>
+            Травма:
+            <InputSelect @bind-Value="request.UnsuccessfulDeparture" class="form-control">
+                <option value="null"></option>
+                <option value="@InjuryType.Domestic">Бытова</option>
+                <option value="@InjuryType.Criminal">Криминальная</option>
+                <option value="@InjuryType.Street">Вызов Уличная</option>
+                <option value="@InjuryType.StreetDueToIce">Уличная в следствии гололеда</option>
+                <option value="@InjuryType.Industrial">Производственная</option>
+                <option value="@InjuryType.Sports">Спортивная</option>
+                <option value="@InjuryType.TrafficAccident">Дорожно-транспортное происшествие</option>
+                <option value="@InjuryType.AnimalBite">Укус животного</option>
+            </InputSelect>
+            <InputText @bind-Value="request.InjuryTypeDescription" class="form-control"/>
+        </label>
+        <label>
+            Жалобы:
+            <InputText @bind-Value="request.Complaints" class="form-control"/>
+        </label>
+        <label>
+            Анамнез заболевания:
+            <InputText @bind-Value="request.Anamnesis" class="form-control"/>
+        </label>
+        <label>
+            Перенесенные заболевания:
+            <InputText @bind-Value="request.ListedDiseases" class="form-control"/>
+        </label>
+        <label>
+            Акушерско-геникологический анамнез:
+            <InputText @bind-Value="request.ObstetricAndGynecologicalAnamnesis" class="form-control"/>
+        </label>
+        <label>
+            Аллергия:
+            <InputText @bind-Value="request.Allergy" class="form-control"/>
+        </label>
+        <label>
+            Общее состояние:
+            <InputSelect @bind-Value="request.CommonState" class="form-control">
+                <option value="null"></option>
+                <option value="@CommonState.Satisfactory">Удовлетворительное</option>
+                <option value="@CommonState.ModerateSeverity">Средней степени тяжести</option>
+                <option value="@CommonState.Severe">Тяжелое</option>
+                <option value="@CommonState.ExtremelySevere">Крайне тяжелое</option>
+                <option value="@CommonState.ClinicalDeath">Клиническая смерть</option>
+                <option value="@CommonState.BiologicalDeath">Биологическая смерть</option>
+            </InputSelect>
+        </label>
+        <label>
+            Положение:
+            <InputSelect @bind-Value="request.Position" class="form-control">
+                <option value="null"></option>
+                <option value="@Position.Active">Активное</option>
+                <option value="@Position.Passive">Пассивное</option>
+                <option value="@Position.Forced">Вынужденное</option>
+            </InputSelect>
+        </label>
+        <label>
+            Поведение:
+            <InputSelect @bind-Value="request.Behaviour" class="form-control">
+                <option value="null"></option>
+                <option value="@Behaviour.Calm">Спокойное</option>
+                <option value="@Behaviour.Excited">Возбужденное</option>
+                <option value="@Behaviour.Aggressive">Агрессивное</option>
+            </InputSelect>
+            <InputText @bind-Value="request.BehaviourDescription" class="form-control"/>
+        </label>
+        <label>
+            Шкала ком Глазго:
+            <InputNumber @bind-Value="request.GlasgowComaScale" class="form-control"/>
+        </label>
+        <label>
+            Сознание:
+            <InputSelect @bind-Value="request.Conscience" class="form-control">
+                <option value="null"></option>
+                <option value="@Сonscience.Clear">Ясное</option>
+                <option value="@Сonscience.Muted">Приглушенное</option>
+                <option value="@Сonscience.Sopor">Сопор</option>
+                <option value="@Сonscience.Coma">Кома</option>
+                <option value="@Сonscience.Missing">Отсутствует</option>
+            </InputSelect>
+        </label>
+        <div>
+            <label>
+                Зрачки:
+                <InputSelect @bind-Value="request.PupilCondition" class="form-control">
+                    <option value="null"></option>
+                    <option value="@PupilCondition.Myosis">Миоз</option>
+                    <option value="@PupilCondition.Mydriasis">Мидриаз</option>
+                    <option value="@PupilCondition.Anisocoria">Анизокария</option>
+                    <option value="@PupilCondition.LeftLessThenRight"> D меньше S </option>
+                    <option value="@PupilCondition.LeftEqualsToRight">D = S</option>
+                    <option value="@PupilCondition.RightLessThenLeft">D больше S</option>
+                </InputSelect>
+            </label>
+            <label>
+                Реакция на свет:
+                <InputSelect @bind-Value="request.ReactionToLight" class="form-control">
+                    <option value="null"></option>
+                    <option value="@true">Да</option>
+                    <option value="@false">Нет</option>
+                </InputSelect>
+            </label>
+        </div>
+        <label>
+            Речь:
+            <InputSelect @bind-Value="request.SpeechState" class="form-control">
+                <option value="null"></option>
+                <option value="@SpeechState.Saved">Сохранена</option>
+                <option value="@SpeechState.Missing">Отсутствует</option>
+                <option value="@SpeechState.Violated">Нарушена</option>
+            </InputSelect>
+            <InputText @bind-Value="request.SpeechStateDescription" class="form-control"/>
+        </label>
+        <label>
+            Походка:
+            <InputSelect @bind-Value="request.Gait" class="form-control">
+                <option value="null"></option>
+                <option value="@Gait.Free">Свободная</option>
+                <option value="@Gait.Violated">Нарушена</option>
+                <option value="@Gait.WasNotEvaluated">Не оценивалась</option>
+            </InputSelect>
+            <InputText @bind-Value="request.GaitDescription" class="form-control"/>
+        </label>
+        <label>
+            Лицо:
+            <InputSelect @bind-Value="request.IsFaceSymmetrical" class="form-control">
+                <option value="null"></option>
+                <option value="@true">Симметричное</option>
+                <option value="@false">Асимметричное</option>
+            </InputSelect>
+        </label>
+        <label>
+            Нистагм:
+            <InputSelect @bind-Value="request.Nystagmus" class="form-control">
+                <option value="null"></option>
+                <option value="@Nystagmus.Missing">Нет</option>
+                <option value="@Nystagmus.Horizontal">Горизонтальный</option>
+                <option value="@Nystagmus.Vertical">Вертикальный</option>
+            </InputSelect>
+        </label>
+        <label>
+            Тонус мышц:
+            <InputText @bind-Value="request.MuscleTone" class="form-control"/>
+        </label>
+        <label>
+            Патологические рефлексы:
+            <InputText @bind-Value="request.PathologicalReflexes" class="form-control"/>
+        </label>
+        <label>
+            Менингеальные знаки:
+            <InputText @bind-Value="request.MeningealSigns" class="form-control"/>
+        </label>
+        <label>
+            Плегии, парезы:
+            <InputText @bind-Value="request.PlegiasAndParesis" class="form-control"/>
+        </label>
+        <label>
+            Кожа:
+            <InputSelect @bind-Value="request.SkinType" class="form-control">
+                <option value="null"></option>
+                <option value="@SkinType.Normal">Нормальная</option>
+                <option value="@SkinType.Hyperemia">Гиперемия</option>
+                <option value="@SkinType.Pale">Бледная</option>
+                <option value="@SkinType.Cyanosis">Цианоз</option>
+                <option value="@SkinType.Cold">Холодная</option>
+                <option value="@SkinType.Warm">Теплая</option>
+                <option value="@SkinType.Dry">Сухая</option>
+                <option value="@SkinType.Wet">Влажная</option>
+                <option value="@SkinType.Jaundice">Желтушная</option>
+                <option value="@SkinType.HypostaticSpots">Гипостатические пятна</option>
+                <option value="@SkinType.Rashes">Высыпания</option>
+            </InputSelect>
+            <InputText @bind-Value="request.SkinTypeDescription" class="form-control"/>
+        </label>
+        <label>
+            Слизистые:
+            <InputText @bind-Value="request.MucousMembranesDescription" class="form-control"/>
+        </label>
+        <label>
+            Язык:
+            <InputText @bind-Value="request.TongueDescription" class="form-control"/>
+        </label>
+        <label>
+            Артериальное давление:
+            <InputText @bind-Value="request.BloodPressure" class="form-control"/>
+        </label>
+        <label>
+            Адаптированное артериальное давление:
+            <InputText @bind-Value="request.AdaptedBloodPressure" class="form-control"/>
+        </label>
+        <label>
+            Тоны сердца:
+            <InputSelect @bind-Value="request.HeartTones" class="form-control">
+                <option value="null"></option>
+                <option value="@HeartTones.Rhythmic">Ритмичные</option>
+                <option value="@HeartTones.Arrhythmic">Аритмичные</option>
+                <option value="@HeartTones.Missing">Отсутствуют</option>
+                <option value="@HeartTones.Clear">Ясные</option>
+                <option value="@HeartTones.MuffledNoises">Глухие</option>
+                <option value="@HeartTones.Systolic">Систолический шум</option>
+                <option value="@HeartTones.Diastolic">Диастолический шум</option>
+            </InputSelect>
+        </label>
+        <label>
+            Пульс:
+            <InputNumber @bind-Value="request.Pulse" class="form-control"/>
+        </label>
+        <label>
+            Шоковый индекс:
+            <InputNumber @bind-Value="request.ShockIndex" class="form-control"/>
+        </label>
+        <label>
+            Асцит:
+            <InputSelect @bind-Value="request.Ascites" class="form-control">
+                <option value="null"></option>
+                <option value="@true">Да</option>
+                <option value="@false">Нет</option>
+            </InputSelect>
+        </label>
+        <label>
+            Переферические отеки:
+            <InputSelect @bind-Value="request.Edema" class="form-control">
+                <option value="null"></option>
+                <option value="@true">Да</option>
+                <option value="@false">Нет</option>
+            </InputSelect>
+            <InputText @bind-Value="request.EdemaDescription" class="form-control"/>
+        </label>
+        <label>
+            Частота дыхания:
+            <InputNumber @bind-Value="request.RespiratoryRate" class="form-control"/>
+        </label>
+        <label>
+            Дахыние:
+            <InputSelect @bind-Value="request.RespiratoryState" class="form-control">
+                <option value="null"></option>
+                <option value="@RespiratoryState.Free">Свободное</option>
+                <option value="@RespiratoryState.Obstructed">Затрудненное</option>
+                <option value="@RespiratoryState.Vesicular">Везикулярное</option>
+                <option value="@RespiratoryState.Weakened">Ослабленное</option>
+                <option value="@RespiratoryState.Rigid">Жесткое</option>
+                <option value="@RespiratoryState.Superficial">Поверхностное</option>
+                <option value="@RespiratoryState.Puerile">Пуэрильное</option>
+                <option value="@RespiratoryState.DryWheezing">Сухие хрипы</option>
+                <option value="@RespiratoryState.WetWheezing">Влажные хрипы</option>
+                <option value="@RespiratoryState.WheezingOnTheRight">Хрипы справа</option>
+                <option value="@RespiratoryState.WheezingOnTheLeft">Хрипы слева</option>
+                <option value="@RespiratoryState.PleuralFrictionNoise">Шум трения плевры</option>
+                <option value="@RespiratoryState.PathologicalWheezing">Патологический шум</option>
+                <option value="@RespiratoryState.WheezingIsAbsent">Шум отсутствует</option>
+            </InputSelect>
+        </label>
+        <label>
+            Перкуссия легких:
+            <InputSelect @bind-Value="request.PercussionOfTheLungs" class="form-control">
+                <option value="null"></option>
+                <option value="@PercussionOfTheLungs.ClearSounds">Ясный легочный звук</option>
+                <option value="@PercussionOfTheLungs.RightBluntedSound">Притупление звука справа</option>
+                <option value="@PercussionOfTheLungs.LeftBluntedSound">Притупление звука слева</option>
+                <option value="@PercussionOfTheLungs.BoxSoundOnTheRight">Коробочный звук справа</option>
+                <option value="@PercussionOfTheLungs.BoxSoundOnTheRight">Коробочный звук слева</option>
+                <option value="@PercussionOfTheLungs.SmellOfAlcohol">Запах алкоголя</option>
+                <option value="@PercussionOfTheLungs.SmellOfAcetone">Запах ацетона</option>
+            </InputSelect>
+            <InputText @bind-Value="request.PercussionOfTheLungsDescription" class="form-control"/>
+        </label>
+        <label>
+            Живот:
+            <InputSelect @bind-Value="request.StomachState" class="form-control">
+                <option value="null"></option>
+                <option value="@StomachState.ParticipatesInTheActOfBreathing">Участвует в акте дыхания</option>
+                <option value="@StomachState.Soft">Мягкий</option>
+                <option value="@StomachState.Tense">Напряженный</option>
+                <option value="@StomachState.Painless">Безболезненный</option>
+                <option value="@StomachState.PainfulInTheArea">Болезненный в области</option>
+            </InputSelect>
+            <InputText @bind-Value="request.StomachStateDescription" class="form-control"/>
+        </label>
+        <label>
+            Перистальтика:
+            <InputSelect @bind-Value="request.Peristalsis" class="form-control">
+                <option value="null"></option>
+                <option value="@true">Да</option>
+                <option value="@false">Нет</option>
+            </InputSelect>
+            <InputText @bind-Value="request.PeristalsisDescription" class="form-control"/>
+        </label>
+        <label>
+            Печень:
+            <InputSelect @bind-Value="request.LiverState" class="form-control">
+                <option value="null"></option>
+                <option value="@LiverState.NotEnlarged">Не увеличина</option>
+                <option value="@LiverState.Enlarged">Увеличена</option>
+            </InputSelect>
+            <InputText @bind-Value="request.LiverStateDescription" class="form-control"/>
+        </label>
+        <label>
+            Мочеиспускание:
+            <InputSelect @bind-Value="request.Urination" class="form-control">
+                <option value="null"></option>
+                <option value="@Urination.NotViolated">Не нарушено</option>
+                <option value="@Urination.Violated">Нарушено</option>
+                <option value="@Urination.Increased">Учащено</option>
+            </InputSelect>
+            <InputText @bind-Value="request.UrinationDescription" class="form-control"/>
+        </label>
+        <label>
+            Стул:
+            <InputSelect @bind-Value="request.BowelState" class="form-control">
+                <option value="null"></option>
+                <option value="@BowelState.NotViolated">Не нарушено</option>
+                <option value="@BowelState.Violated">Нарушено</option>
+                <option value="@BowelState.Increased">Учащено</option>
+            </InputSelect>
+            <InputText @bind-Value="request.BowelStateDescription" class="form-control"/>
+        </label>
+        <label>
+            Локальный статус:
+            <InputText @bind-Value="request.LocalStatus" class="form-control"/>
+        </label>
+        <label>
+            Электрокардиограмма:
+            <InputText @bind-Value="request.Electrocardiogram" class="form-control"/>
+        </label>
+        <label>
+            Электрокардиограмма после оказания МП:
+            <InputText @bind-Value="request.SecondElectrocardiogram" class="form-control"/>
+        </label>
+        <label>
+            Гликемия до:
+            <InputNumber @bind-Value="request.GlycemiaBefore" step="0.1" class="form-control"/>
+        </label>
+        <label>
+            Гликемия после:
+            <InputNumber @bind-Value="request.GlycemiaAfter" step="0.1" class="form-control"/>
+        </label>
+        <label>
+            Сатурация до:
+            <InputNumber @bind-Value="request.SaturationBefore" class="form-control"/>
+        </label>
+        <label>
+            Сатурация после:
+            <InputNumber @bind-Value="request.SaturationAfter" class="form-control"/>
+        </label>
+        <label>
+            Код предварительного диагноза:
+            <InputText @bind-Value="request.DiagnosisCode" class="form-control"/>
+        </label>
+        <label>
+            Отказ от оказания медицинской помощи:
+            <InputSelect @bind-Value="request.RefusalToProvideMedicalCare" class="form-control">
+                <option value="null"></option>
+                <option value="@true">Отказался</option>
+            </InputSelect>
+        </label>
+        <label>
+            Состояние пациента после оказания МП:
+            <InputText @bind-Value="request.PatienStateAfterMedicalCare" class="form-control"/>
+        </label>
+        <label>
+            Результат оказания медицинской помощи:
+            <InputSelect @bind-Value="request.MedicalCareResult" class="form-control">
+                <option value="null"></option>
+                <option value="@MedicalCareResult.Improvement">Улучшение</option>
+                <option value="@MedicalCareResult.WithoutEffect">Без эффекта</option>
+                <option value="@MedicalCareResult.Deterioration">Ухудшение</option>
+            </InputSelect>
+        </label>
+        <label>
+            Смерть:
+            <InputSelect @bind-Value="request.Death" class="form-control">
+                <option value="null"></option>
+                <option value="@Death.InThePresenceOfTheBrigade">В присутствии бригады СМП</option>
+                <option value="@Death.BeforeTheArrivalOfTheBrigade">До приезда бригады СМП</option>
+            </InputSelect>
+        </label>
+        <label>
+            Результат выезда:
+            <InputSelect @bind-Value="request.Result" class="form-control">
+                <option value="null"></option>
+                <option value="@ResultType.LeftInPlace">оставлен на месте</option>
+                <option value="@ResultType.HandedOverToBrigade">Передан бригаде СМП</option>
+                <option value="@ResultType.TransportedToHealthOrganization">Транспортирован в организацию здравоохранения</option>
+            </InputSelect>
+            <InputText @bind-Value="request.ResultDescription" class="form-control"/>
+        </label>
+        <label>
+            Транспортировка бригадой СМП:
+            <InputDateTime @bind-Value="request.TransportationDateTime" class="form-control"/>
+        </label>
+        <label>
+            До автомобиля:
+            <InputSelect @bind-Value="request.ToBrigadeCar" class="form-control">
+                <option value="null"></option>
+                <option value="@TransportationType.MovedIndependently">Передвигался самостоятельно</option>
+                <option value="@TransportationType.MovedWithSupport">Передвигался с поддержкой</option>
+                <option value="@TransportationType.MovedOnStretcher">Перенесен на носилках</option>
+                <option value="@TransportationType.MovedOnChair">Перенесен на эвакуационном кресле</option>
+                <option value="@TransportationType.MovedOnHands">Перенесен на руках</option>
+            </InputSelect>
+        </label>
+        <label>
+            Из автомобиля:
+            <InputSelect @bind-Value="request.FromBrigadeCar" class="form-control">
+                <option value="null"></option>
+                <option value="@TransportationType.MovedIndependently">Передвигался самостоятельно</option>
+                <option value="@TransportationType.MovedWithSupport">Передвигался с поддержкой</option>
+                <option value="@TransportationType.MovedOnStretcher">Перенесен на носилках</option>
+                <option value="@TransportationType.MovedOnChair">Перенесен на эвакуационном кресле</option>
+                <option value="@TransportationType.MovedOnHands">Перенесен на руках</option>
+            </InputSelect>
+        </label>
+        <label>
+            Положение пациента во аремя транспортировки:
+            <InputSelect @bind-Value="request.TransportationPosition" class="form-control">
+                <option value="null"></option>
+                <option value="@TransportationPosition.Sitting">Сидя</option>
+                <option value="@TransportationPosition.Lying">Лежа</option>
+                <option value="@TransportationPosition.DownWithTheHeadEndRaised">С приподнятым головным концом</option>
+            </InputSelect>
+        </label>
+        <label>
+            Состояние пациента во время транспортировки:
+            <InputText @bind-Value="request.PatientConditionDuringTransportation" class="form-control"/>
+        </label>
+        <label>
+            Динамика:
+            <InputSelect @bind-Value="request.DynamicsBefore" class="form-control">
+                <option value="null"></option>
+                <option value="@Dynamics.Improvement">Улучшение</option>
+                <option value="@Dynamics.WithoutDynamics">Без динамики</option>
+                <option value="@Dynamics.Deterioration">Ухудшение</option>
+            </InputSelect>
+        </label>
+        <label>
+            Состояние пациента после транспортировки:
+            <InputText @bind-Value="request.PatientConditionAfterTransportation" class="form-control"/>
+        </label>
+        <label>
+            Динамика:
+            <InputSelect @bind-Value="request.DynamicsAfter" class="form-control">
+                <option value="null"></option>
+                <option value="@Dynamics.Improvement">Улучшение</option>
+                <option value="@Dynamics.WithoutDynamics">Без динамики</option>
+                <option value="@Dynamics.Deterioration">Ухудшение</option>
+            </InputSelect>
+        </label>
+        <label>
+            Завершение транспортировки бригадой СМП:
+            <InputDateTime @bind-Value="request.FinishTransportationDateTime" class="form-control"/>
+        </label>
+        <label>
+            Доставлен в организацию здравоохранения:
+            <InputText @bind-Value="request.TranspotedToOrganisation" class="form-control"/>
+        </label>
+        <label>
+            Медицинский работник, принявший пациента:
+            <InputText @bind-Value="request.MedicalWorkerFIO" class="form-control"/>
+        </label>
+        <button class="btn btn-success" type="submit">Сохранить</button>
+    </EditForm>
+</div>

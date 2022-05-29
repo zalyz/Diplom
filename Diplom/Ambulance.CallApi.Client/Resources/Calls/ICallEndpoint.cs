@@ -29,5 +29,8 @@ namespace Ambulance.CallApi.Client.Resources.Calls
 
         [Post("api/call/additional")]
         Task<HttpResponseMessage> AddAdditionalInfo([Body] AdditionalInfoRequest request, CancellationToken cancellationToken = default);
+
+        [Get("api/call/treatment")]
+        Task<HttpResponseMessage> GetTreatment([Body] GetTreatmentRequest request, CancellationToken cancellationToken = default);
     }
 }

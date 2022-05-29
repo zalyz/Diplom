@@ -63,18 +63,5 @@
         <TextBox x:Name="textboxCallInformation" Margin="0,18,10,2" Grid.Row="2" FontSize="15" FontWeight="SemiBold" FontFamily="Arial" Text="Text" BorderThickness="2" Background="LightYellow" IsReadOnly="True" Grid.Column="1"/>
         <Label Content="Примечание" FontSize="14" FontWeight="SemiBold" FontFamily="Arial" Foreground="Blue" Grid.Row="1" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="154" Margin="6,181,0,0" Grid.RowSpan="2" Grid.Column="1"/>
         <Button Content="Закрыть" FontSize="15" FontFamily="Arial" FontWeight="SemiBold" Grid.Column="1" Margin="221,0,46,0" Grid.Row="3" VerticalAlignment="Center" Height="50" Click="Button_Click"/>
-        <Button Content="Печать" FontSize="15" FontFamily="Arial" FontWeight="SemiBold" Grid.Column="1" HorizontalAlignment="Left" Margin="46,0,0,0" Grid.Row="3" VerticalAlignment="Center" Height="50" Width="135"/>
-        <Button FontSize="15" FontFamily="Arial" Background="LightGray" FontWeight="SemiBold" HorizontalAlignment="Left" Margin="241,0,0,0" Grid.Row="3" VerticalAlignment="Center" Width="231" Height="50">
-            <StackPanel>
-                <Grid Height="45" Width="228">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Label Content="Прослушать запись" Grid.ColumnSpan="2" Margin="57,8,13,10"/>
-                    <Image Source="Resourses\Sound.jpg" Height="30" Width="30" Margin="10,8,74,7" Stretch="Fill" />
-                </Grid>
-            </StackPanel>
-        </Button>
     </Grid>
 </Window>

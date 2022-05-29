@@ -20,6 +20,7 @@ namespace Ambulance.Web.Pages
         async Task OnSeackClick()
         {
             var call = await CallApiClient.CallOperations.GetCall(model.CallNumber);
+            Call = call;
         }
 
         async Task OnSaveDataClick()

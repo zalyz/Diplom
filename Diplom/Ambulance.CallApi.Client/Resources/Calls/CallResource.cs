@@ -43,6 +43,11 @@ namespace Ambulance.CallApi.Client.Resources.Calls
             return Execute<List<CallFullOfficeInfo>>(token => Client.GetPending(token), cancellationToken);
         }
 
+        public Task<List<Treatment>> GetTreatment(GetTreatmentRequest request, CancellationToken cancellationToken = default)
+        {
+            return Execute<List<Treatment>>(token => Client.GetTreatment(request, token), cancellationToken);
+        }
+
         public async Task ProcessCall(ProcessCallRequest request, CancellationToken cancellationToken = default)
         {
             await Execute(token => Client.ProcessCall(request, token), cancellationToken);

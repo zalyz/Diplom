@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ambulance"
         mc:Ignorable="d"
-        Title="EditingCalls" Width="1300" Height="750" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Обработка вызова" Width="1300" Height="750" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid ShowGridLines="False" Background="LightGray">
         <Grid.RowDefinitions>
             <RowDefinition Height="20*"/>

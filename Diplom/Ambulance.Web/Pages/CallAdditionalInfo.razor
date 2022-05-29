@@ -1,4 +1,12 @@
 ﻿@page "/callInfo"
 @using Ambulance.Domain.Models.Enums
+@attribute [Authorize]
 
-<CallInfo CallStatus="CallStatus.TransferedToBrigade"/>
+<AuthorizeView>
+    <Authorized>
+        <CallInfo CallStatus="CallStatus.TransferedToBrigade"/>
+    </Authorized>
+    <NotAuthorized>
+        asdfg
+    </NotAuthorized>
+</AuthorizeView>
