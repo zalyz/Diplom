@@ -39,15 +39,21 @@ namespace Ambulance
         {
             _apiClient = callApiClient;
             _serviceApiClient = serviceApiClient;
-            InitializeComponent();
             _dispatcher = dispatcher;
-            _calls = callApiClient.CallOperations.GetPending().GetAwaiter().GetResult();
+            SetupData();
+            InitializeComponent();
+        }
+
+        private async void SetupData()
+        {
+            _calls = await _apiClient.CallOperations.GetPending();
+            comboStreet.ItemsSource = await _serviceApiClient.ServiceResource.GetStreets();
+            comboDiagnosis.ItemsSource = await _serviceApiClient.ServiceResource.GetDiagnosis();
+            comboPlace.ItemsSource = await _serviceApiClient.ServiceResource.GetPlaces();
+            comboRezault.ItemsSource = await _serviceApiClient.ServiceResource.GetResults();
             _callsCount = _calls.Count;
             gridEditCalls.ItemsSource = _calls;
-            comboStreet.ItemsSource = serviceApiClient.ServiceResource.GetStreets().GetAwaiter().GetResult();
-            comboDiagnosis.ItemsSource = serviceApiClient.ServiceResource.GetDiagnosis().GetAwaiter().GetResult();
-            comboPlace.ItemsSource = serviceApiClient.ServiceResource.GetPlaces().GetAwaiter().GetResult();
-            comboRezault.ItemsSource = serviceApiClient.ServiceResource.GetResults().GetAwaiter().GetResult();
+            lableCountOfCalls.Content = _callsCount;
             UpdateNumberOfCalls();
         }
 

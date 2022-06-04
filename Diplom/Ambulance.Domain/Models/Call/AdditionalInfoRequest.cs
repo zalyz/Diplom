@@ -36,7 +36,7 @@ namespace Ambulance.Domain.Models.Call
 
         public string BehaviourDescription { get; set; }
 
-        public int GlasgowComaScale { get; set; }
+        public int? GlasgowComaScale { get; set; }
 
         // сознание
         public Сonscience? Conscience { get; set; }

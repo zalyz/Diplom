@@ -69,7 +69,7 @@ namespace Ambulance.Domain.Models
 
         public string ProcessingDispatcher { get; set; }
 
-        public int KilometrageBefor { get; set; }
+        public int KilometrageBefore { get; set; }
 
         public int KilometrageAfter { get; set; }
 

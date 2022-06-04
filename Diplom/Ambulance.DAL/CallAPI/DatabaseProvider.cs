@@ -11,6 +11,8 @@ namespace Ambulance.DAL.CallAPI
         Task<T> InDatabaseScope<T>(Func<ICallContext, Task<T>> action, CancellationToken cancellationToken = default);
 
         Task<T> InDatabaseScope<T>(Func<ICallContext, T> action, CancellationToken cancellationToken = default);
+
+        T Read<T>(Func<ICallContext, T> action, CancellationToken cancellationToken = default);
     }
 
     public class DatabaseProvider : IDatabaseProvider
@@ -69,6 +71,19 @@ namespace Ambulance.DAL.CallAPI
             catch
             {
                 await _callContext.DatabaseInstance.RollbackTransactionAsync(cancellationToken);
+                throw;
+            }
+        }
+
+        public T Read<T>(Func<ICallContext, T> action, CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                var result = action(_callContext);
+                return result;
+            }
+            catch
+            {
                 throw;
             }
         }

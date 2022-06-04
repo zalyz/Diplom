@@ -22,7 +22,7 @@ namespace Ambulance
 
             lableDiagnosis.Content = call.DiagnosisName;
             lableResult.Content = call.ResultName;
-            textTreatment.Text = string.Join("\n", treatments);
+            textTreatment.Text = string.Join("\n", treatments.Select(e => e.NameAndDosage));
             textNotes.Text = call.CallNotes;
 
             lableReception.Content = call.DateTimeReception.GetDateTimeFormats('F')[1];
@@ -47,7 +47,7 @@ namespace Ambulance
             lableMedAssistant2.Content = call.SecondMedicalAssistantFIO;
             lableOrderly.Content = call.OrderlyFIO;
             lableDriver.Content = call.DriverFIO;
-            lableKMBefore.Content = call.KilometrageBefor;
+            lableKMBefore.Content = call.KilometrageBefore;
             lableKMAfter.Content = call.KilometrageAfter;
         }
 

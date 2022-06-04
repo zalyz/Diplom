@@ -1,5 +1,6 @@
 ﻿using Ambulance.Domain.Models.ServiceModels;
 using Ambulance.ServiceAPI.Client;
+using System.Collections.ObjectModel;
 using System.Windows;
 
 namespace Ambulance.Desktop
@@ -11,12 +12,23 @@ namespace Ambulance.Desktop
     {
         private readonly IServiceApiClient _serviceApiClient;
 
+        public ObservableCollection<string> DiagnosisList { get; } = new ObservableCollection<string>();
+
         public AddDiagnosis(IServiceApiClient serviceApiClient)
         {
             _serviceApiClient = serviceApiClient;
             InitializeComponent();
+            Update();
         }
 
+        private async void Update()
+        {
+            ListDiagnoses.ItemsSource = null;
+            DiagnosisList.Clear();
+            var diag = await _serviceApiClient.ServiceResource.GetDiagnosis();
+            diag.ForEach(e => DiagnosisList.Add(e.Name + " " + e.Number));
+            ListDiagnoses.ItemsSource = DiagnosisList;
+        }
         private async void AddButton_Click(object sender, RoutedEventArgs e)
         {
             var text = text1.Text;
@@ -28,8 +40,6 @@ namespace Ambulance.Desktop
                     Name = text,
                     Number = number,
                 });
-                ListDiagnoses.ItemsSource = null;
-                ListDiagnoses.ItemsSource = await _serviceApiClient.ServiceResource.GetDiagnosis();
 
                 text1.Text = "";
                 textNumber.Text = "";

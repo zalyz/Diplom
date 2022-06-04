@@ -1,0 +1,28 @@
+﻿@page "/age"
+@using Ambulance.Domain.Models.Statistics
+
+<button class="btn btn-info" @onclick="DownloadFile">Загрузить файл</button>
+<Syncfusion.Blazor.Spinner.SfSpinner @bind-Visible="@isLoad" Size="60" Label="Загрузка"></Syncfusion.Blazor.Spinner.SfSpinner>
+<div class="control-section">
+    <div class="content-wrapper">
+        <SfPivotView TValue="CallFullInfo" ShowTooltip="false">
+            <PivotViewDataSourceSettings DataSource="@Calls">
+                <PivotViewColumns>
+                    <PivotViewColumn Name="Gender"></PivotViewColumn>
+                </PivotViewColumns>
+                <PivotViewRows>
+                    <PivotViewRow Name="DiagnosisName"></PivotViewRow>
+                    <PivotViewRow Name="Age"></PivotViewRow>
+                </PivotViewRows>
+                <PivotViewValues>
+                    <PivotViewValue Name="CallNumber" Caption="Count"></PivotViewValue>
+                </PivotViewValues>
+            </PivotViewDataSourceSettings>
+        </SfPivotView>
+    </div>
+</div>
+<style>
+    .e-pivotview {
+        min-height: 200px;
+    }
+</style>

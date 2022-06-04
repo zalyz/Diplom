@@ -8,7 +8,7 @@ namespace Ambulance.WebClient.CustomHtml
 {
     public class InputDateTime<TValue> : InputDate<TValue>
     {
-        private const string DateFormat = "yyyy-MM-ddTHH:mm";
+        private const string DateFormat = "yyyy-MM-ddTHH:mm tt";
 
         /// <inheritdoc />
         protected override void BuildRenderTree(RenderTreeBuilder builder)

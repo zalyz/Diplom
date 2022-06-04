@@ -4,7 +4,7 @@ using System;
 
 namespace StatisticsAPI.Calls
 {
-    public class AgeDiagnosisRequest : MessageBase<Guid>, IRequest<Guid>
+    public class AgeDiagnosisRequest : MessageBase<Guid>, IRequest<byte[]>
     {
         public AgeDiagnosisRequest(Guid request)
             : base(request)

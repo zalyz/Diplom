@@ -23,7 +23,9 @@ namespace CallAPI.Call
 
         public async Task<List<CallFullOfficeInfo>> Handle(FilterCallCommand request, CancellationToken cancellationToken)
         {
-            var calls = await GetCalls(request.Request.CallStatus);
+            var calls = request.Request.CallStatus == CallStatus.TransferedToBrigade
+                ? await GetTransferedCalls()
+                : await GetProceccedCalls();
 
             if (request.Request.CallNumber.HasValue)
             {
@@ -84,7 +86,7 @@ namespace CallAPI.Call
             return calls.ToList();
         }
 
-        private async Task<IQueryable<CallFullOfficeInfo>> GetCalls(CallStatus callStatus)
+        private async Task<IQueryable<CallFullOfficeInfo>> GetProceccedCalls()
         {
             var resultSet = await _databaseProvider.InDatabaseScope(context =>
             {
@@ -92,7 +94,7 @@ namespace CallAPI.Call
                        join patient in context.Patients on call.PatientId equals patient.Id
                        join street in context.Streets on patient.StreetId equals street.Id
                        join diagnosis in context.Diagnoses on call.DiagnosisId equals diagnosis.Id
-                       join brigade in context.AmbulanceBrigades on call.AmbulanceBrigadeId.Value equals brigade.Id
+                       join brigade in context.AmbulanceBrigades on call.AmbulanceBrigadeId equals brigade.Id
                        join doctor in context.Doktors on brigade.DoktorId equals doctor.Id
                        join firstMed in context.MedicalAssistants on brigade.FirstMedicalAssistantId equals firstMed.Id
                        join orderly in context.Orderlies on brigade.OrderlyId equals orderly.Id
@@ -101,7 +103,7 @@ namespace CallAPI.Call
                        join dispatcher in context.Dispatchers on call.DispatcherId equals dispatcher.Id
                        join dispatcherSecond in context.Dispatchers on call.ProcessingDispatcherid equals dispatcherSecond.Id
                        join dispatcherThird in context.Dispatchers on call.TransferingDispatcherId equals dispatcherThird.Id
-                       where call.Status == (byte)callStatus
+                       where call.Status == (byte)CallStatus.Processed
                        select new
                        {
                            call,
@@ -124,11 +126,11 @@ namespace CallAPI.Call
             foreach (var item in resultSet)
             {
                 var call = item.call.Adapt<CallFullOfficeInfo>();
-                if (item.brigade.SecondMedicalAssistantId != null && item.brigade.SecondMedicalAssistantId > 0)
-                {
-                    var secondMed = await _databaseProvider.InDatabaseScope(context => context.MedicalAssistants.FirstAsync(e => e.Id == item.brigade.SecondMedicalAssistantId.Value));
-                    call.SecondMedicalAssistantFIO = GetFIO(secondMed);
-                }
+                ////if (item.brigade.SecondMedicalAssistantId != null && item.brigade.SecondMedicalAssistantId > 0)
+                ////{
+                ////    var secondMed = await _databaseProvider.InDatabaseScope(context => context.MedicalAssistants.FirstAsync(e => e.Id == item.brigade.SecondMedicalAssistantId.Value));
+                ////    call.SecondMedicalAssistantFIO = GetFIO(secondMed);
+                ////}
 
                 call.FIO = item.patient.FIO;
                 call.Age = item.patient.Age;
@@ -144,6 +146,69 @@ namespace CallAPI.Call
                 call.ResultName = item.result.Name;
                 call.Dispatcher = GetFIO(item.dispatcher);
                 call.ProcessingDispatcher = GetFIO(item.dispatcherSecond);
+                call.TransferingDispatcher = GetFIO(item.dispatcherThird);
+                call.Type = GetType(item.call.CallType);
+
+                calls.Add(call);
+            }
+
+            return calls.AsQueryable();
+        }
+
+        private async Task<IQueryable<CallFullOfficeInfo>> GetTransferedCalls()
+        {
+            var resultSet = await _databaseProvider.InDatabaseScope(context =>
+            {
+                return from call in context.Calls
+                       join patient in context.Patients on call.PatientId equals patient.Id
+                       join street in context.Streets on patient.StreetId equals street.Id
+                       join diagnosis in context.Diagnoses on call.DiagnosisId equals diagnosis.Id
+                       join brigade in context.AmbulanceBrigades on call.AmbulanceBrigadeId equals brigade.Id
+                       join doctor in context.Doktors on brigade.DoktorId equals doctor.Id
+                       join firstMed in context.MedicalAssistants on brigade.FirstMedicalAssistantId equals firstMed.Id
+                       join orderly in context.Orderlies on brigade.OrderlyId equals orderly.Id
+                       join driver in context.Drivers on brigade.DriverId equals driver.Id
+                       join dispatcher in context.Dispatchers on call.DispatcherId equals dispatcher.Id
+                       join dispatcherThird in context.Dispatchers on call.TransferingDispatcherId equals dispatcherThird.Id
+                       where call.Status == (byte)CallStatus.TransferedToBrigade
+                       select new
+                       {
+                           call,
+                           patient,
+                           street,
+                           diagnosis,
+                           brigade,
+                           doctor,
+                           firstMed,
+                           orderly,
+                           driver,
+                           dispatcher,
+                           dispatcherThird,
+                       };
+            });
+
+            var calls = new List<CallFullOfficeInfo>();
+            foreach (var item in resultSet)
+            {
+                var call = item.call.Adapt<CallFullOfficeInfo>();
+                ////if (item.brigade.SecondMedicalAssistantId != null && item.brigade.SecondMedicalAssistantId > 0)
+                ////{
+                ////    var secondMed = await _databaseProvider.InDatabaseScope(context => context.MedicalAssistants.FirstAsync(e => e.Id == item.brigade.SecondMedicalAssistantId.Value));
+                ////    call.SecondMedicalAssistantFIO = GetFIO(secondMed);
+                ////}
+
+                call.FIO = item.patient.FIO;
+                call.Age = item.patient.Age;
+                call.Street = item.street.Name;
+                call.HouseNumber = item.patient.HouseNumber;
+                call.FlatNumber = item.patient.FlatNumber;
+                call.DoktorFIO = GetFIO(item.doctor);
+                call.FirstMedicalAssistantFIO = GetFIO(item.firstMed);
+                call.OrderlyFIO = GetFIO(item.orderly);
+                call.DriverFIO = GetFIO(item.driver);
+                call.BrigadeNumber = item.brigade.Number;
+                call.DiagnosisName = item.diagnosis.Name;
+                call.Dispatcher = GetFIO(item.dispatcher);
                 call.TransferingDispatcher = GetFIO(item.dispatcherThird);
                 call.Type = GetType(item.call.CallType);
 

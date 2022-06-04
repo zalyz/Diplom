@@ -5,14 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ambulance"
         mc:Ignorable="d"
-        Title="Данные" WindowStartupLocation="CenterScreen" MinHeight="700" MinWidth="1200" MaxHeight="700" MaxWidth="1200">
+        Title="Данные" WindowStartupLocation="CenterScreen" MinHeight="700" MinWidth="700" MaxHeight="700" MaxWidth="1200">
     <Grid>
         <TabControl>
             <TabItem Header="Ввод Бригады">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="2*"></ColumnDefinition>
-                        <ColumnDefinition Width="1.9*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <GroupBox Header="Состав бригады" BorderBrush="Green" BorderThickness="2" Margin="10,10,10,70" FontSize="14" Foreground="Blue" FontFamily="Arial">
                         <Grid>
@@ -52,27 +51,6 @@
 
                         </Grid>
                     </GroupBox>
-                    <GroupBox Header="Автоматический ввод бригад" BorderBrush="Green" BorderThickness="2" FontSize="14" Foreground="Blue" FontFamily="Arial" Margin="10,10,10,463" Grid.Column="1">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <DatePicker x:Name="dateAutoBrigade" HorizontalAlignment="Left" Margin="22,34,0,0" VerticalAlignment="Top" Height="25" Width="191"/>
-                            <ComboBox Margin="280,34,57,0" Height="25" VerticalAlignment="Top">
-                                <ComboBoxItem Content="7:00"></ComboBoxItem>
-                                <ComboBoxItem Content="8:00"></ComboBoxItem>
-                                <ComboBoxItem Content="19:00"></ComboBoxItem>
-                                <ComboBoxItem Content="20:00"></ComboBoxItem>
-                            </ComboBox>
-                            <ComboBox Margin="22,36,359,0" Height="25" Grid.Row="1" VerticalAlignment="Top" IsEditable="True"/>
-                            <Button Content="Добавить" Margin="280,22,57,0" Grid.Row="1" Height="40" VerticalAlignment="Top"/>
-                            <Label Content="Дата смены" Margin="22,10,392,0" Height="24" VerticalAlignment="Top"/>
-                            <Label Content="Время начала смены" Margin="280,4,73,0" Height="25" VerticalAlignment="Top"/>
-                            <Label Content="№ бригады" Margin="22,10,396,0" Grid.Row="1" Height="25" VerticalAlignment="Top"/>
-                        </Grid>
-                    </GroupBox>
-
                 </Grid>
             </TabItem>
         </TabControl>

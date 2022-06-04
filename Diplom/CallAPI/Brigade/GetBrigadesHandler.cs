@@ -45,11 +45,11 @@ namespace CallAPI.Brigade
             foreach (var item in brigadesSet)
             {
                 var brigade = item.brigade.Adapt<AmbulanceBrigade>();
-                if (item.brigade.SecondMedicalAssistantId != null && item.brigade.SecondMedicalAssistantId > 0)
-                {
-                    var secondMed = await _databaseProvider.InDatabaseScope(context => context.MedicalAssistants.FirstAsync(e => e.Id == item.brigade.SecondMedicalAssistantId.Value), cancellationToken);
-                    brigade.SecondMedicalAssistantFIO = GetFIO(secondMed);
-                }
+                //////if (item.brigade.SecondMedicalAssistantId.HasValue && item.brigade.SecondMedicalAssistantId.Value > 0)
+                //////{
+                //////    var secondMed = await _databaseProvider.InDatabaseScope(context => context.MedicalAssistants.First(e => e.Id == item.brigade.SecondMedicalAssistantId.Value), cancellationToken);
+                //////    brigade.SecondMedicalAssistantFIO = GetFIO(secondMed);
+                //////}
 
                 brigade.DoctorFIO = GetFIO(item.doctor);
                 brigade.FirstMedicalAssistantFIO = GetFIO(item.firstMed);

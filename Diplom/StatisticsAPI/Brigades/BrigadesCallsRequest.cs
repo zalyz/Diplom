@@ -4,7 +4,7 @@ using System;
 
 namespace StatisticsAPI.Brigades
 {
-    public class BrigadesCallsRequest : MessageBase<Guid>, IRequest<Guid>
+    public class BrigadesCallsRequest : MessageBase<Guid>, IRequest<byte[]>
     {
         public BrigadesCallsRequest(Guid request)
             : base(request)

@@ -11,6 +11,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="6.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.5" PrivateAssets="all" />
+    <PackageReference Include="Syncfusion.Blazor" Version="19.4.0.56" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.18.0" />
   </ItemGroup>
 
@@ -18,6 +19,7 @@
     <ProjectReference Include="..\Ambulance.CallApi.Client\Ambulance.CallApi.Client.csproj" />
     <ProjectReference Include="..\Ambulance.IdentityApiClient\Ambulance.IdentityApi.Client.csproj" />
     <ProjectReference Include="..\Ambulance.ServiceAPI.Client\Ambulance.ServiceAPI.Client.csproj" />
+    <ProjectReference Include="..\Ambulance.StatisticsAPI.Client\Ambulance.StatisticsApi.Client.csproj" />
   </ItemGroup>
 
   <ItemGroup>
