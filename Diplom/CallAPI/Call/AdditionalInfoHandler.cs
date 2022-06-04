@@ -20,7 +20,7 @@ namespace CallAPI.Call
         public async Task<Guid> Handle(AdditionalInfoCommand request, CancellationToken cancellationToken)
         {
             var info = request.Request.Adapt<CallAdditionalInfoEntity>();
-            await _databaseProvider.InDatabaseScope(context => context.CallAdditionalInfoEntities.AddAsync(info), cancellationToken);
+            await _databaseProvider.InDatabaseScope(context => context.CallAdditionalInfo.AddAsync(info), cancellationToken);
             return Guid.NewGuid();
         }
     }

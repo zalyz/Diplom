@@ -9,7 +9,7 @@ namespace Ambulance.Domain.Models
 
         public int CallId { get; set; }
 
-        public AdditionalInfoType Type { get; set; }
+        public AdditionalInfoType AdditionalInfoType { get; set; }
 
         public UnsuccessfulDeparture? UnsuccessfulDeparture { get; set; }
 

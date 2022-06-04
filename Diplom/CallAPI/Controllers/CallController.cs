@@ -20,7 +20,7 @@ namespace CallAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get([FromBody]int id, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> Get(int id, CancellationToken cancellationToken = default)
         {
             var query = new GetCallQuery(id);
             var call = await _mediator.Send(query, cancellationToken);

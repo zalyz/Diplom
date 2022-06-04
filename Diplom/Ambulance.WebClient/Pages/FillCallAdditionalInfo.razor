@@ -128,9 +128,9 @@
             Положение:
             <InputSelect @bind-Value="request.Position" class="form-control">
                 <option value="null"></option>
-                <option value="@Position.Active">Активное</option>
-                <option value="@Position.Passive">Пассивное</option>
-                <option value="@Position.Forced">Вынужденное</option>
+                <option value="@Ambulance.Domain.Models.Enums.Position.Active">Активное</option>
+                <option value="@Ambulance.Domain.Models.Enums.Position.Passive">Пассивное</option>
+                <option value="@Ambulance.Domain.Models.Enums.Position.Forced">Вынужденное</option>
             </InputSelect>
         </label>
         <label>

@@ -1,12 +1,8 @@
 ﻿using Ambulance.CallApi.Client;
-using Ambulance.Domain.Models;
 using Ambulance.Domain.Models.Call;
 using Ambulance.Domain.Models.Enums;
 using Ambulance.ServiceAPI.Client;
 using System;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 
@@ -111,15 +107,15 @@ namespace Ambulance.Desktop
 
         private void SearchForCallInformation_Click(object sender, RoutedEventArgs e)
         {
-            //if (_dispatcher != null)
-            //{
-            //    var searchCallInformation = new SearchInformationAboutCall();
-            //    searchCallInformation.Show();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Вы не зарегистрировались как диспетчер");
-            //}
+            if (_dispatcher != null)
+            {
+                var searchCallInformation = new SearchInformationAboutCall(_callClient);
+                searchCallInformation.Show();
+            }
+            else
+            {
+                MessageBox.Show("Вы не зарегистрировались как диспетчер");
+            }
         }
 
         private async void AcceptCall_Click(object sender, RoutedEventArgs e)
@@ -168,31 +164,6 @@ namespace Ambulance.Desktop
             {
                 MessageBox.Show("Вы не зарегистрировались как диспетчер");
             }
-        }
-
-        private void EditCallMenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            //if (_dispatcher != null)
-            //{
-            //    var reprocessingCallsWindow = new ReprocessingCallsWindow
-            //    {
-            //        Owner = this
-            //    };
-            //    reprocessingCallsWindow.ShowDialog();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Вы не зарегистрировались как диспетчер");
-            //}
-        }
-
-        private void ReportMenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            //var reportWindow = new ReportWindow()
-            //{
-            //    Owner = this
-            //};
-            //reportWindow.Show();
         }
 
         private void Logout_Click(object sender, RoutedEventArgs e)

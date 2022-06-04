@@ -52,11 +52,11 @@ namespace CallAPI.Call
             foreach (var item in resultSet)
             {
                 var call = item.call.Adapt<CallFullOfficeInfo>();
-                if (item.brigade.SecondMedicalAssistantId != null && item.brigade.SecondMedicalAssistantId > 0)
-                {
-                    var secondMed = await _databaseProvider.InDatabaseScope(context => context.MedicalAssistants.FirstAsync(e => e.Id == item.brigade.SecondMedicalAssistantId.Value), cancellationToken);
-                    call.SecondMedicalAssistantFIO = GetFIO(secondMed);
-                }
+                ////if (item.brigade.SecondMedicalAssistantId != null && item.brigade.SecondMedicalAssistantId > 0)
+                ////{
+                ////    var secondMed = await _databaseProvider.InDatabaseScope(context => context.MedicalAssistants.FirstAsync(e => e.Id == item.brigade.SecondMedicalAssistantId.Value), cancellationToken);
+                ////    call.SecondMedicalAssistantFIO = GetFIO(secondMed);
+                ////}
 
                 call.FIO = item.patient.FIO;
                 call.Age = item.patient.Age;

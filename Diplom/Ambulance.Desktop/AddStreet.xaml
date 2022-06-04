@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ambulance.Desktop"
         mc:Ignorable="d"
-        Title="AddStreet" Height="450" Width="600">
+        Title="Добавление адреса" Height="450" Width="600">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <ListBox x:Name="ListDiagnoses" FontSize="15" Margin="10,10,10,10" Grid.Row="1"/>
+        <ListBox x:Name="ListDiagnoses" ItemsSource="{Binding DiagnosisList}" FontSize="15" Margin="10,10,10,10" Grid.Row="1"/>
         <Label Content="Название" FontSize="15" FontFamily="Arial" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center"/>
         <TextBox x:Name="text1" FontSize="15" FontFamily="Arial" VerticalContentAlignment="Center" CharacterCasing="Upper" HorizontalAlignment="Left" FontWeight="DemiBold" Margin="10,104,0,0" VerticalAlignment="Top" Width="445" Height="25"/>
         <Label x:Name="Lable" Content="Добавление адресов" FontSize="17" FontFamily="Arial" FontWeight="SemiBold" Foreground="Blue" HorizontalAlignment="Center" Margin="0,29,0,0" VerticalAlignment="Top"/>

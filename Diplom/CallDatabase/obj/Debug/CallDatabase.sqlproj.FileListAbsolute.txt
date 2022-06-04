@@ -1,6 +1,0 @@
-C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallDatabase\bin\Debug\CallDatabase.dacpac
-C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallDatabase\bin\Debug\CallDatabase.dll
-C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallDatabase\bin\Debug\CallDatabase.pdb
-C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallDatabase\obj\Debug\CallDatabase.sqlproj.AssemblyReference.cache
-C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallDatabase\obj\Debug\CallDatabase.dll
-C:\Users\Viachaslau_Draneu\Desktop\Diplom\Diplom\CallDatabase\obj\Debug\CallDatabase.pdb

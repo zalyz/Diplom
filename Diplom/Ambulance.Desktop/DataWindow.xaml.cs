@@ -9,6 +9,7 @@ using Ambulance.Domain.Models.Brigade;
 using Ambulance.Domain.Models.Enums;
 using System.Collections.ObjectModel;
 using Ambulance.Domain.Models;
+using System.Threading.Tasks;
 
 namespace Ambulance
 {

@@ -13,7 +13,7 @@ namespace Ambulance.DAL.CallAPI
 
         DbSet<CallEntity> Calls { get; set; }
 
-        DbSet<CallAdditionalInfoEntity> CallAdditionalInfoEntities { get; set; }
+        DbSet<CallAdditionalInfoEntity> CallAdditionalInfo { get; set; }
 
         DbSet<CallerEntity> Callers { get; set; }
 
@@ -60,7 +60,7 @@ namespace Ambulance.DAL.CallAPI
 
         public DbSet<CallEntity> Calls { get; set; }
 
-        public DbSet<CallAdditionalInfoEntity> CallAdditionalInfoEntities { get; set; }
+        public DbSet<CallAdditionalInfoEntity> CallAdditionalInfo { get; set; }
 
         public DbSet<CallerEntity> Callers { get; set; }
 
@@ -110,6 +110,7 @@ namespace Ambulance.DAL.CallAPI
             {
                 var connectionString = _connectionSetting.ConnectionString;
                 optionsBuilder.UseSqlServer(connectionString);
+                optionsBuilder.EnableDetailedErrors();
             }
         }
     }

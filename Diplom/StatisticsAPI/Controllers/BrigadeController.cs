@@ -22,8 +22,8 @@ namespace StatisticsAPI.Controllers
         public async Task<IActionResult> Get(CancellationToken cancellationToken = default)
         {
             var command = new BrigadesCallsRequest(Guid.Empty);
-            await _mediator.Send(command, cancellationToken);
-            return Ok();
+            var bytes = await _mediator.Send(command, cancellationToken);
+            return File(bytes, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "AgeDiagnosis.xlsx");
         }
     }
 }

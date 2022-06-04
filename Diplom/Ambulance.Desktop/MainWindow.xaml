@@ -48,11 +48,9 @@
                 <RowDefinition Height="1*"></RowDefinition>
                 <RowDefinition Height="2*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Button Grid.Column="0" Click="DispetcherClick" Background="MediumPurple" BorderBrush="LawnGreen" BorderThickness="1" Margin="0,23,0,0" Grid.RowSpan="2">
-                <Image Source="Resourses\images.png"></Image>
-            </Button>
-            <!--<Button Content="Хрон. пациенты" FontWeight="SemiBold" Foreground="Yellow" Grid.Column="1" Margin="0,23,0,0" Grid.RowSpan="2" Background="MediumPurple" BorderBrush="LawnGreen" BorderThickness="1" Click="ChronicButton_Click"/>-->
-            <!--<Button Grid.Column="2" FontWeight="SemiBold" Foreground="Yellow" Content="Авар. ввод" Margin="0,23,0,0" Grid.RowSpan="2" Background="MediumPurple" BorderBrush="LawnGreen" BorderThickness="1" Click="EmergencyEnter_Click" />-->
+            <Button Grid.Column="0" Content="Авторизоваться" FontWeight="SemiBold" Foreground="Yellow" Click="DispetcherClick" Background="MediumPurple" BorderBrush="LawnGreen" BorderThickness="1" Margin="0,23,0,0" Grid.RowSpan="2"></Button>
+            <Button Content="Поиск по выз." FontWeight="SemiBold" Foreground="Yellow" Grid.Column="1" Margin="0,23,0,0" Grid.RowSpan="2" Background="MediumPurple" BorderBrush="LawnGreen" BorderThickness="1" Click="ChronicButton_Click"/>
+            <Button Grid.Column="2" Content="Список улиц" FontWeight="SemiBold" Foreground="Yellow" Margin="0,23,0,0" Grid.RowSpan="2" Background="MediumPurple" BorderBrush="LawnGreen" BorderThickness="1" Click="EmergencyEnter_Click" />
             <TextBlock Name="DatePanel1" Grid.ColumnSpan="2" Grid.Column="3" Background="Blue" FontSize="25" Foreground="White" TextAlignment="Center" FontFamily="Times new Roman" VerticalAlignment="Center" Grid.Row="1"/>
             <Button Content="Передача выз." FontWeight="SemiBold" Foreground="Yellow" Grid.Column="5" Margin="0,23,0,0" Grid.RowSpan="2" Background="MediumPurple" BorderBrush="LawnGreen" BorderThickness="1" Click="CallMonitoring_Click">
             </Button>

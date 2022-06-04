@@ -8,7 +8,7 @@ namespace Ambulance.DAL.CallAPI.Models
 
         public int CallId { get; set; }
 
-        public byte Type { get; set; }
+        public byte AdditionalInfoType { get; set; }
 
         public byte? UnsuccessfulDeparture { get; set; }
 
